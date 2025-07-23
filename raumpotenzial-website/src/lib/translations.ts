@@ -1,0 +1,351 @@
+export const translations = {
+  en: {
+    nav: {
+      home: "Home",
+      projects: "Projects",
+      about: "About",
+      testimonials: "Testimonials",
+      contact: "Contact",
+      imprint: "Imprint",
+    },
+    hero: {
+      title: "Crafting Exceptional Furniture",
+      subtitle: "Where artistry meets functionality in every piece",
+      cta: "View My Work",
+    },
+    projects: {
+      title: "Featured Projects",
+      subtitle: "A selection of my finest furniture designs",
+      project1: {
+        title: "Modern Oak Dining Set",
+        description: "A contemporary dining collection featuring clean lines and premium oak wood.",
+      },
+      project2: {
+        title: "Minimalist Bookshelf",
+        description: "Sleek and functional storage solution for modern living spaces.",
+      },
+      project3: {
+        title: "Luxury Bedroom Suite",
+        description: "Elegant bedroom furniture combining comfort with sophisticated design.",
+      },
+    },
+    about: {
+      title: "About Me",
+      subtitle: "Passionate furniture designer with over 15 years of experience",
+      content:
+        "I believe that furniture should not only be beautiful but also tell a story. Each piece I create is carefully crafted with attention to detail, using sustainable materials and time-honored techniques. My designs blend traditional craftsmanship with contemporary aesthetics to create timeless pieces that enhance any living space.",
+    },
+    testimonials: {
+      title: "What Clients Say",
+      subtitle: "Testimonials from satisfied customers",
+      testimonial1: {
+        text: "The dining table exceeded all our expectations. The craftsmanship is exceptional and it has become the centerpiece of our home.",
+        author: "Sarah Johnson",
+        role: "Homeowner",
+      },
+      testimonial2: {
+        text: "Working with this designer was a dream. They understood our vision perfectly and delivered a piece that is both functional and beautiful.",
+        author: "Michael Chen",
+        role: "Interior Designer",
+      },
+      testimonial3: {
+        text: "The attention to detail and quality of materials is outstanding. This furniture will last for generations.",
+        author: "Emma Rodriguez",
+        role: "Architect",
+      },
+    },
+    contact: {
+      title: "Get In Touch",
+      subtitle: "Ready to discuss your next furniture project?",
+      form: {
+        name: "Name",
+        email: "Email",
+        subject: "Subject",
+        message: "Message",
+        send: "Send Message",
+      },
+      info: {
+        phone: "Phone",
+        email: "Email",
+        address: "Address",
+      },
+    },
+    imprint: {
+      title: "Legal Notice",
+      subtitle: "Imprint and Legal Information",
+      content: {
+        responsible: "Responsible for content",
+        name: "John Furniture Designer",
+        address: "123 Design Street, 12345 Creative City",
+        phone: "Phone: +49 123 456 789",
+        email: "Email: info@furnituredesigner.com",
+        vat: "VAT ID: DE123456789",
+        disclaimer: "Disclaimer",
+        disclaimerText:
+          "The contents of our pages have been created with the utmost care. However, we cannot guarantee the contents' accuracy, completeness or topicality.",
+      },
+    },
+  },
+  de: {
+    nav: {
+      home: "Startseite",
+      projects: "Projekte",
+      about: "Über mich",
+      testimonials: "Referenzen",
+      contact: "Kontakt",
+      imprint: "Impressum",
+    },
+    hero: {
+      title: "Außergewöhnliche Möbel schaffen",
+      subtitle: "Wo Kunstfertigkeit auf Funktionalität in jedem Stück trifft",
+      cta: "Meine Arbeiten ansehen",
+    },
+    projects: {
+      title: "Ausgewählte Projekte",
+      subtitle: "Eine Auswahl meiner schönsten Möbeldesigns",
+      project1: {
+        title: "Modernes Eichen-Esszimmer-Set",
+        description: "Eine zeitgenössische Esszimmer-Kollektion mit klaren Linien und hochwertigem Eichenholz.",
+      },
+      project2: {
+        title: "Minimalistisches Bücherregal",
+        description: "Elegante und funktionale Aufbewahrungslösung für moderne Wohnräume.",
+      },
+      project3: {
+        title: "Luxus-Schlafzimmer-Suite",
+        description: "Elegante Schlafzimmermöbel, die Komfort mit anspruchsvollem Design verbinden.",
+      },
+    },
+    about: {
+      title: "Über mich",
+      subtitle: "Leidenschaftlicher Möbeldesigner mit über 15 Jahren Erfahrung",
+      content:
+        "Ich glaube, dass Möbel nicht nur schön sein sollten, sondern auch eine Geschichte erzählen. Jedes Stück, das ich erschaffe, wird sorgfältig mit Liebe zum Detail gefertigt, unter Verwendung nachhaltiger Materialien und bewährter Techniken. Meine Designs verbinden traditionelle Handwerkskunst mit zeitgenössischer Ästhetik, um zeitlose Stücke zu schaffen, die jeden Wohnraum bereichern.",
+    },
+    testimonials: {
+      title: "Was Kunden sagen",
+      subtitle: "Testimonials von zufriedenen Kunden",
+      testimonial1: {
+        text: "Der Esstisch hat alle unsere Erwartungen übertroffen. Die Handwerkskunst ist außergewöhnlich und er ist zum Mittelpunkt unseres Zuhauses geworden.",
+        author: "Sarah Johnson",
+        role: "Hausbesitzerin",
+      },
+      testimonial2: {
+        text: "Mit diesem Designer zu arbeiten war ein Traum. Sie verstanden unsere Vision perfekt und lieferten ein Stück, das sowohl funktional als auch schön ist.",
+        author: "Michael Chen",
+        role: "Innenarchitekt",
+      },
+      testimonial3: {
+        text: "Die Liebe zum Detail und die Qualität der Materialien ist herausragend. Diese Möbel werden Generationen überdauern.",
+        author: "Emma Rodriguez",
+        role: "Architektin",
+      },
+    },
+    contact: {
+      title: "Kontakt aufnehmen",
+      subtitle: "Bereit, Ihr nächstes Möbelprojekt zu besprechen?",
+      form: {
+        name: "Name",
+        email: "E-Mail",
+        subject: "Betreff",
+        message: "Nachricht",
+        send: "Nachricht senden",
+      },
+      info: {
+        phone: "Telefon",
+        email: "E-Mail",
+        address: "Adresse",
+      },
+    },
+    imprint: {
+      title: "Impressum",
+      subtitle: "Impressum und rechtliche Informationen",
+      content: {
+        responsible: "Verantwortlich für den Inhalt",
+        name: "John Möbeldesigner",
+        address: "Designstraße 123, 12345 Kreativstadt",
+        phone: "Telefon: +49 123 456 789",
+        email: "E-Mail: info@moebeldesigner.com",
+        vat: "USt-IdNr.: DE123456789",
+        disclaimer: "Haftungsausschluss",
+        disclaimerText:
+          "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.",
+      },
+    },
+  },
+  fr: {
+    nav: {
+      home: "Accueil",
+      projects: "Projets",
+      about: "À propos",
+      testimonials: "Témoignages",
+      contact: "Contact",
+      imprint: "Mentions légales",
+    },
+    hero: {
+      title: "Créer des meubles exceptionnels",
+      subtitle: "Où l'art rencontre la fonctionnalité dans chaque pièce",
+      cta: "Voir mon travail",
+    },
+    projects: {
+      title: "Projets en vedette",
+      subtitle: "Une sélection de mes plus beaux designs de meubles",
+      project1: {
+        title: "Ensemble de salle à manger en chêne moderne",
+        description:
+          "Une collection de salle à manger contemporaine avec des lignes épurées et du chêne de qualité supérieure.",
+      },
+      project2: {
+        title: "Bibliothèque minimaliste",
+        description: "Solution de rangement élégante et fonctionnelle pour les espaces de vie modernes.",
+      },
+      project3: {
+        title: "Suite de chambre de luxe",
+        description: "Mobilier de chambre élégant alliant confort et design sophistiqué.",
+      },
+    },
+    about: {
+      title: "À propos de moi",
+      subtitle: "Designer de meubles passionné avec plus de 15 ans d'expérience",
+      content:
+        "Je crois que les meubles ne doivent pas seulement être beaux mais aussi raconter une histoire. Chaque pièce que je crée est soigneusement fabriquée avec une attention aux détails, en utilisant des matériaux durables et des techniques éprouvées. Mes designs mélangent l'artisanat traditionnel avec l'esthétique contemporaine pour créer des pièces intemporelles qui rehaussent tout espace de vie.",
+    },
+    testimonials: {
+      title: "Ce que disent les clients",
+      subtitle: "Témoignages de clients satisfaits",
+      testimonial1: {
+        text: "La table de salle à manger a dépassé toutes nos attentes. L'artisanat est exceptionnel et elle est devenue la pièce maîtresse de notre maison.",
+        author: "Sarah Johnson",
+        role: "Propriétaire",
+      },
+      testimonial2: {
+        text: "Travailler avec ce designer était un rêve. Ils ont parfaitement compris notre vision et ont livré une pièce à la fois fonctionnelle et belle.",
+        author: "Michael Chen",
+        role: "Designer d'intérieur",
+      },
+      testimonial3: {
+        text: "L'attention aux détails et la qualité des matériaux est remarquable. Ces meubles dureront des générations.",
+        author: "Emma Rodriguez",
+        role: "Architecte",
+      },
+    },
+    contact: {
+      title: "Entrer en contact",
+      subtitle: "Prêt à discuter de votre prochain projet de mobilier ?",
+      form: {
+        name: "Nom",
+        email: "E-mail",
+        subject: "Sujet",
+        message: "Message",
+        send: "Envoyer le message",
+      },
+      info: {
+        phone: "Téléphone",
+        email: "E-mail",
+        address: "Adresse",
+      },
+    },
+    imprint: {
+      title: "Mentions légales",
+      subtitle: "Mentions légales et informations juridiques",
+      content: {
+        responsible: "Responsable du contenu",
+        name: "John Designer de meubles",
+        address: "123 Rue du Design, 12345 Ville Créative",
+        phone: "Téléphone: +33 1 23 45 67 89",
+        email: "E-mail: info@designermeubles.com",
+        vat: "N° TVA: FR12345678901",
+        disclaimer: "Avertissement",
+        disclaimerText:
+          "Le contenu de nos pages a été créé avec le plus grand soin. Cependant, nous ne pouvons garantir l'exactitude, l'exhaustivité ou l'actualité du contenu.",
+      },
+    },
+  },
+  es: {
+    nav: {
+      home: "Inicio",
+      projects: "Proyectos",
+      about: "Acerca de",
+      testimonials: "Testimonios",
+      contact: "Contacto",
+      imprint: "Aviso legal",
+    },
+    hero: {
+      title: "Creando muebles excepcionales",
+      subtitle: "Donde el arte se encuentra con la funcionalidad en cada pieza",
+      cta: "Ver mi trabajo",
+    },
+    projects: {
+      title: "Proyectos destacados",
+      subtitle: "Una selección de mis mejores diseños de muebles",
+      project1: {
+        title: "Conjunto de comedor de roble moderno",
+        description: "Una colección de comedor contemporánea con líneas limpias y madera de roble premium.",
+      },
+      project2: {
+        title: "Estantería minimalista",
+        description: "Solución de almacenamiento elegante y funcional para espacios de vida modernos.",
+      },
+      project3: {
+        title: "Suite de dormitorio de lujo",
+        description: "Muebles de dormitorio elegantes que combinan comodidad con diseño sofisticado.",
+      },
+    },
+    about: {
+      title: "Acerca de mí",
+      subtitle: "Diseñador de muebles apasionado con más de 15 años de experiencia",
+      content:
+        "Creo que los muebles no solo deben ser hermosos sino también contar una historia. Cada pieza que creo está cuidadosamente elaborada con atención al detalle, utilizando materiales sostenibles y técnicas consagradas. Mis diseños combinan la artesanía tradicional con la estética contemporánea para crear piezas atemporales que realzan cualquier espacio de vida.",
+    },
+    testimonials: {
+      title: "Lo que dicen los clientes",
+      subtitle: "Testimonios de clientes satisfechos",
+      testimonial1: {
+        text: "La mesa de comedor superó todas nuestras expectativas. La artesanía es excepcional y se ha convertido en la pieza central de nuestro hogar.",
+        author: "Sarah Johnson",
+        role: "Propietaria",
+      },
+      testimonial2: {
+        text: "Trabajar con este diseñador fue un sueño. Entendieron perfectamente nuestra visión y entregaron una pieza que es tanto funcional como hermosa.",
+        author: "Michael Chen",
+        role: "Diseñador de interiores",
+      },
+      testimonial3: {
+        text: "La atención al detalle y la calidad de los materiales es sobresaliente. Estos muebles durarán generaciones.",
+        author: "Emma Rodriguez",
+        role: "Arquitecta",
+      },
+    },
+    contact: {
+      title: "Ponerse en contacto",
+      subtitle: "¿Listo para discutir tu próximo proyecto de muebles?",
+      form: {
+        name: "Nombre",
+        email: "Correo electrónico",
+        subject: "Asunto",
+        message: "Mensaje",
+        send: "Enviar mensaje",
+      },
+      info: {
+        phone: "Teléfono",
+        email: "Correo electrónico",
+        address: "Dirección",
+      },
+    },
+    imprint: {
+      title: "Aviso legal",
+      subtitle: "Aviso legal e información jurídica",
+      content: {
+        responsible: "Responsable del contenido",
+        name: "John Diseñador de muebles",
+        address: "Calle del Diseño 123, 12345 Ciudad Creativa",
+        phone: "Teléfono: +34 123 456 789",
+        email: "Correo: info@disenadormuebles.com",
+        vat: "NIF: ES12345678A",
+        disclaimer: "Descargo de responsabilidad",
+        disclaimerText:
+          "El contenido de nuestras páginas ha sido creado con el máximo cuidado. Sin embargo, no podemos garantizar la exactitud, integridad o actualidad del contenido.",
+      },
+    },
+  },
+}
