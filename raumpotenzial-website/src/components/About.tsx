@@ -7,15 +7,17 @@ export default function About() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-4 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
               {t("about.title")}
             </h2>
-            <p className="text-xl text-gray-600 mb-6">{t("about.subtitle")}</p>
-            <p className="text-gray-700 leading-relaxed text-lg">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
+              {t("about.subtitle")}
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
               {t("about.content")}
             </p>
           </div>

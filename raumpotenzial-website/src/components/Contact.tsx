@@ -36,20 +36,20 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-4 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             {t("contact.title")}
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             {t("contact.subtitle")}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <Input
@@ -100,30 +100,34 @@ export default function Contact() {
           {/* Contact Information */}
           <div className="space-y-8">
             <div className="flex items-start space-x-4">
-              <Phone className="h-6 w-6 text-gray-600 mt-1" />
+              <Phone className="h-6 w-6 text-gray-600 dark:text-gray-400 mt-1" />
               <div>
-                <h3 className="font-semibold text-gray-900 mb-1">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
                   {t("contact.info.phone")}
                 </h3>
-                <p className="text-gray-600">+49 123 456 789</p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  +49 123 456 789
+                </p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
-              <Mail className="h-6 w-6 text-gray-600 mt-1" />
+              <Mail className="h-6 w-6 text-gray-600 dark:text-gray-400 mt-1" />
               <div>
-                <h3 className="font-semibold text-gray-900 mb-1">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
                   {t("contact.info.email")}
                 </h3>
-                <p className="text-gray-600">info@furnituredesigner.com</p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  info@furnituredesigner.com
+                </p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
-              <MapPin className="h-6 w-6 text-gray-600 mt-1" />
+              <MapPin className="h-6 w-6 text-gray-600 dark:text-gray-400 mt-1" />
               <div>
-                <h3 className="font-semibold text-gray-900 mb-1">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
                   {t("contact.info.address")}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   123 Design Street
                   <br />
                   12345 Creative City

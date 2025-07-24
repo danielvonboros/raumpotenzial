@@ -47,13 +47,13 @@ export default function Pricing() {
   };
 
   return (
-    <section className="py-20 px-4 bg-gray-50">
+    <section className="py-20 px-4 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             {t("pricing.title")}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             {t("pricing.subtitle")}
           </p>
         </div>
@@ -62,7 +62,7 @@ export default function Pricing() {
           {pricingPlans.map((plan) => (
             <div
               key={plan.id}
-              className={`relative bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 ${
+              className={`relative bg-white dark:bg-gray-700 rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 ${
                 plan.popular ? "ring-2 ring-blue-500 transform scale-105" : ""
               }`}
             >
@@ -75,14 +75,14 @@ export default function Pricing() {
 
               <div className={`p-8 ${plan.popular ? "pt-16" : ""}`}>
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                     {t(plan.titleKey)}
                   </h3>
                   <div className="mb-2">
-                    <span className="text-4xl font-bold text-gray-900">
+                    <span className="text-4xl font-bold text-gray-900 dark:text-white">
                       {t(plan.priceKey)}
                     </span>
-                    <span className="text-gray-600 ml-2">
+                    <span className="text-gray-600 dark:text-gray-300 ml-2">
                       {t(plan.durationKey)}
                     </span>
                   </div>
@@ -92,7 +92,9 @@ export default function Pricing() {
                   {getFeatures(plan.id).map((feature, index) => (
                     <li key={index} className="flex items-start">
                       <Check className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-gray-700 dark:text-gray-300">
+                        {feature}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -112,11 +114,11 @@ export default function Pricing() {
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-gray-600 mb-4">
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
             All prices are estimates and may vary based on project complexity
             and materials chosen.
           </p>
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-gray-400">
             Contact us for a personalized quote tailored to your specific needs.
           </p>
         </div>

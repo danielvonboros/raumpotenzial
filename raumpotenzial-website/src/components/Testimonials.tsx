@@ -28,13 +28,13 @@ export default function Testimonials() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 px-4 bg-gray-50">
+    <section className="py-20 px-4 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             {t("testimonials.title")}
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             {t("testimonials.subtitle")}
           </p>
         </div>
@@ -43,7 +43,7 @@ export default function Testimonials() {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
+              className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
             >
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -53,14 +53,14 @@ export default function Testimonials() {
                   />
                 ))}
               </div>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                {t(testimonial.textKey)}
+              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                {"'" + t(testimonial.textKey) + "'"}
               </p>
-              <div className="border-t pt-4">
-                <p className="font-semibold text-gray-900">
+              <div className="border-t border-gray-200 dark:border-gray-600 pt-4">
+                <p className="font-semibold text-gray-900 dark:text-white">
                   {t(testimonial.authorKey)}
                 </p>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
                   {t(testimonial.roleKey)}
                 </p>
               </div>

@@ -9,7 +9,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Menu, X } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useState } from "react";
 
 interface NavigationProps {
@@ -24,6 +25,7 @@ export default function Navigation({
   setCurrentSection,
 }: NavigationProps) {
   const { language, setLanguage, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
@@ -37,12 +39,14 @@ export default function Navigation({
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <nav className="fixed top-0 left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <div className="w-10 h-10 bg-gray-300 rounded-md flex items-center justify-center">
-              <span className="text-xs font-bold text-gray-600">LOGO</span>
+            <div className="w-10 h-10 bg-gray-300 dark:bg-gray-600 rounded-md flex items-center justify-center">
+              <span className="text-xs font-bold text-gray-600 dark:text-gray-300">
+                LOGO
+              </span>
             </div>
           </div>
 
@@ -61,8 +65,8 @@ export default function Navigation({
                   }}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     currentSection === item.id
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-700 hover:bg-gray-100"
+                      ? "bg-gray-900 dark:bg-white text-white dark:text-gray-900"
+                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                   }`}
                 >
                   {item.label}
@@ -71,20 +75,55 @@ export default function Navigation({
             </div>
           </div>
 
-          {/* Language Selector */}
+          {/* Controls */}
           <div className="flex items-center space-x-4">
+            {/* Theme Toggle */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleTheme}
+              className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              {theme === "light" ? (
+                <Moon className="h-5 w-5" />
+              ) : (
+                <Sun className="h-5 w-5" />
+              )}
+            </Button>
+
+            {/* Language Selector */}
             <Select
               value={language}
               onValueChange={(value: string) => setLanguage(value as Language)}
             >
-              <SelectTrigger className="w-20">
+              <SelectTrigger className="w-20 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="en">EN</SelectItem>
-                <SelectItem value="de">DE</SelectItem>
-                <SelectItem value="fr">FR</SelectItem>
-                <SelectItem value="es">ES</SelectItem>
+              <SelectContent className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600">
+                <SelectItem
+                  value="en"
+                  className="text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  EN
+                </SelectItem>
+                <SelectItem
+                  value="de"
+                  className="text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  DE
+                </SelectItem>
+                <SelectItem
+                  value="fr"
+                  className="text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  FR
+                </SelectItem>
+                <SelectItem
+                  value="es"
+                  className="text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  ES
+                </SelectItem>
               </SelectContent>
             </Select>
 
@@ -94,6 +133,7 @@ export default function Navigation({
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 {isMenuOpen ? (
                   <X className="h-6 w-6" />
@@ -108,7 +148,7 @@ export default function Navigation({
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
               {navItems.map((item) => (
                 <button
                   key={item.id}
@@ -122,8 +162,8 @@ export default function Navigation({
                   }}
                   className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
                     currentSection === item.id
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-700 hover:bg-gray-100"
+                      ? "bg-gray-900 dark:bg-white text-white dark:text-gray-900"
+                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                   }`}
                 >
                   {item.label}
