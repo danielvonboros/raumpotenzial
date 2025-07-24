@@ -101,6 +101,12 @@ export default function Hero() {
         <Button
           size="lg"
           className="bg-white text-gray-900 hover:bg-gray-100 text-lg px-8 py-3"
+          onClick={() => {
+            const element = document.getElementById("projects");
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
         >
           {t("hero.cta")}
         </Button>

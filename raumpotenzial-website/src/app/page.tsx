@@ -1,39 +1,50 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
+import Pricing from "@/components/Pricing";
 import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Imprint from "@/components/Imprint";
-import Pricing from "@/components/Pricing";
 
 export default function Portfolio() {
   const [currentSection, setCurrentSection] = useState("home");
 
-  const renderSection = () => {
-    switch (currentSection) {
-      case "home":
-        return <Hero />;
-      case "projects":
-        return <Projects />;
-      case "pricing":
-        return <Pricing />;
-      case "about":
-        return <About />;
-      case "testimonials":
-        return <Testimonials />;
-      case "contact":
-        return <Contact />;
-      case "imprint":
-        return <Imprint />;
-      default:
-        return <Hero />;
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = [
+        "home",
+        "projects",
+        "pricing",
+        "about",
+        "testimonials",
+        "contact",
+        "imprint",
+      ];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setCurrentSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <LanguageProvider>
@@ -42,7 +53,29 @@ export default function Portfolio() {
           currentSection={currentSection}
           setCurrentSection={setCurrentSection}
         />
-        <main>{renderSection()}</main>
+        <main>
+          <section id="home">
+            <Hero />
+          </section>
+          <section id="projects">
+            <Projects />
+          </section>
+          <section id="pricing">
+            <Pricing />
+          </section>
+          <section id="about">
+            <About />
+          </section>
+          <section id="testimonials">
+            <Testimonials />
+          </section>
+          <section id="contact">
+            <Contact />
+          </section>
+          <section id="imprint">
+            <Imprint />
+          </section>
+        </main>
       </div>
     </LanguageProvider>
   );

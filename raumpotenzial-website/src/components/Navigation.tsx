@@ -41,9 +41,9 @@ export default function Navigation({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <h1 className="text-xl font-bold text-gray-900">
-              Furniture Designer
-            </h1>
+            <div className="w-10 h-10 bg-gray-300 rounded-md flex items-center justify-center">
+              <span className="text-xs font-bold text-gray-600">LOGO</span>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -52,7 +52,13 @@ export default function Navigation({
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => setCurrentSection(item.id)}
+                  onClick={() => {
+                    setCurrentSection(item.id);
+                    const element = document.getElementById(item.id);
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     currentSection === item.id
                       ? "bg-gray-900 text-white"
@@ -69,7 +75,7 @@ export default function Navigation({
           <div className="flex items-center space-x-4">
             <Select
               value={language}
-              onValueChange={(value) => setLanguage(value as Language)}
+              onValueChange={(value: string) => setLanguage(value as Language)}
             >
               <SelectTrigger className="w-20">
                 <SelectValue />
@@ -109,6 +115,10 @@ export default function Navigation({
                   onClick={() => {
                     setCurrentSection(item.id);
                     setIsMenuOpen(false);
+                    const element = document.getElementById(item.id);
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth" });
+                    }
                   }}
                   className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
                     currentSection === item.id
