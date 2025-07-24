@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
+import Captcha from "@/components/Captcha";
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -17,13 +18,23 @@ export default function Contact() {
     subject: "",
     message: "",
   });
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
+  const [resetCaptcha, setResetCaptcha] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isCaptchaValid) {
+      alert(t("captcha.required"));
+      return;
+    }
+
     // Handle form submission here
     console.log("Form submitted:", formData);
     alert("Message sent successfully!");
     setFormData({ name: "", email: "", subject: "", message: "" });
+    setIsCaptchaValid(false);
+    setResetCaptcha((prev) => !prev); // Trigger captcha reset
   };
 
   const handleChange = (
@@ -33,6 +44,10 @@ export default function Contact() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleCaptchaValidation = (isValid: boolean) => {
+    setIsCaptchaValid(isValid);
   };
 
   return (
@@ -59,6 +74,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
                 />
               </div>
               <div>
@@ -69,6 +85,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
                 />
               </div>
               <div>
@@ -79,6 +96,7 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
+                  className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
                 />
               </div>
               <div>
@@ -89,9 +107,21 @@ export default function Contact() {
                   onChange={handleChange}
                   rows={6}
                   required
+                  className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
                 />
               </div>
-              <Button type="submit" className="w-full">
+
+              {/* Captcha */}
+              <Captcha
+                onValidationChange={handleCaptchaValidation}
+                reset={resetCaptcha}
+              />
+
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={!isCaptchaValid}
+              >
                 {t("contact.form.send")}
               </Button>
             </form>

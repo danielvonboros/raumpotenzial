@@ -3,9 +3,14 @@
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Check, Star } from "lucide-react";
+import ContactModal from "@/components/ContactModal";
+import { useState } from "react";
 
 export default function Pricing() {
   const { t } = useLanguage();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
 
   const pricingPlans = [
     {
@@ -44,6 +49,11 @@ export default function Pricing() {
     }
     // Fallback if translation returns a string
     return ["Feature 1", "Feature 2", "Feature 3", "Feature 4", "Feature 5"];
+  };
+
+  const handleServiceClick = (serviceTitle: string) => {
+    setSelectedService(serviceTitle);
+    setIsModalOpen(true);
   };
 
   return (
@@ -100,6 +110,7 @@ export default function Pricing() {
                 </ul>
 
                 <Button
+                  onClick={() => handleServiceClick(t(plan.titleKey))}
                   className={`w-full py-3 text-lg font-semibold ${
                     plan.popular
                       ? "bg-blue-500 hover:bg-blue-600 text-white"
@@ -123,6 +134,11 @@ export default function Pricing() {
           </p>
         </div>
       </div>
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        prefilledSubject={selectedService}
+      />
     </section>
   );
 }

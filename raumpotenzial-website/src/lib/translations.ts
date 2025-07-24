@@ -71,6 +71,13 @@ export const translations = {
         address: "Address",
       },
     },
+    captcha: {
+      label: "Security Check: What is",
+      newQuestion: "New Question",
+      incorrect: "Incorrect answer. Please try again.",
+      correct: "Correct!",
+      required: "Please complete the security check correctly.",
+    },
     imprint: {
       title: "Legal Notice",
       subtitle: "Imprint and Legal Information",
@@ -204,6 +211,13 @@ export const translations = {
         email: "E-Mail",
         address: "Adresse",
       },
+    },
+    captcha: {
+      label: "Sicherheitsprüfung: Was ist",
+      newQuestion: "Neue Frage",
+      incorrect: "Falsche Antwort. Bitte versuchen Sie es erneut.",
+      correct: "Richtig!",
+      required: "Bitte vervollständigen Sie die Sicherheitsprüfung korrekt.",
     },
     imprint: {
       title: "Impressum",
@@ -340,6 +354,13 @@ export const translations = {
         address: "Adresse",
       },
     },
+    captcha: {
+      label: "Vérification de sécurité : Combien font",
+      newQuestion: "Nouvelle question",
+      incorrect: "Réponse incorrecte. Veuillez réessayer.",
+      correct: "Correct !",
+      required: "Veuillez compléter correctement la vérification de sécurité.",
+    },
     imprint: {
       title: "Mentions légales",
       subtitle: "Mentions légales et informations juridiques",
@@ -473,6 +494,13 @@ export const translations = {
         email: "Correo electrónico",
         address: "Dirección",
       },
+    },
+    captcha: {
+      label: "Verificación de seguridad: ¿Cuánto es",
+      newQuestion: "Nueva pregunta",
+      incorrect: "Respuesta incorrecta. Por favor, inténtalo de nuevo.",
+      correct: "¡Correcto!",
+      required: "Por favor, completa correctamente la verificación de seguridad.",
     },
     imprint: {
       title: "Aviso legal",
