@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
@@ -47,36 +48,38 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <LanguageProvider>
-      <div className="min-h-screen bg-white">
-        <Navigation
-          currentSection={currentSection}
-          setCurrentSection={setCurrentSection}
-        />
-        <main>
-          <section id="home">
-            <Hero />
-          </section>
-          <section id="projects">
-            <Projects />
-          </section>
-          <section id="pricing">
-            <Pricing />
-          </section>
-          <section id="about">
-            <About />
-          </section>
-          <section id="testimonials">
-            <Testimonials />
-          </section>
-          <section id="contact">
-            <Contact />
-          </section>
-          <section id="imprint">
-            <Imprint />
-          </section>
-        </main>
-      </div>
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+          <Navigation
+            currentSection={currentSection}
+            setCurrentSection={setCurrentSection}
+          />
+          <main>
+            <section id="home">
+              <Hero />
+            </section>
+            <section id="projects">
+              <Projects />
+            </section>
+            <section id="pricing">
+              <Pricing />
+            </section>
+            <section id="about">
+              <About />
+            </section>
+            <section id="testimonials">
+              <Testimonials />
+            </section>
+            <section id="contact">
+              <Contact />
+            </section>
+            <section id="imprint">
+              <Imprint />
+            </section>
+          </main>
+        </div>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
