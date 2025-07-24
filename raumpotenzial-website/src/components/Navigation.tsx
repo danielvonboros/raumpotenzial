@@ -29,6 +29,7 @@ export default function Navigation({
   const navItems = [
     { id: "home", label: t("nav.home") },
     { id: "projects", label: t("nav.projects") },
+    { id: "pricing", label: t("nav.pricing") },
     { id: "about", label: t("nav.about") },
     { id: "testimonials", label: t("nav.testimonials") },
     { id: "contact", label: t("nav.contact") },

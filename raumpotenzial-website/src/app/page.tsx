@@ -9,6 +9,7 @@ import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Imprint from "@/components/Imprint";
+import Pricing from "@/components/Pricing";
 
 export default function Portfolio() {
   const [currentSection, setCurrentSection] = useState("home");
@@ -19,6 +20,8 @@ export default function Portfolio() {
         return <Hero />;
       case "projects":
         return <Projects />;
+      case "pricing":
+        return <Pricing />;
       case "about":
         return <About />;
       case "testimonials":
