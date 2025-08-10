@@ -10,15 +10,29 @@ import {
 } from "@/components/ui/select";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import {
+  Menu,
+  X,
+  Sun,
+  Moon,
+  Home,
+  FolderOpen,
+  DollarSign,
+  User,
+  MessageSquare,
+  Mail,
+  FileText,
+} from "lucide-react";
 import { useState } from "react";
+import Tooltip from "@/components/Tooltip";
+import LogoLightWide from "@/assets/LogoLightWide.svg";
+import LogoDarkWide from "@/assets/LogoDarkWide.svg";
+import Image from "next/image";
 
 interface NavigationProps {
   currentSection: string;
   setCurrentSection: (section: string) => void;
 }
-
-type Language = "en" | "de" | "fr" | "es";
 
 export default function Navigation({
   currentSection,
@@ -28,14 +42,16 @@ export default function Navigation({
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  type Language = "en" | "de" | "fr" | "es";
+
   const navItems = [
-    { id: "home", label: t("nav.home") },
-    { id: "projects", label: t("nav.projects") },
-    { id: "pricing", label: t("nav.pricing") },
-    { id: "about", label: t("nav.about") },
-    { id: "testimonials", label: t("nav.testimonials") },
-    { id: "contact", label: t("nav.contact") },
-    { id: "imprint", label: t("nav.imprint") },
+    { id: "home", icon: Home, label: t("nav.home") },
+    { id: "projects", icon: FolderOpen, label: t("nav.projects") },
+    { id: "pricing", icon: DollarSign, label: t("nav.pricing") },
+    { id: "about", icon: User, label: t("nav.about") },
+    { id: "testimonials", icon: MessageSquare, label: t("nav.testimonials") },
+    { id: "contact", icon: Mail, label: t("nav.contact") },
+    { id: "imprint", icon: FileText, label: t("nav.imprint") },
   ];
 
   return (
@@ -43,53 +59,87 @@ export default function Navigation({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <div className="w-10 h-10 bg-gray-300 dark:bg-gray-600 rounded-md flex items-center justify-center">
-              <span className="text-xs font-bold text-gray-600 dark:text-gray-300">
-                LOGO
-              </span>
-            </div>
+            <button
+              onClick={() => {
+                setCurrentSection("home");
+                const element = document.getElementById("home");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="flex items-center justify-center transition-opacity hover:opacity-80"
+              aria-label="Go to home"
+            >
+              <Image
+                src={theme === "light" ? LogoLightWide : LogoDarkWide}
+                alt="Logo"
+                width={120}
+                height={40}
+                className="h-14 w-auto"
+                priority
+              />
+            </button>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    setCurrentSection(item.id);
-                    const element = document.getElementById(item.id);
-                    if (element) {
-                      element.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    currentSection === item.id
-                      ? "bg-gray-900 dark:bg-white text-white dark:text-gray-900"
-                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                const IconComponent = item.icon;
+                return (
+                  <Tooltip key={item.id} content={item.label} delay={1500}>
+                    <button
+                      onClick={() => {
+                        setCurrentSection(item.id);
+                        const element = document.getElementById(item.id);
+                        if (element) {
+                          element.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }}
+                      className={`px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center space-x-2 cursor-pointer ${
+                        currentSection === item.id
+                          ? "bg-gray-900 dark:bg-white text-white dark:text-gray-900"
+                          : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      }`}
+                      aria-label={item.label}
+                    >
+                      <IconComponent className="h-5 w-5" />
+                    </button>
+                  </Tooltip>
+                );
+              })}
             </div>
           </div>
 
           {/* Controls */}
           <div className="flex items-center space-x-4">
             {/* Theme Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleTheme}
-              className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            <Tooltip
+              content={
+                theme === "light"
+                  ? "Switch to Dark Mode"
+                  : "Switch to Light Mode"
+              }
+              delay={1500}
             >
-              {theme === "light" ? (
-                <Moon className="h-5 w-5" />
-              ) : (
-                <Sun className="h-5 w-5" />
-              )}
-            </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={toggleTheme}
+                className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                aria-label={
+                  theme === "light"
+                    ? "Switch to Dark Mode"
+                    : "Switch to Light Mode"
+                }
+              >
+                {theme === "light" ? (
+                  <Moon className="h-5 w-5" />
+                ) : (
+                  <Sun className="h-5 w-5" />
+                )}
+              </Button>
+            </Tooltip>
 
             {/* Language Selector */}
             <Select
@@ -134,6 +184,7 @@ export default function Navigation({
                 size="sm"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                aria-label="Toggle menu"
               >
                 {isMenuOpen ? (
                   <X className="h-6 w-6" />
@@ -149,26 +200,30 @@ export default function Navigation({
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    setCurrentSection(item.id);
-                    setIsMenuOpen(false);
-                    const element = document.getElementById(item.id);
-                    if (element) {
-                      element.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }}
-                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
-                    currentSection === item.id
-                      ? "bg-gray-900 dark:bg-white text-white dark:text-gray-900"
-                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                const IconComponent = item.icon;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      setCurrentSection(item.id);
+                      setIsMenuOpen(false);
+                      const element = document.getElementById(item.id);
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                    className={`flex items-center space-x-3 px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
+                      currentSection === item.id
+                        ? "bg-gray-900 dark:bg-white text-white dark:text-gray-900"
+                        : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    }`}
+                  >
+                    <IconComponent className="h-5 w-5" />
+                    <span>{item.label}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         )}

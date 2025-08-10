@@ -83,10 +83,10 @@ export const translations = {
       subtitle: "Imprint and Legal Information",
       content: {
         responsible: "Responsible for content",
-        name: "John Furniture Designer",
-        address: "123 Design Street, 12345 Creative City",
-        phone: "Phone: +49 123 456 789",
-        email: "Email: info@furnituredesigner.com",
+        name: "raumideenwerk - Daniel von Boros",
+        address: "Kolonnenstraße 8, 10827 Berlin",
+        phone: "Phone: +49 160 495 8148",
+        email: "Email: hallo@raumideenwerk.com",
         vat: "VAT ID: DE123456789",
         disclaimer: "Disclaimer",
         disclaimerText:
@@ -153,7 +153,7 @@ export const translations = {
     hero: {
       title: "Außergewöhnliche Möbel schaffen",
       subtitle: "Wo Kunstfertigkeit auf Funktionalität in jedem Stück trifft",
-      cta: "Meine Arbeiten ansehen",
+      cta: "Meine Projekte ansehen",
     },
     projects: {
       title: "Ausgewählte Projekte",
@@ -173,9 +173,9 @@ export const translations = {
     },
     about: {
       title: "Über mich",
-      subtitle: "Leidenschaftlicher Möbeldesigner mit über 15 Jahren Erfahrung",
+      subtitle: "Leidenschaftlicher Architekt und Möbeldesigner mit über 5 Jahren Erfahrung",
       content:
-        "Ich glaube, dass Möbel nicht nur schön sein sollten, sondern auch eine Geschichte erzählen. Jedes Stück, das ich erschaffe, wird sorgfältig mit Liebe zum Detail gefertigt, unter Verwendung nachhaltiger Materialien und bewährter Techniken. Meine Designs verbinden traditionelle Handwerkskunst mit zeitgenössischer Ästhetik, um zeitlose Stücke zu schaffen, die jeden Wohnraum bereichern.",
+        "Ich glaube, dass viele Räume ein ungenutztes Potenzial bieten. Doch viele Möbel schöpfen dieses Potenzial nicht vollständig aus und bieten ihren Bewohnern nur einen begrenzten Mehrwert. In Zeiten von Wohnraummangel, besonders im urbanen Kontext ist die effektive Nutzung von Wohnraum wichtiger denn je. Mein Ziel ist es, Räume zu schaffen, die nicht nur funktional sind, sondern auch das Leben der Menschen bereichern. Veränderte Lebensumstände stellen uns oft vor Herausforderungen, die mit herkömmlichen Lösungen nur schwer zu meistern sind. Hier kommt meine Erfahrung in der Architektur und individuellen Möbelplanung ins Spiel. Gemeinsam mit Ihnen entwickle ich eine an Ihre individuelle Situation angepasste Lösung für ihr Wohnproblem. Kontaktieren Sie mich noch heute",
     },
     testimonials: {
       title: "Was Kunden sagen",
@@ -198,7 +198,7 @@ export const translations = {
     },
     contact: {
       title: "Kontakt aufnehmen",
-      subtitle: "Bereit, Ihr nächstes Möbelprojekt zu besprechen?",
+      subtitle: "Bereit, Ihr nächstes Projekt zu besprechen?",
       form: {
         name: "Name",
         email: "E-Mail",
@@ -224,10 +224,10 @@ export const translations = {
       subtitle: "Impressum und rechtliche Informationen",
       content: {
         responsible: "Verantwortlich für den Inhalt",
-        name: "John Möbeldesigner",
-        address: "Designstraße 123, 12345 Kreativstadt",
-        phone: "Telefon: +49 123 456 789",
-        email: "E-Mail: info@moebeldesigner.com",
+        name: "raumideenwerk - Daniel von Boros",
+        address: "Kolonnenstraße 8, 10827 Berlin",
+        phone: "Telefon: +49 160 495 8148",
+        email: "E-Mail: hallo@raumideenwerk.com",
         vat: "USt-IdNr.: DE123456789",
         disclaimer: "Haftungsausschluss",
         disclaimerText:
@@ -239,43 +239,42 @@ export const translations = {
       subtitle: "Wählen Sie das perfekte Servicepaket für Ihre Möbelbedürfnisse",
       consultation: {
         title: "Design-Beratung",
-        price: "150€",
+        price: "100€",
         duration: "pro Stunde",
         features: [
           "Erste Design-Beratung",
           "Raumplanungsberatung",
           "Materialempfehlungen",
           "Stilberatung",
-          "Nachbetreuung",
         ],
         cta: "Beratung buchen",
       },
       custom: {
-        title: "Maßmöbel",
-        price: "Ab 2.500€",
+        title: "Raumberatung",
+        price: "Ab 399€",
         duration: "pro Stück",
         features: [
-          "Vollständig individuelles Design",
-          "Premium-Materialien",
-          "Handwerkliche Fertigung",
-          "3D-Visualisierung",
-          "Lieferung & Montage",
-          "2 Jahre Garantie",
+          "Design-Beratung",
+          "Stilberatung",
+          "Materialempfehlungen",
+          "Moodboard-Erstellung",
+          "Raumkonzeption",
+          "perspektivische Skizze",
+
         ],
         cta: "Projekt starten",
         popular: true,
       },
       complete: {
-        title: "Komplette Raumgestaltung",
-        price: "Ab 8.000€",
-        duration: "pro Raum",
+        title: "Planung von Maßmöbeln",
+        price: "Ab 399€",
+        duration: "pro Stück",
         features: [
-          "Vollständiger Raumdesign-Service",
-          "Mehrere Möbelstücke",
+          "Aufmaßnahme",
+          "Planung eines individuellen Möbelstücks",
           "Farb- & Materialkoordination",
-          "Projektmanagement",
-          "Premium-Lieferung",
-          "5 Jahre Garantie",
+          "perspektivische Skizze",
+          "Angebotserstellung durch Partnertischlerei",
         ],
         cta: "Angebot erhalten",
       },
@@ -366,10 +365,10 @@ export const translations = {
       subtitle: "Mentions légales et informations juridiques",
       content: {
         responsible: "Responsable du contenu",
-        name: "John Designer de meubles",
-        address: "123 Rue du Design, 12345 Ville Créative",
-        phone: "Téléphone: +33 1 23 45 67 89",
-        email: "E-mail: info@designermeubles.com",
+        name: "raumideenwerk - Daniel von Boros",
+        address: "Kolonnenstraße 8, 10827 Berlin",
+        phone: "Téléphone: +49 160 495 8148",
+        email: "E-mail: hallo@raumideenwerk.com",
         vat: "N° TVA: FR12345678901",
         disclaimer: "Avertissement",
         disclaimerText:
@@ -507,10 +506,10 @@ export const translations = {
       subtitle: "Aviso legal e información jurídica",
       content: {
         responsible: "Responsable del contenido",
-        name: "John Diseñador de muebles",
-        address: "Calle del Diseño 123, 12345 Ciudad Creativa",
-        phone: "Teléfono: +34 123 456 789",
-        email: "Correo: info@disenadormuebles.com",
+        name: "raumideenwerk - Daniel von Boros",
+        address: "Kolonnenstraße 8, 10827 Berlín",
+        phone: "Teléfono: +49 160 495 8148",
+        email: "Correo: hallo@raumideenwerk.com",
         vat: "NIF: ES12345678A",
         disclaimer: "Descargo de responsabilidad",
         disclaimerText:

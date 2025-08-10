@@ -23,7 +23,7 @@ export default function About() {
           </div>
           <div className="relative">
             <Image
-              src="/placeholder.svg?height=500&width=600"
+              src="/image_daniel.jpeg"
               alt="Furniture Designer at Work"
               width={600}
               height={500}
