@@ -2,42 +2,45 @@
 
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Check, Star } from "lucide-react";
+import { Check, Star, Plus, Calendar } from "lucide-react";
 import ContactModal from "@/components/ContactModal";
+import BookingCalendar from "@/components/BookingCalendar";
 import { useState } from "react";
 
 export default function Pricing() {
   const { t } = useLanguage();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
 
   const pricingPlans = [
     {
-      id: "consultation",
-      titleKey: "pricing.consultation.title",
-      priceKey: "pricing.consultation.price",
-      durationKey: "pricing.consultation.duration",
-      featuresKey: "pricing.consultation.features",
-      ctaKey: "pricing.consultation.cta",
+      id: "spaceImpulses",
+      titleKey: "pricing.spaceImpulses.title",
+      priceKey: "pricing.spaceImpulses.price",
+      durationKey: "pricing.spaceImpulses.duration",
+      featuresKey: "pricing.spaceImpulses.features",
+      ctaKey: "pricing.spaceImpulses.cta",
       popular: false,
     },
     {
-      id: "custom",
-      titleKey: "pricing.custom.title",
-      priceKey: "pricing.custom.price",
-      durationKey: "pricing.custom.duration",
-      featuresKey: "pricing.custom.features",
-      ctaKey: "pricing.custom.cta",
+      id: "spaceConcepts",
+      titleKey: "pricing.spaceConcepts.title",
+      priceKey: "pricing.spaceConcepts.price",
+      durationKey: "pricing.spaceConcepts.duration",
+      featuresKey: "pricing.spaceConcepts.features",
+      ctaKey: "pricing.spaceConcepts.cta",
       popular: true,
+      hasAddOns: true,
     },
     {
-      id: "complete",
-      titleKey: "pricing.complete.title",
-      priceKey: "pricing.complete.price",
-      durationKey: "pricing.complete.duration",
-      featuresKey: "pricing.complete.features",
-      ctaKey: "pricing.complete.cta",
+      id: "spaceTransformation",
+      titleKey: "pricing.spaceTransformation.title",
+      priceKey: "pricing.spaceTransformation.price",
+      durationKey: "pricing.spaceTransformation.duration",
+      featuresKey: "pricing.spaceTransformation.features",
+      ctaKey: "pricing.spaceTransformation.cta",
       popular: false,
     },
   ];
@@ -51,9 +54,22 @@ export default function Pricing() {
     return ["Feature 1", "Feature 2", "Feature 3", "Feature 4", "Feature 5"];
   };
 
+  const getAddOns = (planId: string) => {
+    const addOns = t(`pricing.${planId}.addOns`);
+    if (Array.isArray(addOns)) {
+      return addOns;
+    }
+    return [];
+  };
+
   const handleServiceClick = (serviceTitle: string) => {
     setSelectedService(serviceTitle);
     setIsModalOpen(true);
+  };
+
+  const handleBookingClick = (serviceTitle: string) => {
+    setSelectedService(serviceTitle);
+    setIsCalendarOpen(true);
   };
 
   return (
@@ -92,7 +108,7 @@ export default function Pricing() {
                     <span className="text-4xl font-bold text-gray-900 dark:text-white">
                       {t(plan.priceKey)}
                     </span>
-                    <span className="text-gray-600 dark:text-gray-300 ml-2">
+                    <span className="text-gray-600 dark:text-gray-300 ml-2 block text-sm">
                       {t(plan.durationKey)}
                     </span>
                   </div>
@@ -109,16 +125,53 @@ export default function Pricing() {
                   ))}
                 </ul>
 
-                <Button
-                  onClick={() => handleServiceClick(t(plan.titleKey))}
-                  className={`w-full py-3 text-lg font-semibold ${
-                    plan.popular
-                      ? "bg-blue-500 hover:bg-blue-600 text-white"
-                      : "bg-gray-900 hover:bg-gray-800 text-white"
-                  }`}
-                >
-                  {t(plan.ctaKey)}
-                </Button>
+                {/* Add-ons for Space Concepts */}
+                {plan.hasAddOns && (
+                  <div className="mb-8 p-4 bg-gray-50 dark:bg-gray-600 rounded-lg">
+                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                      <Plus className="h-4 w-4 mr-1" />
+                      Optional Add-ons:
+                    </h4>
+                    <ul className="space-y-2">
+                      {getAddOns(plan.id).map((addOn, index) => (
+                        <li
+                          key={index}
+                          className="flex justify-between items-center text-sm"
+                        >
+                          <span className="text-gray-700 dark:text-gray-300">
+                            {addOn.name}
+                          </span>
+                          <span className="font-semibold text-gray-900 dark:text-white">
+                            {addOn.price}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Action Buttons */}
+                <div className="space-y-3">
+                  <Button
+                    onClick={() => handleBookingClick(t(plan.titleKey))}
+                    className={`w-full py-3 text-lg font-semibold flex items-center justify-center gap-2 ${
+                      plan.popular
+                        ? "bg-blue-500 hover:bg-blue-600 text-white"
+                        : "bg-gray-900 hover:bg-gray-800 text-white"
+                    }`}
+                  >
+                    <Calendar className="h-5 w-5" />
+                    Book Consultation
+                  </Button>
+
+                  <Button
+                    onClick={() => handleServiceClick(t(plan.titleKey))}
+                    variant="outline"
+                    className="w-full py-2 text-sm bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                  >
+                    Ask Questions
+                  </Button>
+                </div>
               </div>
             </div>
           ))}
@@ -126,18 +179,25 @@ export default function Pricing() {
 
         <div className="text-center mt-12">
           <p className="text-gray-600 dark:text-gray-400 mb-4">
-            All prices are estimates and may vary based on project complexity
-            and materials chosen.
+            All prices are base rates and may vary based on project complexity
+            and specific requirements.
           </p>
           <p className="text-gray-600 dark:text-gray-400">
-            Contact us for a personalized quote tailored to your specific needs.
+            Book a consultation to discuss your project in detail and receive a
+            personalized quote.
           </p>
         </div>
       </div>
+
       <ContactModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         prefilledSubject={selectedService}
+      />
+      <BookingCalendar
+        isOpen={isCalendarOpen}
+        onClose={() => setIsCalendarOpen(false)}
+        selectedService={selectedService}
       />
     </section>
   );

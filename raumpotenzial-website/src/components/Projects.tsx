@@ -6,13 +6,13 @@ import Image from "next/image";
 const projects = [
   {
     id: 1,
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/furniture/quadra_1.jpeg",
     titleKey: "projects.project1.title",
     descriptionKey: "projects.project1.description",
   },
   {
     id: 2,
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/room/sample_room_1-after.jpg",
     titleKey: "projects.project2.title",
     descriptionKey: "projects.project2.description",
   },

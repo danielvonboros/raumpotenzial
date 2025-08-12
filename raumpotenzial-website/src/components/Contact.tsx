@@ -136,7 +136,7 @@ export default function Contact() {
                   {t("contact.info.phone")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  +49 123 456 789
+                  +49 160 495 8148
                 </p>
               </div>
             </div>
@@ -147,7 +147,7 @@ export default function Contact() {
                   {t("contact.info.email")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  info@furnituredesigner.com
+                  hallo@raumideenwerk.com
                 </p>
               </div>
             </div>
@@ -158,9 +158,9 @@ export default function Contact() {
                   {t("contact.info.address")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  123 Design Street
+                  Kolonnenstrasse 8
                   <br />
-                  12345 Creative City
+                  10827 Berlin
                   <br />
                   Germany
                 </p>
