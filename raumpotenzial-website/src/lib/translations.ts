@@ -30,6 +30,14 @@ export const translations = {
       title: "Featured Projects",
       subtitle: "A selection of my finest furniture designs",
       viewDetails: "View Details",
+      modal: {
+        projectGoal: "Project Goal",
+        aboutProject: "About This Project",
+        materials: "Materials",
+        dimensions: "Dimensions",
+        interestedText: "Interested in a similar project? Let's discuss your vision.",
+        startProject: "Start Your Project",
+      },
       project1: {
         title: "Modern Oak Dining Set",
         description: "A contemporary dining collection featuring clean lines and premium oak wood.",
@@ -133,6 +141,10 @@ export const translations = {
     pricing: {
       title: "Design Consultation Services",
       subtitle: "Professional interior design consultation packages tailored to your needs",
+      bookConsultation: "Book Consultation",
+      askQuestions: "Ask Questions",
+      baseRatesNote: "All prices are base rates and may vary based on project complexity and specific requirements.",
+      consultationNote: "Book a consultation to discuss your project in detail and receive a personalized quote.",
       spaceImpulses: {
         title: "Space Impulses",
         price: "€249",
@@ -216,6 +228,14 @@ export const translations = {
       title: "Ausgewählte Projekte",
       subtitle: "Eine Auswahl meiner schönsten Möbeldesigns",
       viewDetails: "Details ansehen",
+      modal: {
+        projectGoal: "Projektziel",
+        aboutProject: "Über dieses Projekt",
+        materials: "Materialien",
+        dimensions: "Abmessungen",
+        interestedText: "Interessiert an einem ähnlichen Projekt? Lassen Sie uns Ihre Vision besprechen.",
+        startProject: "Ihr Projekt starten",
+      },
       project1: {
         title: "Modernes Eichen-Esszimmer-Set",
         description: "Eine zeitgenössische Esszimmer-Kollektion mit klaren Linien und hochwertigem Eichenholz.",
@@ -319,6 +339,12 @@ export const translations = {
     pricing: {
       title: "Design-Beratungsleistungen",
       subtitle: "Professionelle Innenarchitektur-Beratungspakete nach Ihren Bedürfnissen",
+      bookConsultation: "Beratung buchen",
+      askQuestions: "Fragen stellen",
+      baseRatesNote:
+        "Alle Preise sind Grundpreise und können je nach Projektkomplexität und spezifischen Anforderungen variieren.",
+      consultationNote:
+        "Buchen Sie eine Beratung, um Ihr Projekt im Detail zu besprechen und ein personalisiertes Angebot zu erhalten.",
       spaceImpulses: {
         title: "Raum Impulse",
         price: "249€",
@@ -402,6 +428,14 @@ export const translations = {
       title: "Projets en vedette",
       subtitle: "Une sélection de mes plus beaux designs de meubles",
       viewDetails: "Voir les Détails",
+      modal: {
+        projectGoal: "Objectif du Projet",
+        aboutProject: "À Propos de ce Projet",
+        materials: "Matériaux",
+        dimensions: "Dimensions",
+        interestedText: "Intéressé par un projet similaire ? Discutons de votre vision.",
+        startProject: "Commencer Votre Projet",
+      },
       project1: {
         title: "Ensemble de salle à manger en chêne moderne",
         description:
@@ -427,7 +461,7 @@ export const translations = {
         title: "Suite de chambre de luxe",
         description: "Mobilier de chambre élégant alliant confort et design sophistiqué.",
         extendedDescription:
-          "Cette suite de chambre de luxe a été commandée pour la suite présidentielle d'un hôtel boutique, nécessitant un mobilier qui impressionne les invités discernants tout en offrant un confort ultime. Le design tire son inspiration de l'esthétique du milieu du 20ème siècle, mis à jour avec des matériaux et des techniques contemporains. Le cadre du lit présente un fronton distinctif avec des lumières de lecture intégrées et des prises USB. Les commodes correspondantes comprennent des surfaces de charge sans fil et des tiroirs qui se ferment doucement. Chaque pièce est conçue pour créer un environnement de sommeil apaisant de qualité d'hôtel que les invités se souviennent longtemps après leur séjour.",
+          "Cette suite de chambre de luxe a été commandée pour la suite présidentielle d'un hôtel boutique, nécessitant un mobilier qui impressionne les invités discernants tout en offrant un confort maximum. Le design se inspire de l'esthétique du milieu du 20ème siècle, actualisé avec des matériaux et des techniques contemporains. Le cadre du lit présente un fronton distinctif avec des lumières de lecture intégrées et des prises USB. Les commodes correspondantes comprennent des surfaces de charge sans fil et des tiroirs qui se ferment doucement. Chaque pièce est conçue pour créer un environnement de sommeil apaisant de qualité d'hôtel que les invités se souviennent longtemps après leur séjour.",
         goal: "Créer un environnement de chambre qui rivalise avec les meilleurs hôtels de luxe du monde tout en conservant une chaleur résidentielle.",
         materials: "Bois de cerisier massif, cuir italien, accents en bronze",
         dimensions: "Lit : 180x200cm, Commodes : 60x40x55cm",
@@ -440,7 +474,7 @@ export const translations = {
       content:
         "Avec plus de 15 ans d'expérience en architecture et design d'intérieur, j'ai consacré ma carrière à créer des espaces qui allient harmonieusement fonctionnalité et beauté esthétique. Mon parcours a commencé avec un Master en Architecture, où j'ai développé une compréhension profonde des relations spatiales, de l'intégrité structurelle et de l'impact profond que les environnements bien conçus ont sur le bien-être humain.",
       content2:
-        "Tout au long de ma carrière d'architecte, j'ai travaillé sur des projets diversifiés allant des maisons résidentielles aux espaces commerciaux, toujours en me concentrant sur les principes de design durable et les solutions innovantes. Cette base en architecture a naturellement évolué vers une spécialisation en design d'intérieur et création de meubles sur mesure, où j'ai trouvé ma véritable passion pour créer des pièces sur mesure qui racontent des histoires uniques.",
+        "Tout au long de ma carrière d'architecte, j'ai travaillé sur des projets diversifiés allant des maisons résidentielles aux espaces commerciaux, toujours en me concentrant sur les principes de design durable et les solutions innovantes. Cette base en architecture a naturellement évolué vers une spécialisation en design d'intérieur et création de meubles personalizados, où j'ai trouvé ma véritable passion pour créer des pièces sur mesure qui racontent des histoires uniques.",
       content3:
         "Mon approche des concepts de design d'intérieur privé est profondément personnelle et collaborative. Je crois que chaque espace doit refléter la personnalité et le style de vie de ses habitants tout en maintenant une élégance intemporelle. Que ce soit pour concevoir une transformation complète de pièce ou créer une pièce maîtresse unique, je combine les techniques artisanales traditionnelles avec les principes de design contemporain pour livrer des résultats exceptionnels qui résistent à l'épreuve du temps.",
       webDesign: "Voir Portfolio Web Design",
@@ -485,27 +519,33 @@ export const translations = {
       label: "Vérification de sécurité : Combien font",
       newQuestion: "Nouvelle question",
       incorrect: "Réponse incorrecte. Veuillez réessayer.",
-      correct: "Correct !",
+      correct: "¡Correcto!",
       required: "Veuillez compléter correctement la vérification de sécurité.",
     },
     imprint: {
       title: "Mentions légales",
-      subtitle: "Mentions légales et informations juridiques",
+      subtitle: "Mentions légales e informations juridiques",
       content: {
         responsible: "Responsable du contenu",
         name: "John Designer de meubles",
-        address: "123 Rue du Design, 12345 Ville Créative",
+        address: "Calle del Diseño 123, 12345 Ville Créative",
         phone: "Téléphone: +33 1 23 45 67 89",
         email: "E-mail: info@designermeubles.com",
         vat: "N° TVA: FR12345678901",
         disclaimer: "Avertissement",
         disclaimerText:
-          "Le contenu de nos pages a été créé avec le plus grand soin. Cependant, nous ne pouvons garantir l'exactitude, l'exhaustivité ou l'actualité du contenu.",
+          "Le contenu de nos pages a été créé avec le maximum cuidado. Sin embargo, no podemos garantir la exactitud, integridad o actualidad del contenido.",
       },
     },
     pricing: {
       title: "Services de Consultation Design",
       subtitle: "Forfaits de consultation en design d'intérieur professionnel adaptés à vos besoins",
+      bookConsultation: "Réserver une Consultation",
+      askQuestions: "Poser des Questions",
+      baseRatesNote:
+        "Tous les prix sont des tarifs de base et peuvent varier selon la complexité du projet et les exigences spécifiques.",
+      consultationNote:
+        "Réservez une consultation pour discuter de votre projet en détail et recevoir un devis personnalisé.",
       spaceImpulses: {
         title: "Impulsions Espace",
         price: "249€",
@@ -525,18 +565,18 @@ export const translations = {
         price: "399€",
         duration: "Forfait Professionnel",
         features: [
-          "Analyse complète de l'espace",
+          "Analyse intégrale de l'espace",
           "Concepts de design détaillés",
           "Sélections de matériaux et finitions",
           "Guidance pour l'approvisionnement mobilier",
           "Visualisation 3D de l'espace (basique)",
-          "Planification du calendrier projet",
+          "Planification de calendrier projet",
           "Support de suivi (2 semaines)",
         ],
         cta: "Choisir Concepts",
         popular: true,
         addOns: [
-          { name: "Planification Mobilier Sur Mesure", price: "300€" },
+          { name: "Planificación Mobilier Sur Mesure", price: "300€" },
           { name: "Visualisation Photoréaliste", price: "150€" },
         ],
       },
@@ -589,6 +629,14 @@ export const translations = {
       title: "Proyectos destacados",
       subtitle: "Una selección de mis mejores diseños de muebles",
       viewDetails: "Ver Detalles",
+      modal: {
+        projectGoal: "Objetivo del Proyecto",
+        aboutProject: "Acerca de Este Proyecto",
+        materials: "Materiales",
+        dimensions: "Dimensiones",
+        interestedText: "¿Interesado en un proyecto similar? Hablemos de tu visión.",
+        startProject: "Iniciar Tu Proyecto",
+      },
       project1: {
         title: "Conjunto de comedor de roble moderno",
         description: "Una colección de comedor contemporánea con líneas limpias y madera de roble premium.",
@@ -692,6 +740,12 @@ export const translations = {
     pricing: {
       title: "Servicios de Consultoría de Diseño",
       subtitle: "Paquetes de consultoría de diseño de interiores profesional adaptados a tus necesidades",
+      bookConsultation: "Reservar Consulta",
+      askQuestions: "Hacer Preguntas",
+      baseRatesNote:
+        "Todos los precios son tarifas base y pueden variar según la complejidad del proyecto y los requisitos específicos.",
+      consultationNote:
+        "Reserva una consulta para discutir tu proyecto en detalle y recibir una cotización personalizada.",
       spaceImpulses: {
         title: "Impulsos Espaciales",
         price: "249€",

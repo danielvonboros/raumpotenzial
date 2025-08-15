@@ -161,7 +161,7 @@ export default function Pricing() {
                     }`}
                   >
                     <Calendar className="h-5 w-5" />
-                    Book Consultation
+                    {t("pricing.bookConsultation")}
                   </Button>
 
                   <Button
@@ -169,7 +169,7 @@ export default function Pricing() {
                     variant="outline"
                     className="w-full py-2 text-sm bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
                   >
-                    Ask Questions
+                    {t("pricing.askQuestions")}
                   </Button>
                 </div>
               </div>
@@ -179,12 +179,10 @@ export default function Pricing() {
 
         <div className="text-center mt-12">
           <p className="text-gray-600 dark:text-gray-400 mb-4">
-            All prices are base rates and may vary based on project complexity
-            and specific requirements.
+            {t("pricing.baseRatesNote")}
           </p>
           <p className="text-gray-600 dark:text-gray-400">
-            Book a consultation to discuss your project in detail and receive a
-            personalized quote.
+            {t("pricing.consultationNote")}
           </p>
         </div>
       </div>

@@ -189,7 +189,7 @@ export default function ProjectModal({
               {/* Project Goal */}
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Project Goal
+                  {t("projects.modal.projectGoal")}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                   {t(`projects.${projectId}.goal`)}
@@ -199,7 +199,7 @@ export default function ProjectModal({
               {/* Extended Description */}
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  About This Project
+                  {t("projects.modal.aboutProject")}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                   {t(`projects.${projectId}.extendedDescription`)}
@@ -212,7 +212,7 @@ export default function ProjectModal({
                   <div className="flex items-center gap-2 mb-2">
                     <Palette className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                     <h4 className="font-semibold text-gray-900 dark:text-white">
-                      Materials
+                      {t("projects.modal.materials")}
                     </h4>
                   </div>
                   <p className="text-gray-700 dark:text-gray-300">
@@ -224,7 +224,7 @@ export default function ProjectModal({
                   <div className="flex items-center gap-2 mb-2">
                     <Ruler className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                     <h4 className="font-semibold text-gray-900 dark:text-white">
-                      Dimensions
+                      {t("projects.modal.dimensions")}
                     </h4>
                   </div>
                   <p className="text-gray-700 dark:text-gray-300">
@@ -236,7 +236,7 @@ export default function ProjectModal({
               {/* Call to Action */}
               <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
                 <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  Interested in a similar project? Let's discuss your vision.
+                  {t("projects.modal.interestedText")}
                 </p>
                 <Button
                   onClick={() => {
@@ -248,7 +248,7 @@ export default function ProjectModal({
                   }}
                   className="w-full bg-gray-900 hover:bg-gray-800 text-white"
                 >
-                  Start Your Project
+                  {t("projects.modal.startProject")}
                 </Button>
               </div>
             </div>
