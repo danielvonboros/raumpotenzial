@@ -8,16 +8,19 @@ import { useState, useEffect } from "react";
 
 const slides = [
   {
-    image: "/placeholder.svg?height=600&width=1200",
+    image: "/modern-oak-dining-set.png",
     alt: "Modern Oak Dining Table",
+    slideKey: "slide1",
   },
   {
-    image: "/placeholder.svg?height=600&width=1200",
+    image: "/minimalist-bookshelf-storage.png",
     alt: "Minimalist Bookshelf",
+    slideKey: "slide2",
   },
   {
-    image: "/placeholder.svg?height=600&width=1200",
+    image: "/luxury-bedroom-suite.png",
     alt: "Luxury Bedroom Suite",
+    slideKey: "slide3",
   },
 ];
 
@@ -39,6 +42,8 @@ export default function Hero() {
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
+
+  const currentSlideData = slides[currentSlide];
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -67,12 +72,14 @@ export default function Hero() {
       <button
         onClick={prevSlide}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors z-10"
+        aria-label="Previous slide"
       >
         <ChevronLeft className="h-6 w-6 text-white" />
       </button>
       <button
         onClick={nextSlide}
         className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors z-10"
+        aria-label="Next slide"
       >
         <ChevronRight className="h-6 w-6 text-white" />
       </button>
@@ -86,17 +93,18 @@ export default function Hero() {
             className={`w-3 h-3 rounded-full transition-colors ${
               index === currentSlide ? "bg-white" : "bg-white/50"
             }`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
 
-      {/* Hero Content */}
+      {/* Hero Content - Dynamic based on current slide */}
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
         <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          {t("hero.title")}
+          {t(`hero.${currentSlideData.slideKey}.title`)}
         </h1>
         <p className="text-xl md:text-2xl mb-8 opacity-90">
-          {t("hero.subtitle")}
+          {t(`hero.${currentSlideData.slideKey}.subtitle`)}
         </p>
         <Button
           size="lg"
@@ -108,7 +116,7 @@ export default function Hero() {
             }
           }}
         >
-          {t("hero.cta")}
+          {t(`hero.${currentSlideData.slideKey}.cta`)}
         </Button>
       </div>
     </section>

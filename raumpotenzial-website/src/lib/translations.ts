@@ -10,24 +10,55 @@ export const translations = {
       pricing: "Pricing",
     },
     hero: {
-      title: "Crafting Exceptional Furniture",
-      subtitle: "Where artistry meets functionality in every piece",
-      cta: "View My Work",
+      slide1: {
+        title: "Modern Oak Dining Excellence",
+        subtitle: "Contemporary dining collections featuring clean lines and premium craftsmanship",
+        cta: "Explore Dining Sets",
+      },
+      slide2: {
+        title: "Minimalist Storage Solutions",
+        subtitle: "Sleek and functional furniture designed for modern living spaces",
+        cta: "View Storage Options",
+      },
+      slide3: {
+        title: "Luxury Bedroom Sanctuaries",
+        subtitle: "Elegant bedroom furniture combining comfort with sophisticated design",
+        cta: "Discover Bedroom Sets",
+      },
     },
     projects: {
       title: "Featured Projects",
       subtitle: "A selection of my finest furniture designs",
+      viewDetails: "View Details",
       project1: {
         title: "Modern Oak Dining Set",
         description: "A contemporary dining collection featuring clean lines and premium oak wood.",
+        extendedDescription:
+          "This modern oak dining set represents the perfect fusion of contemporary design and traditional craftsmanship. Created for a young family in Munich, the goal was to design a dining space that could accommodate both intimate family meals and larger gatherings. The clean lines and minimalist aesthetic reflect modern sensibilities, while the premium oak construction ensures durability for generations. The table features a unique grain pattern that becomes the centerpiece of any dining room, complemented by ergonomically designed chairs that provide comfort during long dinner conversations.",
+        goal: "Create a versatile dining solution that grows with the family while maintaining timeless elegance.",
+        materials: "Premium European Oak, Natural Oil Finish",
+        dimensions: "Table: 200x100x75cm, Chairs: 45x50x80cm",
+        year: "2023",
       },
       project2: {
         title: "Minimalist Bookshelf",
         description: "Sleek and functional storage solution for modern living spaces.",
+        extendedDescription:
+          "Designed for a tech entrepreneur's home office, this minimalist bookshelf system challenges traditional storage concepts. The floating design creates an illusion of weightlessness while providing substantial storage capacity. Each shelf is precisely engineered to support heavy books while maintaining the clean aesthetic. The modular system allows for customization based on the user's collection, with hidden cable management for integrated lighting. The warm walnut wood contrasts beautifully with the white walls, creating a focal point that celebrates both form and function.",
+        goal: "Design a storage system that celebrates books as decorative objects while maintaining perfect organization.",
+        materials: "American Walnut, Steel Brackets, LED Integration",
+        dimensions: "240x30x200cm (modular system)",
+        year: "2023",
       },
       project3: {
         title: "Luxury Bedroom Suite",
         description: "Elegant bedroom furniture combining comfort with sophisticated design.",
+        extendedDescription:
+          "This luxury bedroom suite was commissioned for a boutique hotel's presidential suite, requiring furniture that would impress discerning guests while providing ultimate comfort. The design draws inspiration from mid-century modern aesthetics, updated with contemporary materials and techniques. The bed frame features a distinctive headboard with integrated reading lights and USB charging ports. The matching nightstands include wireless charging surfaces and soft-close drawers. Every piece is crafted to create a serene, hotel-quality sleeping environment that guests remember long after their stay.",
+        goal: "Create a bedroom environment that rivals the world's finest luxury hotels while maintaining residential warmth.",
+        materials: "Solid Cherry Wood, Italian Leather, Brass Accents",
+        dimensions: "Bed: 180x200cm, Nightstands: 60x40x55cm",
+        year: "2022",
       },
     },
     about: {
@@ -165,24 +196,55 @@ export const translations = {
       pricing: "Preise",
     },
     hero: {
-      title: "Außergewöhnliche Möbel schaffen",
-      subtitle: "Wo Kunstfertigkeit auf Funktionalität in jedem Stück trifft",
-      cta: "Meine Arbeiten ansehen",
+      slide1: {
+        title: "Moderne Eichen-Esszimmer Exzellenz",
+        subtitle: "Zeitgenössische Esszimmer-Kollektionen mit klaren Linien und erstklassiger Handwerkskunst",
+        cta: "Esszimmer-Sets erkunden",
+      },
+      slide2: {
+        title: "Minimalistische Aufbewahrungslösungen",
+        subtitle: "Elegante und funktionale Möbel für moderne Wohnräume",
+        cta: "Aufbewahrungsoptionen ansehen",
+      },
+      slide3: {
+        title: "Luxuriöse Schlafzimmer-Oasen",
+        subtitle: "Elegante Schlafzimmermöbel, die Komfort mit anspruchsvollem Design verbinden",
+        cta: "Schlafzimmer-Sets entdecken",
+      },
     },
     projects: {
       title: "Ausgewählte Projekte",
       subtitle: "Eine Auswahl meiner schönsten Möbeldesigns",
+      viewDetails: "Details ansehen",
       project1: {
         title: "Modernes Eichen-Esszimmer-Set",
         description: "Eine zeitgenössische Esszimmer-Kollektion mit klaren Linien und hochwertigem Eichenholz.",
+        extendedDescription:
+          "Dieses moderne Eichen-Esszimmer-Set repräsentiert die perfekte Verschmelzung von zeitgenössischem Design und traditioneller Handwerkskunst. Geschaffen für eine junge Familie in München, war das Ziel, einen Essbereich zu entwerfen, der sowohl intime Familienmahlzeiten als auch größere Zusammenkünfte ermöglicht. Die klaren Linien und minimalistische Ästhetik spiegeln moderne Sensibilitäten wider, während die hochwertige Eichenkonstruktion Langlebigkeit für Generationen gewährleistet. Der Tisch zeigt eine einzigartige Maserung, die zum Mittelpunkt jedes Esszimmers wird, ergänzt durch ergonomisch gestaltete Stühle, die Komfort während langer Tischgespräche bieten.",
+        goal: "Eine vielseitige Esslösung schaffen, die mit der Familie mitwächst und dabei zeitlose Eleganz bewahrt.",
+        materials: "Premium Europäische Eiche, Naturöl-Finish",
+        dimensions: "Tisch: 200x100x75cm, Stühle: 45x50x80cm",
+        year: "2023",
       },
       project2: {
         title: "Minimalistisches Bücherregal",
         description: "Elegante und funktionale Aufbewahrungslösung für moderne Wohnräume.",
+        extendedDescription:
+          "Entworfen für das Homeoffice eines Tech-Unternehmers, stellt dieses minimalistische Bücherregal-System traditionelle Aufbewahrungskonzepte in Frage. Das schwebende Design erzeugt eine Illusion der Schwerelosigkeit und bietet gleichzeitig erhebliche Lagerkapazität. Jedes Regal ist präzise konstruiert, um schwere Bücher zu tragen und dabei die saubere Ästhetik zu bewahren. Das modulare System ermöglicht Anpassungen basierend auf der Sammlung des Benutzers, mit verstecktem Kabelmanagement für integrierte Beleuchtung. Das warme Nussbaumholz kontrastiert wunderschön mit den weißen Wänden und schafft einen Fokuspunkt, der sowohl Form als auch Funktion zelebriert.",
+        goal: "Ein Aufbewahrungssystem entwerfen, das Bücher als dekorative Objekte zelebriert und dabei perfekte Organisation beibehält.",
+        materials: "Amerikanischer Nussbaum, Stahlhalterungen, LED-Integration",
+        dimensions: "240x30x200cm (modulares System)",
+        year: "2023",
       },
       project3: {
         title: "Luxus-Schlafzimmer-Suite",
         description: "Elegante Schlafzimmermöbel, die Komfort mit anspruchsvollem Design verbinden.",
+        extendedDescription:
+          "Diese Luxus-Schlafzimmer-Suite wurde für die Präsidentensuite eines Boutique-Hotels in Auftrag gegeben und erforderte Möbel, die anspruchsvolle Gäste beeindrucken und gleichzeitig ultimativen Komfort bieten. Das Design schöpft Inspiration aus der Mid-Century-Modern-Ästhetik, aktualisiert mit zeitgenössischen Materialien und Techniken. Der Bettrahmen verfügt über ein markantes Kopfteil mit integrierten Leselichtern und USB-Ladeanschlüssen. Die passenden Nachttische beinhalten kabellose Ladeflächen und sanft schließende Schubladen. Jedes Stück ist darauf ausgelegt, eine ruhige Schlafumgebung in Hotelqualität zu schaffen, die Gäste lange nach ihrem Aufenthalt in Erinnerung behalten.",
+        goal: "Eine Schlafzimmerumgebung schaffen, die mit den besten Luxushotels der Welt konkurriert und dabei Wohnwärme bewahrt.",
+        materials: "Massives Kirschholz, Italienisches Leder, Messing-Akzente",
+        dimensions: "Bett: 180x200cm, Nachttische: 60x40x55cm",
+        year: "2022",
       },
     },
     about: {
@@ -320,25 +382,56 @@ export const translations = {
       pricing: "Tarifs",
     },
     hero: {
-      title: "Créer des meubles exceptionnels",
-      subtitle: "Où l'art rencontre la fonctionnalité dans chaque pièce",
-      cta: "Voir mon travail",
+      slide1: {
+        title: "Excellence Salle à Manger en Chêne Moderne",
+        subtitle: "Collections de salle à manger contemporaines avec des lignes épurées et un savoir-faire premium",
+        cta: "Explorer les Ensembles Salle à Manger",
+      },
+      slide2: {
+        title: "Solutions de Rangement Minimalistes",
+        subtitle: "Meubles élégants et fonctionnels conçus pour les espaces de vie modernes",
+        cta: "Voir les Options de Rangement",
+      },
+      slide3: {
+        title: "Sanctuaires de Chambre de Luxe",
+        subtitle: "Mobilier de chambre élégant alliant confort et design sophistiqué",
+        cta: "Découvrir les Ensembles Chambre",
+      },
     },
     projects: {
       title: "Projets en vedette",
       subtitle: "Une sélection de mes plus beaux designs de meubles",
+      viewDetails: "Voir les Détails",
       project1: {
         title: "Ensemble de salle à manger en chêne moderne",
         description:
           "Une collection de salle à manger contemporaine avec des lignes épurées et du chêne de qualité supérieure.",
+        extendedDescription:
+          "Cet ensemble de salle à manger en chêne moderne représente la fusion parfaite du design contemporain et de la traditionnelle artisanalement. Créé pour une jeune famille à Munich, l'objectif était de concevoir un espace de repas qui pouvait accueillir à la fois des repas familiaux intimes et des rassemblements plus grands. Les lignes épurées et l'esthétique minimaliste reflètent les sensibilités modernes, tandis que la construction en chêne de qualité supérieure garantit une longévité pour les générations à venir. La table présente un motif de grain unique qui devient le point central de tout salon à manger, complété par des chaises ergonomiquement conçues qui offrent du confort pendant de longues conversations au dîner.",
+        goal: "Créer une solution de repas polyvalente qui grandit avec la famille tout en conservant une élégance intemporelle.",
+        materials: "Chêne européen de qualité supérieure, finition en huile naturelle",
+        dimensions: "Table : 200x100x75cm, Chaises : 45x50x80cm",
+        year: "2023",
       },
       project2: {
         title: "Bibliothèque minimaliste",
         description: "Solution de rangement élégante et fonctionnelle pour les espaces de vie modernes.",
+        extendedDescription:
+          "Conçu pour le bureau d'un entrepreneur en technologie, ce système de bibliothèque minimaliste remet en question les concepts traditionnels de rangement. Le design flottant crée une illusion de légèreté tout en offrant une capacité de stockage considérable. Chaque étagère est précisément conçue pour supporter des livres lourds tout en préservant l'esthétique épurée. Le système modulaire permet des personnalisations basées sur la collection de l'utilisateur, avec un gestionnaire de câbles caché pour une intégration de la lumière. Le bois de noyer chaud contraste magnifiquement avec les murs blancs, créant un point focal qui célèbre à la fois la forme et la fonction.",
+        goal: "Concevoir un système de rangement qui célèbre les livres comme des objets décoratifs tout en maintenant une organisation parfaite.",
+        materials: "Noyer américain, crochets en acier, intégration LED",
+        dimensions: "240x30x200cm (système modulaire)",
+        year: "2023",
       },
       project3: {
         title: "Suite de chambre de luxe",
         description: "Mobilier de chambre élégant alliant confort et design sophistiqué.",
+        extendedDescription:
+          "Cette suite de chambre de luxe a été commandée pour la suite présidentielle d'un hôtel boutique, nécessitant un mobilier qui impressionne les invités discernants tout en offrant un confort ultime. Le design tire son inspiration de l'esthétique du milieu du 20ème siècle, mis à jour avec des matériaux et des techniques contemporains. Le cadre du lit présente un fronton distinctif avec des lumières de lecture intégrées et des prises USB. Les commodes correspondantes comprennent des surfaces de charge sans fil et des tiroirs qui se ferment doucement. Chaque pièce est conçue pour créer un environnement de sommeil apaisant de qualité d'hôtel que les invités se souviennent longtemps après leur séjour.",
+        goal: "Créer un environnement de chambre qui rivalise avec les meilleurs hôtels de luxe du monde tout en conservant une chaleur résidentielle.",
+        materials: "Bois de cerisier massif, cuir italien, accents en bronze",
+        dimensions: "Lit : 180x200cm, Commodes : 60x40x55cm",
+        year: "2022",
       },
     },
     about: {
@@ -367,7 +460,7 @@ export const translations = {
         role: "Designer d'intérieur",
       },
       testimonial3: {
-        text: "L'attention aux détails et la qualité des matériaux est remarquable. Ces meubles dureront des générations.",
+        text: "L'attention aux détails et la qualité des matériaux sont remarquables. Ces meubles dureront des générations.",
         author: "Emma Rodriguez",
         role: "Architecte",
       },
@@ -476,24 +569,55 @@ export const translations = {
       pricing: "Precios",
     },
     hero: {
-      title: "Creando muebles excepcionales",
-      subtitle: "Donde el arte se encuentra con la funcionalidad en cada pieza",
-      cta: "Ver mi trabajo",
+      slide1: {
+        title: "Excelencia en Comedor de Roble Moderno",
+        subtitle: "Colecciones de comedor contemporáneas con líneas limpias y artesanía premium",
+        cta: "Explorar Conjuntos de Comedor",
+      },
+      slide2: {
+        title: "Soluciones de Almacenamiento Minimalistas",
+        subtitle: "Muebles elegantes y funcionales diseñados para espacios de vida modernos",
+        cta: "Ver Opciones de Almacenamiento",
+      },
+      slide3: {
+        title: "Santuarios de Dormitorio de Lujo",
+        subtitle: "Muebles de dormitorio elegantes que combinan comodidad con diseño sofisticado",
+        cta: "Descubrir Conjuntos de Dormitorio",
+      },
     },
     projects: {
       title: "Proyectos destacados",
       subtitle: "Una selección de mis mejores diseños de muebles",
+      viewDetails: "Ver Detalles",
       project1: {
         title: "Conjunto de comedor de roble moderno",
         description: "Una colección de comedor contemporánea con líneas limpias y madera de roble premium.",
+        extendedDescription:
+          "Este conjunto de comedor de roble moderno representa la fusión perfecta del diseño contemporáneo y la artesanía tradicional. Creado para una joven familia en Múnich, el objetivo fue diseñar un espacio de comedor que pudiera acomodar tanto comidas familiares íntimas como reuniones más grandes. Las líneas limpias y la estética minimalista reflejan las sensibilidades modernas, mientras que la construcción en roble premium garantiza una durabilidad para generaciones. La mesa presenta un patrón de grano único que se convierte en el elemento central de cualquier salón de comedor, complementado por sillas ergonómicas que ofrecen comodidad durante largas conversaciones en la cena.",
+        goal: "Crear una solución de comedor versátil que crezca con la familia mientras mantiene una elegancia atemporal.",
+        materials: "Roble europeo premium, acabado en aceite natural",
+        dimensions: "Mesa: 200x100x75cm, Sillas: 45x50x80cm",
+        year: "2023",
       },
       project2: {
         title: "Estantería minimalista",
         description: "Solución de almacenamiento elegante y funcional para espacios de vida modernos.",
+        extendedDescription:
+          "Diseñado para el despacho de un empresario en tecnología, este sistema de estantería minimalista cuestiona los conceptos tradicionales de almacenamiento. El diseño flotante crea una ilusión de ligereza mientras ofrece una capacidad de almacenamiento considerable. Cada estante está precisamente diseñado para soportar libros pesados mientras se mantiene la estética minimalista. El sistema modular permite personalizaciones basadas en la colección del usuario, con gestión de cables oculta para una integración de la iluminación. El roble cálido contraste magníficamente con las paredes blancas, creando un punto focal que celebra tanto la forma como la función.",
+        goal: "Diseñar un sistema de almacenamiento que celebre los libros como objetos decorativos mientras mantiene una organización perfecta.",
+        materials: "Roble americano, ganchos de acero, integración LED",
+        dimensions: "240x30x200cm (sistema modular)",
+        year: "2023",
       },
       project3: {
         title: "Suite de dormitorio de lujo",
         description: "Muebles de dormitorio elegantes que combinan comodidad con diseño sofisticado.",
+        extendedDescription:
+          "Esta suite de dormitorio de lujo fue encargada para la suite presidencial de un hotel boutique, requiriendo mobiliario que impresione a los invitados discernentes mientras ofrece un confort máximo. El diseño se inspira en la estética del medio siglo XX, actualizado con materiales y técnicas contemporáneas. El marco de la cama presenta un tablero frontal distintivo con luces de lectura integradas y puertos USB. Las mesitas correspondientes incluyen superficies de carga sin cables y cajones que se cierran suavemente. Cada pieza está diseñada para crear un ambiente de sueño sereno de calidad de hotel que los invitados recuerdan mucho después de su estancia.",
+        goal: "Crear un ambiente de dormitorio que rivalice con los mejores hoteles de lujo del mundo mientras mantiene una cálida residencial.",
+        materials: "Roble de cerezo sólido, cuero italiano, accesorios en bronce",
+        dimensions: "Cama: 180x200cm, Mesitas: 60x40x55cm",
+        year: "2022",
       },
     },
     about: {

@@ -1,24 +1,27 @@
 "use client";
 
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useState } from "react";
+import ProjectModal from "@/components/ProjectModal";
 
 const projects = [
   {
-    id: 1,
-    image: "/furniture/quadra_1.jpeg",
+    id: "project1",
+    image: "/modern-oak-dining-set.png",
     titleKey: "projects.project1.title",
     descriptionKey: "projects.project1.description",
   },
   {
-    id: 2,
-    image: "/room/sample_room_1-after.jpg",
+    id: "project2",
+    image: "/minimalist-bookshelf-storage.png",
     titleKey: "projects.project2.title",
     descriptionKey: "projects.project2.description",
   },
   {
-    id: 3,
-    image: "/placeholder.svg?height=400&width=600",
+    id: "project3",
+    image: "/luxury-bedroom-suite.png",
     titleKey: "projects.project3.title",
     descriptionKey: "projects.project3.description",
   },
@@ -26,6 +29,15 @@ const projects = [
 
 export default function Projects() {
   const { t } = useLanguage();
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
+
+  const handleProjectClick = (projectId: string) => {
+    setSelectedProject(projectId);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProject(null);
+  };
 
   return (
     <section className="py-20 px-4 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
@@ -43,28 +55,45 @@ export default function Projects() {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group"
             >
-              <div className="relative h-64">
+              <div className="relative h-64 overflow-hidden">
                 <Image
                   src={project.image || "/placeholder.svg"}
                   alt={t(project.titleKey)}
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                   {t(project.titleKey)}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
                   {t(project.descriptionKey)}
                 </p>
+                <Button
+                  onClick={() => handleProjectClick(project.id)}
+                  variant="outline"
+                  className="w-full bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                >
+                  {t("projects.viewDetails")}
+                </Button>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Project Modal */}
+      {selectedProject && (
+        <ProjectModal
+          isOpen={!!selectedProject}
+          onClose={handleCloseModal}
+          projectId={selectedProject}
+        />
+      )}
     </section>
   );
 }
