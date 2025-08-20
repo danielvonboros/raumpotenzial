@@ -20,6 +20,12 @@ export default function About() {
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
               {t("about.content")}
             </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+              {t("about.content2")}
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+              {t("about.content3")}
+            </p>
           </div>
           <div className="relative">
             <Image
