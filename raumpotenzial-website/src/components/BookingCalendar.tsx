@@ -38,6 +38,7 @@ export default function BookingCalendar({
   });
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const [resetCaptcha, setResetCaptcha] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Available time slots
   const timeSlots: TimeSlot[] = [
@@ -111,7 +112,111 @@ export default function BookingCalendar({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Generate Google Calendar URL
+  const generateGoogleCalendarUrl = (bookingData: any) => {
+    const startDateTime = new Date(bookingData.date);
+    const [hours, minutes] = bookingData.time.split(":");
+    startDateTime.setHours(
+      Number.parseInt(hours),
+      Number.parseInt(minutes),
+      0,
+      0
+    );
+
+    const endDateTime = new Date(startDateTime);
+    endDateTime.setHours(startDateTime.getHours() + 1); // 1 hour consultation
+
+    const formatDateForGoogle = (date: Date) => {
+      return date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+    };
+
+    const title = encodeURIComponent(
+      `Design Consultation - ${bookingData.service}`
+    );
+    const details = encodeURIComponent(
+      `Design Consultation Session\n\n` +
+        `Service: ${bookingData.service}\n` +
+        `Client: ${bookingData.name}\n` +
+        `Email: ${bookingData.email}\n` +
+        `Phone: ${bookingData.phone}\n\n` +
+        `Notes: ${bookingData.message || "No additional notes"}\n\n` +
+        `This is a professional interior design consultation session.`
+    );
+    const location = encodeURIComponent(
+      "Design Studio - Address will be confirmed via email"
+    );
+
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${formatDateForGoogle(
+      startDateTime
+    )}/${formatDateForGoogle(
+      endDateTime
+    )}&details=${details}&location=${location}&sf=true&output=xml`;
+
+    return googleCalendarUrl;
+  };
+
+  // Generate ICS file content
+  const generateICSFile = (bookingData: any) => {
+    const startDateTime = new Date(bookingData.date);
+    const [hours, minutes] = bookingData.time.split(":");
+    startDateTime.setHours(
+      Number.parseInt(hours),
+      Number.parseInt(minutes),
+      0,
+      0
+    );
+
+    const endDateTime = new Date(startDateTime);
+    endDateTime.setHours(startDateTime.getHours() + 1);
+
+    const formatDateForICS = (date: Date) => {
+      return date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+    };
+
+    const icsContent = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//Furniture Designer//Design Consultation//EN",
+      "BEGIN:VEVENT",
+      `UID:${Date.now()}@furnituredesigner.com`,
+      `DTSTART:${formatDateForICS(startDateTime)}`,
+      `DTEND:${formatDateForICS(endDateTime)}`,
+      `SUMMARY:Design Consultation - ${bookingData.service}`,
+      `DESCRIPTION:Design Consultation Session\\n\\nService: ${
+        bookingData.service
+      }\\nClient: ${bookingData.name}\\nEmail: ${bookingData.email}\\nPhone: ${
+        bookingData.phone
+      }\\n\\nNotes: ${bookingData.message || "No additional notes"}`,
+      "LOCATION:Design Studio - Address will be confirmed via email",
+      "STATUS:CONFIRMED",
+      "BEGIN:VALARM",
+      "TRIGGER:-PT15M",
+      "ACTION:DISPLAY",
+      "DESCRIPTION:Design Consultation in 15 minutes",
+      "END:VALARM",
+      "END:VEVENT",
+      "END:VCALENDAR",
+    ].join("\r\n");
+
+    return icsContent;
+  };
+
+  const downloadICSFile = (bookingData: any) => {
+    const icsContent = generateICSFile(bookingData);
+    const blob = new Blob([icsContent], {
+      type: "text/calendar;charset=utf-8",
+    });
+    const link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = `design-consultation-${
+      bookingData.date.toISOString().split("T")[0]
+    }.ics`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!selectedDate || !selectedTime) {
@@ -124,26 +229,56 @@ export default function BookingCalendar({
       return;
     }
 
-    // Handle booking submission
-    const bookingData = {
-      service: selectedService,
-      date: selectedDate,
-      time: selectedTime,
-      ...formData,
-    };
+    setIsSubmitting(true);
 
-    console.log("Booking submitted:", bookingData);
-    alert(
-      "Consultation booked successfully! You will receive a confirmation email shortly."
-    );
+    try {
+      // Handle booking submission
+      const bookingData = {
+        service: selectedService,
+        date: selectedDate,
+        time: selectedTime,
+        ...formData,
+      };
 
-    // Reset form
-    setFormData({ name: "", email: "", phone: "", message: "" });
-    setSelectedDate(null);
-    setSelectedTime("");
-    setIsCaptchaValid(false);
-    setResetCaptcha((prev) => !prev);
-    onClose();
+      console.log("Booking submitted:", bookingData);
+
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // Show success message with calendar options
+      const shouldAddToCalendar = window.confirm(
+        "Consultation booked successfully! Would you like to add this appointment to your calendar?"
+      );
+
+      if (shouldAddToCalendar) {
+        // Try to open Google Calendar first
+        const googleCalendarUrl = generateGoogleCalendarUrl(bookingData);
+        const newWindow = window.open(googleCalendarUrl, "_blank");
+
+        // If popup is blocked or user prefers, offer ICS download
+        setTimeout(() => {
+          const shouldDownloadICS = window.confirm(
+            "If Google Calendar didn't open, would you like to download a calendar file instead?"
+          );
+          if (shouldDownloadICS) {
+            downloadICSFile(bookingData);
+          }
+        }, 2000);
+      }
+
+      // Reset form
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      setSelectedDate(null);
+      setSelectedTime("");
+      setIsCaptchaValid(false);
+      setResetCaptcha((prev) => !prev);
+      onClose();
+    } catch (error) {
+      console.error("Booking error:", error);
+      alert("There was an error booking your consultation. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -346,13 +481,35 @@ export default function BookingCalendar({
                   reset={resetCaptcha}
                 />
 
+                {/* Calendar Integration Info */}
+                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+                  <div className="flex items-start gap-3">
+                    <Calendar className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5" />
+                    <div>
+                      <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-1">
+                        Calendar Integration
+                      </h4>
+                      <p className="text-sm text-blue-700 dark:text-blue-300">
+                        After booking, you'll be able to add this appointment
+                        directly to Google Calendar or download a calendar file
+                        for other calendar apps.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="flex gap-4 pt-4">
                   <Button
                     type="submit"
                     className="flex-1"
-                    disabled={!selectedDate || !selectedTime || !isCaptchaValid}
+                    disabled={
+                      !selectedDate ||
+                      !selectedTime ||
+                      !isCaptchaValid ||
+                      isSubmitting
+                    }
                   >
-                    Book Consultation
+                    {isSubmitting ? "Booking..." : "Book Consultation"}
                   </Button>
                   <Button
                     type="button"
