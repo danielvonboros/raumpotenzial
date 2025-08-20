@@ -32,7 +32,7 @@ export default function About() {
               src="/image_daniel.jpeg"
               alt="Furniture Designer at Work"
               width={600}
-              height={500}
+              height={900}
               className="rounded-lg shadow-lg"
             />
           </div>
