@@ -8,19 +8,16 @@ const testimonials = [
     id: 1,
     textKey: "testimonials.testimonial1.text",
     authorKey: "testimonials.testimonial1.author",
-    roleKey: "testimonials.testimonial1.role",
   },
   {
     id: 2,
     textKey: "testimonials.testimonial2.text",
     authorKey: "testimonials.testimonial2.author",
-    roleKey: "testimonials.testimonial2.role",
   },
   {
     id: 3,
     textKey: "testimonials.testimonial3.text",
     authorKey: "testimonials.testimonial3.author",
-    roleKey: "testimonials.testimonial3.role",
   },
 ];
 
@@ -59,9 +56,6 @@ export default function Testimonials() {
               <div className="border-t border-gray-200 dark:border-gray-600 pt-4">
                 <p className="font-semibold text-gray-900 dark:text-white">
                   {t(testimonial.authorKey)}
-                </p>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">
-                  {t(testimonial.roleKey)}
                 </p>
               </div>
             </div>

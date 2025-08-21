@@ -21,10 +21,10 @@ interface ProjectModalProps {
 
 const projectImages = {
   project1: [
-    "/modern-oak-dining-set.png",
-    "/oak-dining-table-detail.png",
-    "/dining-chairs-closeup.png",
-    "/complete-dining-room.png",
+    "/room/sample_room_1_before.jpeg",
+    "/room/sample_room_1-sketch.jpg",
+    "/room/sample_room_1-after.jpg",
+    "/room/sample_room_1_after2.png",
   ],
   project2: [
     "/minimalist-bookshelf-storage.png",
