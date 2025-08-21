@@ -2,13 +2,22 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Calendar, Clock, X, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Loader2,
+  AlertCircle,
+} from "lucide-react";
 import Captcha from "@/components/Captcha";
+import { googleCalendar } from "@/lib/googleCalendar";
 
 interface BookingCalendarProps {
   isOpen: boolean;
@@ -30,6 +39,9 @@ export default function BookingCalendar({
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string>("");
+  const [timeSlots, setTimeSlots] = useState<TimeSlot[]>([]);
+  const [loadingTimeSlots, setLoadingTimeSlots] = useState(false);
+  const [calendarError, setCalendarError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,16 +52,38 @@ export default function BookingCalendar({
   const [resetCaptcha, setResetCaptcha] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Available time slots
-  const timeSlots: TimeSlot[] = [
-    { time: "09:00", available: true },
-    { time: "10:00", available: true },
-    { time: "11:00", available: false },
-    { time: "14:00", available: true },
-    { time: "15:00", available: true },
-    { time: "16:00", available: true },
-    { time: "17:00", available: false },
-  ];
+  // Load available time slots when date is selected
+  useEffect(() => {
+    if (selectedDate) {
+      loadAvailableTimeSlots(selectedDate);
+    }
+  }, [selectedDate]);
+
+  const loadAvailableTimeSlots = async (date: Date) => {
+    setLoadingTimeSlots(true);
+    setCalendarError(null);
+    setSelectedTime("");
+
+    try {
+      const availableSlots = await googleCalendar.getAvailableTimeSlots(date);
+      setTimeSlots(availableSlots);
+    } catch (error) {
+      console.error("Error loading time slots:", error);
+      setCalendarError("Unable to load availability. Please try again.");
+      // Fallback to default slots
+      setTimeSlots([
+        { time: "09:00", available: true },
+        { time: "10:00", available: true },
+        { time: "11:00", available: false },
+        { time: "14:00", available: true },
+        { time: "15:00", available: true },
+        { time: "16:00", available: true },
+        { time: "17:00", available: false },
+      ]);
+    } finally {
+      setLoadingTimeSlots(false);
+    }
+  };
 
   // Get days in current month
   const getDaysInMonth = (date: Date) => {
@@ -242,7 +276,36 @@ export default function BookingCalendar({
 
       console.log("Booking submitted:", bookingData);
 
-      // Simulate API call
+      // Try to create the event in your Google Calendar
+      const startDateTime = new Date(selectedDate);
+      const [hours, minutes] = selectedTime.split(":");
+      startDateTime.setHours(
+        Number.parseInt(hours),
+        Number.parseInt(minutes),
+        0,
+        0
+      );
+
+      const endDateTime = new Date(startDateTime);
+      endDateTime.setHours(startDateTime.getHours() + 1);
+
+      const eventCreated = await googleCalendar.createEvent({
+        summary: `Design Consultation - ${selectedService}`,
+        description: `Client: ${formData.name}\nEmail: ${
+          formData.email
+        }\nPhone: ${formData.phone}\n\nNotes: ${
+          formData.message || "No additional notes"
+        }`,
+        start: startDateTime,
+        end: endDateTime,
+        attendeeEmail: formData.email,
+      });
+
+      if (eventCreated) {
+        console.log("Event created in designer's calendar");
+      }
+
+      // Simulate API call for booking system
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // Show success message with calendar options
@@ -270,6 +333,7 @@ export default function BookingCalendar({
       setFormData({ name: "", email: "", phone: "", message: "" });
       setSelectedDate(null);
       setSelectedTime("");
+      setTimeSlots([]);
       setIsCaptchaValid(false);
       setResetCaptcha((prev) => !prev);
       onClose();
@@ -314,6 +378,15 @@ export default function BookingCalendar({
             <p className="text-gray-600 dark:text-gray-300">
               {selectedService}
             </p>
+            {!googleCalendar.isConfigured() && (
+              <div className="flex items-center gap-2 mt-2 text-sm text-amber-600 dark:text-amber-400">
+                <AlertCircle className="h-4 w-4" />
+                <span>
+                  Using demo availability - Real-time calendar sync not
+                  configured
+                </span>
+              </div>
+            )}
           </div>
           <Button
             variant="ghost"
@@ -396,30 +469,60 @@ export default function BookingCalendar({
                   <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
                     <Clock className="h-5 w-5 mr-2" />
                     Available Times
+                    {loadingTimeSlots && (
+                      <Loader2 className="h-4 w-4 ml-2 animate-spin" />
+                    )}
                   </h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                     {formatDate(selectedDate)}
                   </p>
+
+                  {calendarError && (
+                    <div className="mb-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+                      <div className="flex items-center gap-2 text-red-700 dark:text-red-300">
+                        <AlertCircle className="h-4 w-4" />
+                        <span className="text-sm">{calendarError}</span>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-3 gap-2">
-                    {timeSlots.map((slot) => (
-                      <button
-                        key={slot.time}
-                        onClick={() =>
-                          slot.available && setSelectedTime(slot.time)
-                        }
-                        disabled={!slot.available}
-                        className={`p-2 text-sm rounded-lg border transition-colors ${
-                          !slot.available
-                            ? "border-gray-200 dark:border-gray-600 text-gray-400 dark:text-gray-500 cursor-not-allowed"
-                            : selectedTime === slot.time
-                            ? "border-blue-500 bg-blue-500 text-white"
-                            : "border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20"
-                        }`}
-                      >
-                        {slot.time}
-                      </button>
-                    ))}
+                    {loadingTimeSlots
+                      ? // Loading skeleton
+                        Array.from({ length: 6 }).map((_, index) => (
+                          <div
+                            key={index}
+                            className="p-2 text-sm rounded-lg border border-gray-200 dark:border-gray-600 animate-pulse bg-gray-100 dark:bg-gray-700"
+                          >
+                            <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded"></div>
+                          </div>
+                        ))
+                      : timeSlots.map((slot) => (
+                          <button
+                            key={slot.time}
+                            onClick={() =>
+                              slot.available && setSelectedTime(slot.time)
+                            }
+                            disabled={!slot.available}
+                            className={`p-2 text-sm rounded-lg border transition-colors ${
+                              !slot.available
+                                ? "border-gray-200 dark:border-gray-600 text-gray-400 dark:text-gray-500 cursor-not-allowed bg-gray-50 dark:bg-gray-700/50"
+                                : selectedTime === slot.time
+                                ? "border-blue-500 bg-blue-500 text-white"
+                                : "border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                            }`}
+                          >
+                            {slot.time}
+                          </button>
+                        ))}
                   </div>
+
+                  {googleCalendar.isConfigured() && (
+                    <p className="text-xs text-green-600 dark:text-green-400 mt-2 flex items-center gap-1">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      Real-time availability from Google Calendar
+                    </p>
+                  )}
                 </div>
               )}
             </div>
@@ -490,9 +593,9 @@ export default function BookingCalendar({
                         Calendar Integration
                       </h4>
                       <p className="text-sm text-blue-700 dark:text-blue-300">
-                        After booking, you'll be able to add this appointment
-                        directly to Google Calendar or download a calendar file
-                        for other calendar apps.
+                        {googleCalendar.isConfigured()
+                          ? "Time slots show real availability from the designer's calendar. After booking, the appointment will be automatically added to both calendars."
+                          : "After booking, you'll be able to add this appointment to Google Calendar or download a calendar file for other calendar apps."}
                       </p>
                     </div>
                   </div>

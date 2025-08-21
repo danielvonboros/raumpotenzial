@@ -30,7 +30,7 @@ export default function About() {
           <div className="relative">
             <Image
               src="/image_daniel.jpeg"
-              alt="Furniture Designer at Work"
+              alt="Daniel"
               width={600}
               height={900}
               className="rounded-lg shadow-lg"
