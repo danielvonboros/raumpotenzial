@@ -20,6 +20,7 @@ export default function Pricing() {
       titleKey: "pricing.spaceImpulses.title",
       priceKey: "pricing.spaceImpulses.price",
       durationKey: "pricing.spaceImpulses.duration",
+      descriptionKey: "pricing.spaceImpulses.description",
       featuresKey: "pricing.spaceImpulses.features",
       ctaKey: "pricing.spaceImpulses.cta",
       popular: false,
@@ -29,6 +30,7 @@ export default function Pricing() {
       titleKey: "pricing.spaceConcepts.title",
       priceKey: "pricing.spaceConcepts.price",
       durationKey: "pricing.spaceConcepts.duration",
+      descriptionKey: "pricing.spaceConcepts.description",
       featuresKey: "pricing.spaceConcepts.features",
       ctaKey: "pricing.spaceConcepts.cta",
       popular: true,
@@ -39,6 +41,7 @@ export default function Pricing() {
       titleKey: "pricing.spaceTransformation.title",
       priceKey: "pricing.spaceTransformation.price",
       durationKey: "pricing.spaceTransformation.duration",
+      descriptionKey: "pricing.spaceTransformation.description",
       featuresKey: "pricing.spaceTransformation.features",
       ctaKey: "pricing.spaceTransformation.cta",
       popular: false,
@@ -111,6 +114,11 @@ export default function Pricing() {
                     <span className="text-gray-600 dark:text-gray-300 ml-2 block text-sm">
                       {t(plan.durationKey)}
                     </span>
+                    <div className="text-gray-600 dark:text-gray-300 pt-8">
+                      <span className="text-gray-600 dark:text-gray-300 ml-2 block text-sm">
+                        {t(plan.descriptionKey)}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
