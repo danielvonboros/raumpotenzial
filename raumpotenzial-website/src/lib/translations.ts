@@ -121,10 +121,10 @@ export const translations = {
       subtitle: "Imprint and Legal Information",
       content: {
         responsible: "Responsible for content",
-        name: "John Furniture Designer",
-        address: "123 Design Street, 12345 Creative City",
-        phone: "Phone: +49 123 456 789",
-        email: "Email: info@furnituredesigner.com",
+        name: "Raumideenwerk - Daniel von Boros",
+        address: "Kolonnenstrasse 8, 10827 Berlin",
+        phone: "Phone: +49 160 495 81 48",
+        email: "Email: hallo (at) raumideenwerk.com",
         vat: "VAT ID: DE123456789",
         disclaimer: "Disclaimer",
         disclaimerText:
@@ -513,11 +513,11 @@ export const translations = {
       subtitle: "Mentions légales e informations juridiques",
       content: {
         responsible: "Responsable du contenu",
-        name: "John Designer de meubles",
-        address: "Calle del Diseño 123, 12345 Ville Créative",
-        phone: "Téléphone: +33 1 23 45 67 89",
-        email: "E-mail: info@designermeubles.com",
-        vat: "N° TVA: FR12345678901",
+        name: "raumideenwerk - Daniel von Boros",
+        address: "Kolonnenstraße 8, 10827 Berlin",
+        phone: "Telefon: +49 160 495 81 48",
+        email: "E-Mail: hallo (at) raumideenwerk.com",
+        vat: "N° TVA: DE 123 456 789",
         disclaimer: "Avertissement",
         disclaimerText:
           "Le contenu de nos pages a été créé avec le maximum cuidado. Sin embargo, no podemos garantir la exactitud, integridad o actualidad del contenido.",
@@ -705,11 +705,11 @@ export const translations = {
       subtitle: "Aviso legal e información jurídica",
       content: {
         responsible: "Responsable del contenido",
-        name: "John Diseñador de muebles",
-        address: "Calle del Diseño 123, 12345 Ciudad Creativa",
-        phone: "Teléfono: +34 123 456 789",
-        email: "Correo: info@disenadormuebles.com",
-        vat: "NIF: ES12345678A",
+        name: "raumideenwerk - Daniel von Boros",
+        address: "Kolonnenstraße 8, 10827 Berlin",
+        phone: "Telefon: +49 160 495 81 48",
+        email: "E-Mail: hallo (at) raumideenwerk.com",
+        vat: "NIF: DE 123 456 789",
         disclaimer: "Descargo de responsabilidad",
         disclaimerText:
           "El contenido de nuestras páginas ha sido creado con el máximo cuidado. Sin embargo, no podemos garantizar la exactitud, integridad o actualidad del contenido.",

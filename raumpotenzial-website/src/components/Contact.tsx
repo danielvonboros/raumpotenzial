@@ -164,7 +164,7 @@ export default function Contact() {
                   {t("contact.info.email")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  hallo@raumideenwerk.com
+                  hallo (at) raumideenwerk.com
                 </p>
               </div>
             </div>
