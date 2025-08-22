@@ -106,6 +106,7 @@ export const translations = {
         phone: "Phone",
         email: "Email",
         address: "Address",
+        instagram: "Instagram",
       },
     },
     captcha: {
@@ -300,6 +301,7 @@ export const translations = {
         phone: "Telefon",
         email: "E-Mail",
         address: "Adresse",
+        instagram: "Instagram",
       },
     },
     captcha: {
@@ -496,6 +498,7 @@ export const translations = {
         phone: "Téléphone",
         email: "E-mail",
         address: "Adresse",
+        instagram: "Instagram",
       },
     },
     captcha: {
@@ -687,6 +690,7 @@ export const translations = {
         phone: "Teléfono",
         email: "Correo electrónico",
         address: "Dirección",
+        instagram: "Instagram",
       },
     },
     captcha: {

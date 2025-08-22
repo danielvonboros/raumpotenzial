@@ -6,9 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Instagram } from "lucide-react";
 import { useState } from "react";
 import Captcha from "@/components/Captcha";
+import Image from "next/image";
+import { useTheme } from "@/contexts/ThemeContext";
+import LogoLight from "@/assets/LogoLight.svg";
+import LogoDark from "@/assets/LogoDark.svg";
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -20,6 +24,7 @@ export default function Contact() {
   });
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const [resetCaptcha, setResetCaptcha] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -130,6 +135,18 @@ export default function Contact() {
           {/* Contact Information */}
           <div className="space-y-8">
             <div className="flex items-start space-x-4">
+              <div className="flex-shrink-0">
+                <Image
+                  src={theme === "light" ? LogoLight : LogoDark}
+                  alt="Logo"
+                  width={60}
+                  height={60}
+                  className="h-14 w-auto"
+                  priority
+                />
+              </div>
+            </div>
+            <div className="flex items-start space-x-4">
               <Phone className="h-6 w-6 text-gray-600 dark:text-gray-400 mt-1" />
               <div>
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
@@ -163,6 +180,17 @@ export default function Contact() {
                   10827 Berlin
                   <br />
                   Germany
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-4">
+              <Instagram className="h-6 w-6 text-gray-600 dark:text-gray-400 mt-1" />
+              <div>
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
+                  {t("contact.info.instagram")}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  raum.ideen.werk
                 </p>
               </div>
             </div>
