@@ -8,18 +8,18 @@ import { useState, useEffect } from "react";
 
 const slides = [
   {
-    image: "/modern-oak-dining-set.png",
-    alt: "Modern Oak Dining Table",
+    image: "/room/sample_room_1_after2.png",
+    alt: "Room Transformation with storage space",
     slideKey: "slide1",
   },
   {
-    image: "/minimalist-bookshelf-storage.png",
-    alt: "Minimalist Bookshelf",
+    image: "/furniture/quadra_1.jpeg",
+    alt: "Minimalist Sideboard",
     slideKey: "slide2",
   },
   {
-    image: "/luxury-bedroom-suite.png",
-    alt: "Luxury Bedroom Suite",
+    image: "/room/sample_room_2-after.png",
+    alt: "Room divider and loft bed",
     slideKey: "slide3",
   },
 ];
