@@ -24,7 +24,7 @@ export default function Contact() {
   });
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const [resetCaptcha, setResetCaptcha] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

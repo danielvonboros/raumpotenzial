@@ -147,6 +147,7 @@ export default function BookingCalendar({
   };
 
   // Generate Google Calendar URL
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const generateGoogleCalendarUrl = (bookingData: any) => {
     const startDateTime = new Date(bookingData.date);
     const [hours, minutes] = bookingData.time.split(":");
@@ -190,6 +191,7 @@ export default function BookingCalendar({
   };
 
   // Generate ICS file content
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const generateICSFile = (bookingData: any) => {
     const startDateTime = new Date(bookingData.date);
     const [hours, minutes] = bookingData.time.split(":");
@@ -235,6 +237,7 @@ export default function BookingCalendar({
     return icsContent;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const downloadICSFile = (bookingData: any) => {
     const icsContent = generateICSFile(bookingData);
     const blob = new Blob([icsContent], {
@@ -316,6 +319,7 @@ export default function BookingCalendar({
       if (shouldAddToCalendar) {
         // Try to open Google Calendar first
         const googleCalendarUrl = generateGoogleCalendarUrl(bookingData);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const newWindow = window.open(googleCalendarUrl, "_blank");
 
         // If popup is blocked or user prefers, offer ICS download
