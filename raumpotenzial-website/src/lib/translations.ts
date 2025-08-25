@@ -157,7 +157,7 @@ export const translations = {
         title: "Space Concepts",
         price: "€449",
         duration: "Professional Package",
-        description: "The complete package for rooms measuring 15m² to 20m². The concept for converting your living space yourself. The well-thought-out design idea with on-site consultation.",
+        description: "The complete package for rooms measuring 15m² to 20m². The concept for converting your living space yourself. The well-thought-out design idea with on-site (in Berlin, Germany) consultation.",
         features: [
           "Design consultation",
           "Style concept",
@@ -178,7 +178,7 @@ export const translations = {
         title: "Space Transformation",
         price: "€849",
         duration: "Complete Solution",
-        description: "The worry-free package for transforming your living space with 3D visualization and on-site measurements. The intelligent, all-inclusive solution for transforming your living space. For rooms up to 20m².",
+        description: "The worry-free package for transforming your living space with 3D visualization and on-site measurements (in Berlin, Germany). The intelligent, all-inclusive solution for transforming your living space. For rooms up to 20m².",
         features: [
           "in addition to the Space Concepts package",
           "Custom furniture planning (included)",
@@ -354,7 +354,7 @@ export const translations = {
         title: "Raum Konzepte",
         price: "449€",
         duration: "Profi-Paket",
-        description: "Das Rundum-Paket für Räume mit einer Größe von 15m² bis 20m². Das Konzept zum Umbau des Wohnraums in Eigenregie. Die durchdachte Gestaltungsidee mit Beratung vor Ort.",
+        description: "Das Rundum-Paket für Räume mit einer Größe von 15m² bis 20m². Das Konzept zum Umbau des Wohnraums in Eigenregie. Die durchdachte Gestaltungsidee mit Beratung vor Ort (in Berlin).",
         features: [
           "Designberatung",
           "Stilkonzept",
@@ -375,7 +375,7 @@ export const translations = {
         title: "Raum Transformation",
         price: "849€",
         duration: "Komplettlösung",
-        description: "Das Sorglos Paket zur Verwandlung des Wohnraumes mit 3D-Visualisierung und Aufmaß vor Ort. Die intelligente All-Inclusive-Lösung zur Verwandlung Ihres Wohnraums. Für Räume bis 20m².",
+        description: "Das Sorglos Paket zur Verwandlung des Wohnraumes mit 3D-Visualisierung und Aufmaß vor Ort (in Berlin). Die intelligente All-Inclusive-Lösung zur Verwandlung Ihres Wohnraums. Für Räume bis 20m².",
         features: [
           "zusätzlich zu Raum-Konzepte",
           "individuelle Möbelplanung (inklusive)",
@@ -536,6 +536,7 @@ export const translations = {
         title: "Impulsions Espace",
         price: "249€",
         duration: "Niveau Débutant",
+        description: "Le forfait pour l'inspiration et les idées pour vos pièces. Pour les pièces jusqu'à 20m². Consultation en ligne.",
         features: [
           "Consultation en design",
           "Consultation en style",
@@ -550,6 +551,7 @@ export const translations = {
         title: "Concepts Espace",
         price: "449€",
         duration: "Forfait Professionnel",
+        description: "Le forfait complet pour les pièces de 15m² à 20m². Le concept pour transformer votre espace de vie par vous-même. L'idée de conception bien pensée avec une consultation sur place (à Berlin, Allemagne).",
         features: [
           "Consultation en conception",
           "Concept de style",
@@ -570,6 +572,7 @@ export const translations = {
         title: "Transformation Espace",
         price: "849€",
         duration: "Solution Complète",
+        description: "Le forfait sans souci pour transformer votre espace de vie avec visualisation 3D et mesures sur place (à Berlin, Allemagne). La solution tout-en-un intelligente pour transformer votre espace de vie. Pour les pièces jusqu'à 20m².",
         features: [
           "en plus du forfait Space Concepts",
           "Planification mobilier sur mesure (incluse)",
@@ -743,7 +746,7 @@ export const translations = {
         title: "Conceptos Espaciales",
         price: "449€",
         duration: "Paquete Profesional",
-        description: "El paquete completo para habitaciones con un tamaño de entre 15 m² y 20 m². El concepto para reformar el salón por cuenta propia. La idea de diseño bien pensada con asesoramiento in situ.",
+        description: "El paquete completo para habitaciones con un tamaño de entre 15 m² y 20 m². El concepto para reformar el salón por cuenta propia. La idea de diseño bien pensada con asesoramiento in situ. (en Berlín, Alemania).",
         features: [
           "Asesoramiento de diseño",
           "Concepto de estilo",
@@ -764,6 +767,7 @@ export const translations = {
         title: "Transformación Espacial",
         price: "849€",
         duration: "Solución Completa",
+        description: "El paquete sin preocupaciones para transformar su espacio vital con visualización 3D y medición in situ (en Berlín, Alemania). La solución todo en uno inteligente para transformar su espacio vital. Para habitaciones de hasta 20 m².",
         features: [
           "además del paquete Space Concepts",
           "Planificación de muebles a medida (incluida)",
