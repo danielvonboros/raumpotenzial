@@ -1,6 +1,7 @@
 {
   "name": "raumpotenzial-website",
   "version": "0.1.0",
+  "homepage": "https://www.raumideenwerk.com",
   "private": true,
   "scripts": {
     "dev": "next dev",
