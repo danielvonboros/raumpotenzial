@@ -6,13 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Mail, MapPin, Phone, Instagram } from "lucide-react";
+import { Mail, MapPin, Phone, CheckCircle, AlertCircle } from "lucide-react";
 import { useState } from "react";
 import Captcha from "@/components/Captcha";
-import Image from "next/image";
-import { useTheme } from "@/contexts/ThemeContext";
-import LogoLight from "@/assets/LogoLight.svg";
-import LogoDark from "@/assets/LogoDark.svg";
+import { submitContactForm } from "@/app/actions/SendMail";
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -24,22 +21,60 @@ export default function Contact() {
   });
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const [resetCaptcha, setResetCaptcha] = useState(false);
-  const { theme } = useTheme();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!isCaptchaValid) {
-      alert(t("captcha.required"));
+      setSubmitStatus({
+        type: "error",
+        message: t("captcha.required"),
+      });
       return;
     }
 
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    alert("Message sent successfully!");
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setIsCaptchaValid(false);
-    setResetCaptcha((prev) => !prev); // Trigger captcha reset
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const formDataObj = new FormData();
+      formDataObj.append("name", formData.name);
+      formDataObj.append("email", formData.email);
+      formDataObj.append("subject", formData.subject);
+      formDataObj.append("message", formData.message);
+
+      const result = await submitContactForm(formDataObj);
+
+      if (result.success) {
+        setSubmitStatus({
+          type: "success",
+          message: result.message || "Message sent successfully!",
+        });
+
+        // Reset form
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setIsCaptchaValid(false);
+        setResetCaptcha((prev) => !prev);
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: result.error || "Failed to send message. Please try again.",
+        });
+      }
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      setSubmitStatus({
+        type: "error",
+        message: "An unexpected error occurred. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -49,6 +84,11 @@ export default function Contact() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+
+    // Clear status when user starts typing
+    if (submitStatus.type) {
+      setSubmitStatus({ type: null, message: "" });
+    }
   };
 
   const handleCaptchaValidation = (isValid: boolean) => {
@@ -122,12 +162,38 @@ export default function Contact() {
                 reset={resetCaptcha}
               />
 
+              {/* Status Messages */}
+              {submitStatus.type && (
+                <div
+                  className={`p-4 rounded-lg flex items-center gap-3 ${
+                    submitStatus.type === "success"
+                      ? "bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
+                      : "bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800"
+                  }`}
+                >
+                  {submitStatus.type === "success" ? (
+                    <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
+                  ) : (
+                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400" />
+                  )}
+                  <p
+                    className={`text-sm ${
+                      submitStatus.type === "success"
+                        ? "text-green-700 dark:text-green-300"
+                        : "text-red-700 dark:text-red-300"
+                    }`}
+                  >
+                    {submitStatus.message}
+                  </p>
+                </div>
+              )}
+
               <Button
                 type="submit"
                 className="w-full"
-                disabled={!isCaptchaValid}
+                disabled={!isCaptchaValid || isSubmitting}
               >
-                {t("contact.form.send")}
+                {isSubmitting ? "Sending..." : t("contact.form.send")}
               </Button>
             </form>
           </div>
@@ -135,25 +201,13 @@ export default function Contact() {
           {/* Contact Information */}
           <div className="space-y-8">
             <div className="flex items-start space-x-4">
-              <div className="flex-shrink-0">
-                <Image
-                  src={theme === "light" ? LogoLight : LogoDark}
-                  alt="Logo"
-                  width={60}
-                  height={60}
-                  className="h-14 w-auto"
-                  priority
-                />
-              </div>
-            </div>
-            <div className="flex items-start space-x-4">
               <Phone className="h-6 w-6 text-gray-600 dark:text-gray-400 mt-1" />
               <div>
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
                   {t("contact.info.phone")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  +49 160 495 8148
+                  +49 123 456 789
                 </p>
               </div>
             </div>
@@ -164,7 +218,7 @@ export default function Contact() {
                   {t("contact.info.email")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  hallo (at) raumideenwerk.com
+                  hallo@raumideenwerk.com
                 </p>
               </div>
             </div>
@@ -175,23 +229,29 @@ export default function Contact() {
                   {t("contact.info.address")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Kolonnenstrasse 8
+                  123 Design Street
                   <br />
-                  10827 Berlin
+                  12345 Creative City
                   <br />
                   Germany
                 </p>
               </div>
             </div>
-            <div className="flex items-start space-x-4">
-              <Instagram className="h-6 w-6 text-gray-600 dark:text-gray-400 mt-1" />
-              <div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
-                  {t("contact.info.instagram")}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  raum.ideen.werk
-                </p>
+
+            {/* Email Service Status */}
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+              <div className="flex items-start gap-3">
+                <Mail className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5" />
+                <div>
+                  <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-1">
+                    Email Delivery
+                  </h4>
+                  <p className="text-sm text-blue-700 dark:text-blue-300">
+                    Messages are automatically forwarded to
+                    hallo@raumideenwerk.com. You&apos;ll receive a confirmation
+                    email after submitting.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

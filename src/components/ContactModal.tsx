@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { X } from "lucide-react";
+import { X, CheckCircle, AlertCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import Captcha from "@/components/Captcha";
+import { submitContactForm } from "@/app/actions/SendMail";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -29,32 +30,74 @@ export default function ContactModal({
   });
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const [resetCaptcha, setResetCaptcha] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
   // Update subject when prefilledSubject changes
   useEffect(() => {
     setFormData((prev) => ({ ...prev, subject: prefilledSubject }));
   }, [prefilledSubject]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!isCaptchaValid) {
-      alert(t("captcha.required"));
+      setSubmitStatus({
+        type: "error",
+        message: t("captcha.required"),
+      });
       return;
     }
 
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    alert("Message sent successfully!");
-    setFormData({
-      name: "",
-      email: "",
-      subject: prefilledSubject,
-      message: "",
-    });
-    setIsCaptchaValid(false);
-    setResetCaptcha((prev) => !prev); // Trigger captcha reset
-    onClose();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const formDataObj = new FormData();
+      formDataObj.append("name", formData.name);
+      formDataObj.append("email", formData.email);
+      formDataObj.append("subject", formData.subject);
+      formDataObj.append("message", formData.message);
+
+      const result = await submitContactForm(formDataObj);
+
+      if (result.success) {
+        setSubmitStatus({
+          type: "success",
+          message: result.message || "Message sent successfully!",
+        });
+
+        // Reset form after a delay and close modal
+        setTimeout(() => {
+          setFormData({
+            name: "",
+            email: "",
+            subject: prefilledSubject,
+            message: "",
+          });
+          setIsCaptchaValid(false);
+          setResetCaptcha((prev) => !prev);
+          setSubmitStatus({ type: null, message: "" });
+          onClose();
+        }, 2000);
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: result.error || "Failed to send message. Please try again.",
+        });
+      }
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      setSubmitStatus({
+        type: "error",
+        message: "An unexpected error occurred. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -64,6 +107,11 @@ export default function ContactModal({
       ...formData,
       [e.target.name]: e.target.value,
     });
+
+    // Clear status when user starts typing
+    if (submitStatus.type) {
+      setSubmitStatus({ type: null, message: "" });
+    }
   };
 
   const handleCaptchaValidation = (isValid: boolean) => {
@@ -148,19 +196,46 @@ export default function ContactModal({
               reset={resetCaptcha}
             />
 
+            {/* Status Messages */}
+            {submitStatus.type && (
+              <div
+                className={`p-4 rounded-lg flex items-center gap-3 ${
+                  submitStatus.type === "success"
+                    ? "bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
+                    : "bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800"
+                }`}
+              >
+                {submitStatus.type === "success" ? (
+                  <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
+                ) : (
+                  <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400" />
+                )}
+                <p
+                  className={`text-sm ${
+                    submitStatus.type === "success"
+                      ? "text-green-700 dark:text-green-300"
+                      : "text-red-700 dark:text-red-300"
+                  }`}
+                >
+                  {submitStatus.message}
+                </p>
+              </div>
+            )}
+
             <div className="flex gap-4">
               <Button
                 type="submit"
                 className="flex-1"
-                disabled={!isCaptchaValid}
+                disabled={!isCaptchaValid || isSubmitting}
               >
-                {t("contact.form.send")}
+                {isSubmitting ? "Sending..." : t("contact.form.send")}
               </Button>
               <Button
                 type="button"
                 variant="outline"
                 onClick={onClose}
                 className="flex-1 bg-transparent"
+                disabled={isSubmitting}
               >
                 Cancel
               </Button>

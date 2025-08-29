@@ -15,9 +15,11 @@ import {
   ChevronRight,
   Loader2,
   AlertCircle,
+  CheckCircle,
 } from "lucide-react";
 import Captcha from "@/components/Captcha";
 import { googleCalendar } from "@/lib/googleCalendar";
+import { submitBookingForm } from "@/app/actions/SendMail";
 
 interface BookingCalendarProps {
   isOpen: boolean;
@@ -51,6 +53,10 @@ export default function BookingCalendar({
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const [resetCaptcha, setResetCaptcha] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
   // Load available time slots when date is selected
   useEffect(() => {
@@ -147,7 +153,7 @@ export default function BookingCalendar({
   };
 
   // Generate Google Calendar URL
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   const generateGoogleCalendarUrl = (bookingData: any) => {
     const startDateTime = new Date(bookingData.date);
     const [hours, minutes] = bookingData.time.split(":");
@@ -257,93 +263,128 @@ export default function BookingCalendar({
     e.preventDefault();
 
     if (!selectedDate || !selectedTime) {
-      alert("Please select a date and time for your consultation.");
+      setSubmitStatus({
+        type: "error",
+        message: "Please select a date and time for your consultation.",
+      });
       return;
     }
 
     if (!isCaptchaValid) {
-      alert(t("captcha.required"));
+      setSubmitStatus({
+        type: "error",
+        message: t("captcha.required"),
+      });
       return;
     }
 
     setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
 
     try {
-      // Handle booking submission
-      const bookingData = {
-        service: selectedService,
-        date: selectedDate,
-        time: selectedTime,
-        ...formData,
-      };
+      // Prepare form data for server action
+      const formDataObj = new FormData();
+      formDataObj.append("name", formData.name);
+      formDataObj.append("email", formData.email);
+      formDataObj.append("phone", formData.phone);
+      formDataObj.append("service", selectedService);
+      formDataObj.append("date", selectedDate.toISOString().split("T")[0]);
+      formDataObj.append("time", selectedTime);
+      formDataObj.append("message", formData.message);
 
-      console.log("Booking submitted:", bookingData);
+      const result = await submitBookingForm(formDataObj);
 
-      // Try to create the event in your Google Calendar
-      const startDateTime = new Date(selectedDate);
-      const [hours, minutes] = selectedTime.split(":");
-      startDateTime.setHours(
-        Number.parseInt(hours),
-        Number.parseInt(minutes),
-        0,
-        0
-      );
+      if (result.success) {
+        setSubmitStatus({
+          type: "success",
+          message: result.message || "Consultation booked successfully!",
+        });
 
-      const endDateTime = new Date(startDateTime);
-      endDateTime.setHours(startDateTime.getHours() + 1);
+        // Handle booking data for calendar integration
+        const bookingData = {
+          service: selectedService,
+          date: selectedDate,
+          time: selectedTime,
+          ...formData,
+        };
 
-      const eventCreated = await googleCalendar.createEvent({
-        summary: `Design Consultation - ${selectedService}`,
-        description: `Client: ${formData.name}\nEmail: ${
-          formData.email
-        }\nPhone: ${formData.phone}\n\nNotes: ${
-          formData.message || "No additional notes"
-        }`,
-        start: startDateTime,
-        end: endDateTime,
-        attendeeEmail: formData.email,
-      });
+        // Try to create the event in your Google Calendar
+        const startDateTime = new Date(selectedDate);
+        const [hours, minutes] = selectedTime.split(":");
+        startDateTime.setHours(
+          Number.parseInt(hours),
+          Number.parseInt(minutes),
+          0,
+          0
+        );
 
-      if (eventCreated) {
-        console.log("Event created in designer's calendar");
-      }
+        const endDateTime = new Date(startDateTime);
+        endDateTime.setHours(startDateTime.getHours() + 1);
 
-      // Simulate API call for booking system
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+        const eventCreated = await googleCalendar.createEvent({
+          summary: `Design Consultation - ${selectedService}`,
+          description: `Client: ${formData.name}\nEmail: ${
+            formData.email
+          }\nPhone: ${formData.phone}\n\nNotes: ${
+            formData.message || "No additional notes"
+          }`,
+          start: startDateTime,
+          end: endDateTime,
+          attendeeEmail: formData.email,
+        });
 
-      // Show success message with calendar options
-      const shouldAddToCalendar = window.confirm(
-        "Consultation booked successfully! Would you like to add this appointment to your calendar?"
-      );
+        if (eventCreated) {
+          console.log("Event created in designer's calendar");
+        }
 
-      if (shouldAddToCalendar) {
-        // Try to open Google Calendar first
-        const googleCalendarUrl = generateGoogleCalendarUrl(bookingData);
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const newWindow = window.open(googleCalendarUrl, "_blank");
-
-        // If popup is blocked or user prefers, offer ICS download
+        // Show success and offer calendar options after a delay
         setTimeout(() => {
-          const shouldDownloadICS = window.confirm(
-            "If Google Calendar didn't open, would you like to download a calendar file instead?"
+          const shouldAddToCalendar = window.confirm(
+            "Consultation booked successfully! Would you like to add this appointment to your calendar?"
           );
-          if (shouldDownloadICS) {
-            downloadICSFile(bookingData);
-          }
-        }, 2000);
-      }
 
-      // Reset form
-      setFormData({ name: "", email: "", phone: "", message: "" });
-      setSelectedDate(null);
-      setSelectedTime("");
-      setTimeSlots([]);
-      setIsCaptchaValid(false);
-      setResetCaptcha((prev) => !prev);
-      onClose();
+          if (shouldAddToCalendar) {
+            // Try to open Google Calendar first
+            const googleCalendarUrl = generateGoogleCalendarUrl(bookingData);
+            //eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const newWindow = window.open(googleCalendarUrl, "_blank");
+
+            // If popup is blocked or user prefers, offer ICS download
+            setTimeout(() => {
+              const shouldDownloadICS = window.confirm(
+                "If Google Calendar didn't open, would you like to download a calendar file instead?"
+              );
+              if (shouldDownloadICS) {
+                downloadICSFile(bookingData);
+              }
+            }, 2000);
+          }
+
+          // Reset form and close modal after calendar handling
+          setTimeout(() => {
+            setFormData({ name: "", email: "", phone: "", message: "" });
+            setSelectedDate(null);
+            setSelectedTime("");
+            setTimeSlots([]);
+            setIsCaptchaValid(false);
+            setResetCaptcha((prev) => !prev);
+            setSubmitStatus({ type: null, message: "" });
+            onClose();
+          }, 3000);
+        }, 2000);
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message:
+            result.error || "Failed to book consultation. Please try again.",
+        });
+      }
     } catch (error) {
       console.error("Booking error:", error);
-      alert("There was an error booking your consultation. Please try again.");
+      setSubmitStatus({
+        type: "error",
+        message: "An unexpected error occurred. Please try again later.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -356,6 +397,11 @@ export default function BookingCalendar({
       ...formData,
       [e.target.name]: e.target.value,
     });
+
+    // Clear status when user starts typing
+    if (submitStatus.type) {
+      setSubmitStatus({ type: null, message: "" });
+    }
   };
 
   const handleCaptchaValidation = (isValid: boolean) => {
@@ -588,18 +634,44 @@ export default function BookingCalendar({
                   reset={resetCaptcha}
                 />
 
-                {/* Calendar Integration Info */}
+                {/* Status Messages */}
+                {submitStatus.type && (
+                  <div
+                    className={`p-4 rounded-lg flex items-center gap-3 ${
+                      submitStatus.type === "success"
+                        ? "bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
+                        : "bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800"
+                    }`}
+                  >
+                    {submitStatus.type === "success" ? (
+                      <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
+                    ) : (
+                      <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400" />
+                    )}
+                    <p
+                      className={`text-sm ${
+                        submitStatus.type === "success"
+                          ? "text-green-700 dark:text-green-300"
+                          : "text-red-700 dark:text-red-300"
+                      }`}
+                    >
+                      {submitStatus.message}
+                    </p>
+                  </div>
+                )}
+
+                {/* Gmail SMTP Integration Info */}
                 <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
                   <div className="flex items-start gap-3">
                     <Calendar className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5" />
                     <div>
                       <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-1">
-                        Calendar Integration
+                        Email Integration
                       </h4>
                       <p className="text-sm text-blue-700 dark:text-blue-300">
-                        {googleCalendar.isConfigured()
-                          ? "Time slots show real availability from the designer's calendar. After booking, the appointment will be automatically added to both calendars."
-                          : "After booking, you'll be able to add this appointment to Google Calendar or download a calendar file for other calendar apps."}
+                        Booking confirmations are sent via Gmail SMTP to both
+                        you and hallo@raumideenwerk.com. After booking, you can
+                        add the appointment to your calendar.
                       </p>
                     </div>
                   </div>
@@ -623,6 +695,7 @@ export default function BookingCalendar({
                     variant="outline"
                     onClick={onClose}
                     className="flex-1 bg-transparent"
+                    disabled={isSubmitting}
                   >
                     Cancel
                   </Button>
