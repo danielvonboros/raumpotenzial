@@ -16,10 +16,11 @@ import {
   Loader2,
   AlertCircle,
   CheckCircle,
+  ExternalLink,
 } from "lucide-react";
 import Captcha from "@/components/Captcha";
 import { googleCalendar } from "@/lib/googleCalendar";
-import { submitBookingForm } from "@/app/actions/SendMail";
+import { emailService } from "@/app/actions/SendMail";
 
 interface BookingCalendarProps {
   isOpen: boolean;
@@ -197,7 +198,7 @@ export default function BookingCalendar({
   };
 
   // Generate ICS file content
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   const generateICSFile = (bookingData: any) => {
     const startDateTime = new Date(bookingData.date);
     const [hours, minutes] = bookingData.time.split(":");
@@ -243,7 +244,7 @@ export default function BookingCalendar({
     return icsContent;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   const downloadICSFile = (bookingData: any) => {
     const icsContent = generateICSFile(bookingData);
     const blob = new Blob([icsContent], {
@@ -282,17 +283,18 @@ export default function BookingCalendar({
     setSubmitStatus({ type: null, message: "" });
 
     try {
-      // Prepare form data for server action
-      const formDataObj = new FormData();
-      formDataObj.append("name", formData.name);
-      formDataObj.append("email", formData.email);
-      formDataObj.append("phone", formData.phone);
-      formDataObj.append("service", selectedService);
-      formDataObj.append("date", selectedDate.toISOString().split("T")[0]);
-      formDataObj.append("time", selectedTime);
-      formDataObj.append("message", formData.message);
+      // Prepare booking data
+      const bookingData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: selectedService,
+        date: selectedDate.toISOString().split("T")[0],
+        time: selectedTime,
+        message: formData.message,
+      };
 
-      const result = await submitBookingForm(formDataObj);
+      const result = await emailService.sendBookingEmail(bookingData);
 
       if (result.success) {
         setSubmitStatus({
@@ -301,7 +303,7 @@ export default function BookingCalendar({
         });
 
         // Handle booking data for calendar integration
-        const bookingData = {
+        const fullBookingData = {
           service: selectedService,
           date: selectedDate,
           time: selectedTime,
@@ -345,7 +347,8 @@ export default function BookingCalendar({
 
           if (shouldAddToCalendar) {
             // Try to open Google Calendar first
-            const googleCalendarUrl = generateGoogleCalendarUrl(bookingData);
+            const googleCalendarUrl =
+              generateGoogleCalendarUrl(fullBookingData);
             //eslint-disable-next-line @typescript-eslint/no-unused-vars
             const newWindow = window.open(googleCalendarUrl, "_blank");
 
@@ -355,7 +358,7 @@ export default function BookingCalendar({
                 "If Google Calendar didn't open, would you like to download a calendar file instead?"
               );
               if (shouldDownloadICS) {
-                downloadICSFile(bookingData);
+                downloadICSFile(fullBookingData);
               }
             }, 2000);
           }
@@ -406,6 +409,26 @@ export default function BookingCalendar({
 
   const handleCaptchaValidation = (isValid: boolean) => {
     setIsCaptchaValid(isValid);
+  };
+
+  const handleMailtoFallback = () => {
+    if (!selectedDate || !selectedTime) {
+      alert("Please select a date and time first.");
+      return;
+    }
+
+    const bookingData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: selectedService,
+      date: selectedDate.toISOString().split("T")[0],
+      time: selectedTime,
+      message: formData.message,
+    };
+
+    const mailtoLink = emailService.generateBookingMailtoLink(bookingData);
+    window.open(mailtoLink, "_blank");
   };
 
   if (!isOpen) return null;
@@ -660,27 +683,26 @@ export default function BookingCalendar({
                   </div>
                 )}
 
-                {/* Gmail SMTP Integration Info */}
+                {/* Local Email Service Info */}
                 <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
                   <div className="flex items-start gap-3">
                     <Calendar className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5" />
                     <div>
                       <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-1">
-                        Email Integration
+                        Local Email Service
                       </h4>
                       <p className="text-sm text-blue-700 dark:text-blue-300">
-                        Booking confirmations are sent via Gmail SMTP to both
-                        you and hallo@raumideenwerk.com. After booking, you can
-                        add the appointment to your calendar.
+                        Booking processed locally in your browser. Works with
+                        static builds. Use (Email App) button as fallback.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex gap-4 pt-4">
+                <div className="space-y-3">
                   <Button
                     type="submit"
-                    className="flex-1"
+                    className="w-full"
                     disabled={
                       !selectedDate ||
                       !selectedTime ||
@@ -690,15 +712,28 @@ export default function BookingCalendar({
                   >
                     {isSubmitting ? "Booking..." : "Book Consultation"}
                   </Button>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={onClose}
-                    className="flex-1 bg-transparent"
-                    disabled={isSubmitting}
-                  >
-                    Cancel
-                  </Button>
+
+                  <div className="flex gap-3">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={handleMailtoFallback}
+                      className="flex-1 bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 flex items-center justify-center gap-2"
+                      disabled={!selectedDate || !selectedTime}
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      Email App
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={onClose}
+                      className="flex-1 bg-transparent"
+                      disabled={isSubmitting}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
                 </div>
               </form>
             </div>

@@ -6,10 +6,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Mail, MapPin, Phone, CheckCircle, AlertCircle } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  CheckCircle,
+  AlertCircle,
+  ExternalLink,
+} from "lucide-react";
 import { useState } from "react";
 import Captcha from "@/components/Captcha";
-import { submitContactForm } from "@/app/actions/SendMail";
+import { emailService } from "@/app/actions/SendMail";
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -42,13 +49,7 @@ export default function Contact() {
     setSubmitStatus({ type: null, message: "" });
 
     try {
-      const formDataObj = new FormData();
-      formDataObj.append("name", formData.name);
-      formDataObj.append("email", formData.email);
-      formDataObj.append("subject", formData.subject);
-      formDataObj.append("message", formData.message);
-
-      const result = await submitContactForm(formDataObj);
+      const result = await emailService.sendContactEmail(formData);
 
       if (result.success) {
         setSubmitStatus({
@@ -93,6 +94,11 @@ export default function Contact() {
 
   const handleCaptchaValidation = (isValid: boolean) => {
     setIsCaptchaValid(isValid);
+  };
+
+  const handleMailtoFallback = () => {
+    const mailtoLink = emailService.generateMailtoLink(formData);
+    window.open(mailtoLink, "_blank");
   };
 
   return (
@@ -188,13 +194,26 @@ export default function Contact() {
                 </div>
               )}
 
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={!isCaptchaValid || isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : t("contact.form.send")}
-              </Button>
+              <div className="space-y-3">
+                <Button
+                  type="submit"
+                  className="w-full"
+                  disabled={!isCaptchaValid || isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : t("contact.form.send")}
+                </Button>
+
+                {/* Fallback mailto button */}
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleMailtoFallback}
+                  className="w-full bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 flex items-center justify-center gap-2"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  Open in Email App
+                </Button>
+              </div>
             </form>
           </div>
 
@@ -244,12 +263,12 @@ export default function Contact() {
                 <Mail className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5" />
                 <div>
                   <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-1">
-                    Email Delivery
+                    Local Email Service
                   </h4>
                   <p className="text-sm text-blue-700 dark:text-blue-300">
-                    Messages are automatically forwarded to
-                    hallo@raumideenwerk.com. You&apos;ll receive a confirmation
-                    email after submitting.
+                    Messages are processed locally in your browser. Works with
+                    static builds and does not require a server. Use (Open in
+                    Email App) as a fallback option.
                   </p>
                 </div>
               </div>

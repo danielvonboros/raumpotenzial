@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { X, CheckCircle, AlertCircle } from "lucide-react";
+import { X, CheckCircle, AlertCircle, ExternalLink } from "lucide-react";
 import { useState, useEffect } from "react";
 import Captcha from "@/components/Captcha";
-import { submitContactForm } from "@/app/actions/SendMail";
+import { emailService } from "@/app/actions/SendMail";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -56,13 +56,7 @@ export default function ContactModal({
     setSubmitStatus({ type: null, message: "" });
 
     try {
-      const formDataObj = new FormData();
-      formDataObj.append("name", formData.name);
-      formDataObj.append("email", formData.email);
-      formDataObj.append("subject", formData.subject);
-      formDataObj.append("message", formData.message);
-
-      const result = await submitContactForm(formDataObj);
+      const result = await emailService.sendContactEmail(formData);
 
       if (result.success) {
         setSubmitStatus({
@@ -116,6 +110,11 @@ export default function ContactModal({
 
   const handleCaptchaValidation = (isValid: boolean) => {
     setIsCaptchaValid(isValid);
+  };
+
+  const handleMailtoFallback = () => {
+    const mailtoLink = emailService.generateMailtoLink(formData);
+    window.open(mailtoLink, "_blank");
   };
 
   if (!isOpen) return null;
@@ -222,23 +221,35 @@ export default function ContactModal({
               </div>
             )}
 
-            <div className="flex gap-4">
+            <div className="space-y-3">
               <Button
                 type="submit"
-                className="flex-1"
+                className="w-full"
                 disabled={!isCaptchaValid || isSubmitting}
               >
                 {isSubmitting ? "Sending..." : t("contact.form.send")}
               </Button>
-              <Button
-                type="button"
-                variant="outline"
-                onClick={onClose}
-                className="flex-1 bg-transparent"
-                disabled={isSubmitting}
-              >
-                Cancel
-              </Button>
+
+              <div className="flex gap-3">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleMailtoFallback}
+                  className="flex-1 bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 flex items-center justify-center gap-2"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  Email App
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={onClose}
+                  className="flex-1 bg-transparent"
+                  disabled={isSubmitting}
+                >
+                  Cancel
+                </Button>
+              </div>
             </div>
           </form>
         </div>

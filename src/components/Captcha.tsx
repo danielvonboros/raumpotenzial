@@ -32,7 +32,6 @@ export default function Captcha({ onValidationChange, reset }: CaptchaProps) {
   // Initialize captcha on component mount
   useEffect(() => {
     generateCaptcha();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Reset captcha when reset prop changes
@@ -40,7 +39,6 @@ export default function Captcha({ onValidationChange, reset }: CaptchaProps) {
     if (reset) {
       generateCaptcha();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reset]);
 
   // Validate answer when user input changes
