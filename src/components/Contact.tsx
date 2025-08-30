@@ -207,7 +207,7 @@ export default function Contact() {
                   {t("contact.info.phone")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  +49 123 456 789
+                  {t("imprint.content.phone")}
                 </p>
               </div>
             </div>
@@ -218,7 +218,7 @@ export default function Contact() {
                   {t("contact.info.email")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  hallo@raumideenwerk.com
+                  {t("imprint.content.email")}
                 </p>
               </div>
             </div>
@@ -229,9 +229,7 @@ export default function Contact() {
                   {t("contact.info.address")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  123 Design Street
-                  <br />
-                  12345 Creative City
+                  {t("imprint.content.address")}
                   <br />
                   Germany
                 </p>

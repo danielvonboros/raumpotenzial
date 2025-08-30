@@ -102,7 +102,7 @@ export async function submitContactForm(formData: FormData) {
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
             <p style="color: #6b7280; font-size: 14px; margin: 0;">
-              This message was sent from the Furniture Portfolio contact form on ${new Date().toLocaleString()}.
+              This message was sent from the RaumIdeenWerk contact form on ${new Date().toLocaleString()}.
             </p>
           </div>
         </div>
@@ -121,12 +121,12 @@ Message:
 ${contactData.message}
 
 ---
-This message was sent from the Furniture Portfolio contact form on ${new Date().toLocaleString()}.
+This message was sent from the RaumIdeenWerk contact form on ${new Date().toLocaleString()}.
     `;
 
     // Send email to your business email
     await transporter.sendMail({
-      from: `"Furniture Portfolio" <${process.env.GMAIL_USER}>`,
+      from: `"RaumIdeenWerk" <${process.env.GMAIL_USER}>`,
       to: "hallo@raumideenwerk.com",
       replyTo: contactData.email,
       subject: `Contact Form: ${contactData.subject}`,
@@ -161,7 +161,7 @@ This message was sent from the Furniture Portfolio contact form on ${new Date().
           
           <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;">
             Best regards,<br>
-            The Furniture Design Team<br>
+            RaumIdeenWerk<br>
             <a href="mailto:hallo@raumideenwerk.com" style="color: #3b82f6;">hallo@raumideenwerk.com</a>
           </p>
           
@@ -175,9 +175,9 @@ This message was sent from the Furniture Portfolio contact form on ${new Date().
     `;
 
     await transporter.sendMail({
-      from: `"Furniture Portfolio" <${process.env.GMAIL_USER}>`,
+      from: `"RaumIdeenWerk" <${process.env.GMAIL_USER}>`,
       to: contactData.email,
-      subject: "Thank you for your message - Furniture Portfolio",
+      subject: "Thank you for your message - RaumIdeenWerk",
       html: autoReplyHtml,
       text: `Dear ${contactData.name},\n\nThank you for reaching out through our contact form. We have received your message regarding "${contactData.subject}" and will get back to you as soon as possible.\n\nWe typically respond to inquiries within 24-48 hours during business days.\n\nBest regards,\nThe Furniture Design Team\nhallo@raumideenwerk.com`,
     });
@@ -305,7 +305,7 @@ export async function submitBookingForm(formData: FormData) {
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
             <p style="color: #6b7280; font-size: 14px; margin: 0;">
-              📧 This booking was made through the Furniture Portfolio website on ${new Date().toLocaleString()}.
+              📧 This booking was made through the RaumIdeenWerk website on ${new Date().toLocaleString()}.
             </p>
           </div>
         </div>
@@ -314,7 +314,7 @@ export async function submitBookingForm(formData: FormData) {
 
     // Send booking notification email
     await transporter.sendMail({
-      from: `"Furniture Portfolio Booking" <${process.env.GMAIL_USER}>`,
+      from: `"RaumIdeenWerk" <${process.env.GMAIL_USER}>`,
       to: "hallo@raumideenwerk.com",
       replyTo: bookingData.email,
       subject: `🗓️ New Consultation Booking - ${bookingData.service} (${formattedDate} at ${bookingData.time})`,
@@ -359,7 +359,7 @@ export async function submitBookingForm(formData: FormData) {
           <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;">
             We look forward to bringing your design vision to life!<br><br>
             Best regards,<br>
-            <strong>The Furniture Design Team</strong><br>
+            <strong>RaumIdeenWerk</strong><br>
             <a href="mailto:hallo@raumideenwerk.com" style="color: #3b82f6;">hallo@raumideenwerk.com</a>
           </p>
           
