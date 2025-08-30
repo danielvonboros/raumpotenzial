@@ -11,6 +11,7 @@ import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Imprint from "@/components/Imprint";
+import Introduction from "@/components/Introduction";
 
 export default function Portfolio() {
   const [currentSection, setCurrentSection] = useState("home");
@@ -58,6 +59,9 @@ export default function Portfolio() {
           <main>
             <section id="home">
               <Hero />
+            </section>
+            <section id="introduction">
+              <Introduction />
             </section>
             <section id="projects">
               <Projects />

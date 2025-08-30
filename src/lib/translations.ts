@@ -26,6 +26,13 @@ export const translations = {
         cta: "All Projects",
       },
     },
+    introduction: {
+      title: "Room transformations and furniture designs",
+      sentence1: "I create room concepts and custom furniture designs that transform your living space.",
+      sentence2: "sentence2",
+      sentence3: "sentence3",
+      sentence4: "sentence4",
+    },
     projects: {
       title: "Featured Projects",
       subtitle: "A selection of my finest furniture designs",
@@ -217,6 +224,13 @@ export const translations = {
         subtitle: "Eine Einbaulösung für die Zonierung eines Wohn- und Schlafzimmers",
         cta: "Projekte ansehen",
       },
+    },
+        introduction: {
+      title: "",
+      sentence1: "",
+      sentence2: "",
+      sentence3: "",
+      sentence4: "",
     },
     projects: {
       title: "Ausgewählte Projekte",
@@ -415,6 +429,13 @@ export const translations = {
         cta: "Découvrir les projets",
       },
     },
+        introduction: {
+      title: "",
+      sentence1: "",
+      sentence2: "",
+      sentence3: "",
+      sentence4: "",
+    },
     projects: {
       title: "Projets en vedette",
       subtitle: "Une sélection de mes plus beaux designs de meubles",
@@ -611,6 +632,13 @@ export const translations = {
         subtitle: "Una solución empotrada para dividir el salón y el dormitoriodo",
         cta: "Descubrir los proyectos",
       },
+    },
+        introduction: {
+      title: "",
+      sentence1: "",
+      sentence2: "",
+      sentence3: "",
+      sentence4: "",
     },
     projects: {
       title: "Proyectos destacados",
