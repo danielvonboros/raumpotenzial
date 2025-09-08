@@ -342,6 +342,12 @@ export default function BookingCalendar({
                   <p className="text-sm text-amber-700 dark:text-amber-300">
                     hallo@raumideenwerk.com
                   </p>
+                  <button
+                    onClick={() => resetConsent()}
+                    className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 hover:cursor-pointer dark:hover:text-blue-300 underline mt-2"
+                  >
+                    {t("contact.cookieError.changeCookiePreferences")}
+                  </button>
                 </div>
               </div>
             </div>
@@ -600,14 +606,6 @@ export default function BookingCalendar({
                           ? "Booking confirmations are sent via Gmail SMTP to both you and hallo@raumideenwerk.com. Appointments are automatically added to Google Calendar."
                           : "Accept cookies to enable automated booking with Google Calendar integration and email notifications."}
                       </p>
-                      {!hasConsented && (
-                        <button
-                          onClick={() => resetConsent()}
-                          className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline mt-2"
-                        >
-                          {t("contact.cookieError.changeCookiePreferences")}
-                        </button>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -615,7 +613,7 @@ export default function BookingCalendar({
                 <div className="flex gap-4 pt-4">
                   <Button
                     type="submit"
-                    className="flex-1"
+                    className="flex-1 hover:cursor-pointer"
                     disabled={
                       !hasConsented ||
                       !selectedDate ||

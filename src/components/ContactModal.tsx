@@ -173,6 +173,14 @@ export default function ContactModal({
                   <p className="text-sm text-amber-700 dark:text-amber-300">
                     {t("contact.cookieError.message")}
                   </p>
+                  <div>
+                    <button
+                      onClick={() => resetConsent()}
+                      className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 hover:cursor-pointer dark:hover:text-blue-300 underline mt-2"
+                    >
+                      {t("contact.cookieError.changeCookiePreferences")}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

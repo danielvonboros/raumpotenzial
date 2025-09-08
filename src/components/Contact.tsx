@@ -150,8 +150,16 @@ export default function Contact() {
                       {t("contact.cookieError.directContact")}
                     </p>
                     <p className="text-sm text-amber-700 dark:text-amber-300">
-                      hallo@raumideenwerk.com
+                      hallo (at) raumideenwerk.com
                     </p>
+                    <div>
+                      <button
+                        onClick={() => resetConsent()}
+                        className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 hover:cursor-pointer dark:hover:text-blue-300 underline mt-2"
+                      >
+                        {t("contact.cookieError.changeCookiePreferences")}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -344,14 +352,6 @@ export default function Contact() {
                       ? "Messages are automatically forwarded to hallo@raumideenwerk.com. You'll receive a confirmation email after submitting."
                       : "Cookie consent required for automated forms. Use direct email contact or accept cookies to enable form submission."}
                   </p>
-                  {!hasConsented && (
-                    <button
-                      onClick={() => resetConsent()}
-                      className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline mt-2"
-                    >
-                      {t("contact.cookieError.changeCookiePreferences")}
-                    </button>
-                  )}
                 </div>
               </div>
             </div>
