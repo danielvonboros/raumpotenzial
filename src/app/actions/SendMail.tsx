@@ -1,6 +1,7 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import LogoLight from "@/assets/LogoLight.svg";
 
 interface ContactFormData {
   name: string;
@@ -74,6 +75,7 @@ export async function submitContactForm(formData: FormData) {
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 8px;">
         <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <img src=${LogoLight} height="250" alt="RaumIdeenWerk Logo" style="display: block; margin-bottom: 20px;" />
           <h2 style="color: #1f2937; margin-bottom: 20px; border-bottom: 2px solid #3b82f6; padding-bottom: 10px;">
             New Contact Form Submission
           </h2>

@@ -132,7 +132,7 @@ export const translations = {
         address: "Kolonnenstrasse 8, 10827 Berlin",
         phone: "Phone: +49 160 495 81 48",
         email: "Email: hallo (at) raumideenwerk.com",
-        vat: "VAT ID: DE123456789",
+        vat: "St.-Nr.: 34/236/01118",
         disclaimer: "Disclaimer",
         disclaimerText:
           "The contents of our pages have been created with the utmost care. However, we cannot guarantee the contents' accuracy, completeness or topicality.",
@@ -227,9 +227,9 @@ export const translations = {
     },
         introduction: {
       title: "Smart Space. Better Living.",
-      sentence1: "Ich spezialisiere mich darauf, bestehende Räume in funktionale, ästhetische und personalisierte Innenräume zu verwandeln.",
+      sentence1: "Ich habe mich darauf spezialisiert, bestehende Räume in funktionale, ästhetische und personalisierte Lebensräume zu verwandeln.",
       sentence2: "Anstatt umzuziehen, helfe ich Menschen, das Beste aus ihrem aktuellen Zuhause herauszuholen – durch clevere Umorganisation, durchdachte Zonierung und maßgeschneiderte Möbel-Lösungen.",
-      sentence3: "Jedes Konzept wird auf den Lebensstil des Kunden zugeschnitten und verbindet Praktikabilität mit zeitlosem Design.",
+      sentence3: "Jedes Konzept wird auf den Lebensstil der Kunden zugeschnitten und verbindet Praktikabilität mit zeitlosem Design.",
       sentence4: "Das Ergebnis: Wohnräume, die größer wirken, besser funktionieren und die Menschen, die in ihnen leben, wirklich widerspiegeln.",
     },
     projects: {
@@ -334,7 +334,7 @@ export const translations = {
         address: "Kolonnenstraße 8, 10827 Berlin",
         phone: "Telefon: +49 160 495 81 48",
         email: "E-Mail: hallo (at) raumideenwerk.com",
-        vat: "USt-IdNr.: DE123456789",
+        vat: "St.-Nr.: 34/236/01118",
         disclaimer: "Haftungsausschluss",
         disclaimerText:
           "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.",
@@ -538,7 +538,7 @@ export const translations = {
         address: "Kolonnenstraße 8, 10827 Berlin",
         phone: "Telefon: +49 160 495 81 48",
         email: "E-Mail: hallo (at) raumideenwerk.com",
-        vat: "N° TVA: DE 123 456 789",
+        vat: "St.-Nr.: 34/236/01118",
         disclaimer: "Avertissement",
         disclaimerText:
           "Le contenu de nos pages a été créé avec le maximum cuidado. Sin embargo, no podemos garantir la exactitud, integridad o actualidad del contenido.",
@@ -740,7 +740,7 @@ export const translations = {
         address: "Kolonnenstraße 8, 10827 Berlin",
         phone: "Telefon: +49 160 495 81 48",
         email: "E-Mail: hallo (at) raumideenwerk.com",
-        vat: "NIF: DE 123 456 789",
+        vat: "St.-Nr.: 34/236/01118",
         disclaimer: "Descargo de responsabilidad",
         disclaimerText:
           "El contenido de nuestras páginas ha sido creado con el máximo cuidado. Sin embargo, no podemos garantizar la exactitud, integridad o actualidad del contenido.",
