@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { X, CheckCircle, AlertCircle } from "lucide-react";
+import { useCookieConsent } from "@/contexts/CookieConsentContext";
+import { X, CheckCircle, AlertCircle, ExternalLink } from "lucide-react";
 import { useState, useEffect } from "react";
 import Captcha from "@/components/Captcha";
 import { submitContactForm } from "@/app/actions/SendMail";
@@ -22,6 +23,7 @@ export default function ContactModal({
   prefilledSubject,
 }: ContactModalProps) {
   const { t } = useLanguage();
+  const { hasConsented, resetConsent } = useCookieConsent();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,6 +45,14 @@ export default function ContactModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!hasConsented) {
+      setSubmitStatus({
+        type: "error",
+        message: t("contact.cookieError.message"),
+      });
+      return;
+    }
 
     if (!isCaptchaValid) {
       setSubmitStatus({
@@ -118,6 +128,14 @@ export default function ContactModal({
     setIsCaptchaValid(isValid);
   };
 
+  const generateMailtoLink = () => {
+    const subject = encodeURIComponent(formData.subject || prefilledSubject);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    return `mailto:hallo@raumideenwerk.com?subject=${subject}&body=${body}`;
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -144,6 +162,22 @@ export default function ContactModal({
             {t("contact.subtitle")}
           </p>
 
+          {!hasConsented && (
+            <div className="mb-6 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5" />
+                <div>
+                  <h4 className="font-medium text-amber-900 dark:text-amber-100 mb-1">
+                    {t("contact.cookieError.title")}
+                  </h4>
+                  <p className="text-sm text-amber-700 dark:text-amber-300">
+                    {t("contact.cookieError.message")}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <Input
@@ -153,7 +187,8 @@ export default function ContactModal({
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                disabled={!hasConsented}
+                className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             <div>
@@ -164,7 +199,8 @@ export default function ContactModal({
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                disabled={!hasConsented}
+                className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             <div>
@@ -175,7 +211,8 @@ export default function ContactModal({
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                disabled={!hasConsented}
+                className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             <div>
@@ -186,15 +223,18 @@ export default function ContactModal({
                 onChange={handleChange}
                 rows={6}
                 required
-                className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                disabled={!hasConsented}
+                className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
 
             {/* Captcha */}
-            <Captcha
-              onValidationChange={handleCaptchaValidation}
-              reset={resetCaptcha}
-            />
+            {hasConsented && (
+              <Captcha
+                onValidationChange={handleCaptchaValidation}
+                reset={resetCaptcha}
+              />
+            )}
 
             {/* Status Messages */}
             {submitStatus.type && (
@@ -222,23 +262,39 @@ export default function ContactModal({
               </div>
             )}
 
-            <div className="flex gap-4">
+            <div className="space-y-3">
               <Button
                 type="submit"
-                className="flex-1"
-                disabled={!isCaptchaValid || isSubmitting}
+                className="w-full"
+                disabled={!hasConsented || !isCaptchaValid || isSubmitting}
               >
                 {isSubmitting ? "Sending..." : t("contact.form.send")}
               </Button>
-              <Button
-                type="button"
-                variant="outline"
-                onClick={onClose}
-                className="flex-1 bg-transparent"
-                disabled={isSubmitting}
-              >
-                Cancel
-              </Button>
+
+              <div className="flex gap-3">
+                {!hasConsented && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => window.open(generateMailtoLink(), "_blank")}
+                    className="flex-1 bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 flex items-center justify-center gap-2"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Email App
+                  </Button>
+                )}
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={onClose}
+                  className={`${
+                    !hasConsented ? "flex-1" : "w-full"
+                  } bg-transparent`}
+                  disabled={isSubmitting}
+                >
+                  Cancel
+                </Button>
+              </div>
             </div>
           </form>
         </div>

@@ -115,6 +115,12 @@ export const translations = {
         address: "Address",
         instagram: "Instagram",
       },
+      cookieError: {
+        title: "Cookie Consent Required",
+        message: "In order to use our contact form, the consent to the cookie policy is required. Alternatively, you can contact us directly using the email address provided.",
+        directContact: "Contact us directly",
+        changeCookiePreferences: "Change Cookie Preferences",
+      }
     },
     captcha: {
       label: "Security Check: What is",
@@ -122,6 +128,37 @@ export const translations = {
       incorrect: "Incorrect answer. Please try again.",
       correct: "Correct!",
       required: "Please complete the security check correctly.",
+    },
+    cookies: {
+      title: "Cookie & Data Processing Consent",
+      description: "We use cookies and process your data to provide the best experience on our website. By accepting you consent to the processing of your contact information through Google services for email communication and appointment scheduling.",
+      dataProcessing: {
+        title:"How we process your data",
+        email: {
+          title: "Email Communication",
+          description: "Contact form submissions and appointment requests are processed through a secure Google email account. Your personal information (name, email, phone, message) will be forwarded to hallo (at) raumideenwerk.com for response and follow-up.",
+
+        },
+        calendar: {
+          title: "Appointment Scheduling",
+          description: "When booking consultations, your appointment details are automatically added to our Google Calendar system. This includes your contact information and appointment preferences for scheduling coordination.",
+        },
+      },
+      privacy: {
+        title: "Your Privacy Rights",
+        description: "We are committed to protecting your privacy and ensuring GDPR compliance.",
+        point1: "Your Data is only used for the specific purpose you provided it for",
+        point2: "We do not share your information with third parties beyond Google services",
+        point3: "You can request deletion of your data at any time by contacting us",
+        point4: "All data transmission is encrypted and secure",
+      },
+      decline: {
+        title: "If you decline cookies",
+        description: "You can still contact us directly using the email address provided in our contact section. However, our automated contact form and appointment scheduling features will be disabled.",
+        button: "Decline & Use Direct Contact",
+      },
+      accept: "Accept & Enable Contact forms",
+      changeSettings: "You can change your cookie preferences at any time in the website settings.",
     },
     imprint: {
       title: "Legal Notice",
@@ -317,6 +354,12 @@ export const translations = {
         address: "Adresse",
         instagram: "Instagram",
       },
+            cookieError: {
+        title: "Cookie-Zustimmung erforderlich",
+        message: "Um unser Kontaktformular nutzen zu können, ist die Zustimmung zur Cookie-Richtlinie erforderlich. Alternativ können Sie uns auch direkt über die angegebene E-Mail-Adresse kontaktieren.",
+        directContact: "Kontaktieren Sie uns direkt",
+        changeCookiePreferences: "Cookie-Einstellungen ändern",
+      }
     },
     captcha: {
       label: "Sicherheitsprüfung: Was ist",
@@ -324,6 +367,37 @@ export const translations = {
       incorrect: "Falsche Antwort. Bitte versuchen Sie es erneut.",
       correct: "Richtig!",
       required: "Bitte vervollständigen Sie die Sicherheitsprüfung korrekt.",
+    },
+    cookies: {
+      title: "Zustimmung zur Verwendung von Cookies und zur Datenverarbeitung",
+      description: "Wir verwenden Cookies und verarbeiten Ihre Daten, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. Mit Ihrer Zustimmung erklären Sie sich mit der Verarbeitung Ihrer Kontaktdaten durch Google-Dienste für die E-Mail-Kommunikation und Terminvereinbarung einverstanden.",
+      dataProcessing: {
+        title:"Wie wir Ihre Daten verarbeiten",
+        email: {
+          title: "E-Mail-Kommunikation",
+          description: "Kontaktformular-Einsendungen und Terminanfragen werden über ein sicheres Google-E-Mail-Konto verarbeitet. Ihre persönlichen Daten (Name, E-Mail-Adresse, Telefonnummer, Nachricht) werden zur Beantwortung und Weiterverfolgung an hallo (at) raumideenwerk.com weitergeleitet.",
+
+        },
+        calendar: {
+          title: "Terminvereinbarung",
+          description: "Bei der Buchung von Beratungsgesprächen werden Ihre Terminangaben automatisch in unser Google-Kalendersystem übernommen. Dazu gehören Ihre Kontaktdaten und Terminwünsche für die Terminkoordination.",
+        },
+      },
+      privacy: {
+        title: "Ihre Datenschutzrechte",
+        description: "Wir verpflichten uns, Ihre Privatsphäre zu schützen und die Einhaltung der DSGVO sicherzustellen.",
+        point1: "Ihre Daten werden nur für den spezifischen Zweck verwendet, für den Sie sie bereitgestellt haben.",
+        point2: "Wir geben Ihre Daten nicht an Dritte außerhalb der Google-Dienste weiter.",
+        point3: "Sie können jederzeit die Löschung Ihrer Daten beantragen, indem Sie sich an uns wenden",
+point4: "Alle Datenübertragungen sind verschlüsselt und sicher",
+},
+decline: {
+title: "Wenn Sie Cookies ablehnen",
+description: "Sie können uns weiterhin direkt über die in unserem Kontaktbereich angegebene E-Mail-Adresse kontaktieren. Allerdings werden dann unser automatisiertes Kontaktformular und die Terminvereinbarungsfunktion deaktiviert.",
+        button: "Ablehnen und direkten Kontakt nutzen",
+      },
+      accept: "Akzeptieren und Kontaktformulare aktivieren",
+      changeSettings: "Sie können Ihre Cookie-Einstellungen jederzeit in den Website-Einstellungen ändern."
     },
     imprint: {
       title: "Impressum",
@@ -521,6 +595,12 @@ export const translations = {
         address: "Adresse",
         instagram: "Instagram",
       },
+                  cookieError: {
+        title: "Consentement aux cookies requis",
+        message: "Pour utiliser notre formulaire de contact, vous devez accepter notre politique en matière de cookies. Vous pouvez également nous contacter directement à l'adresse e-mail indiquée",
+        directContact: "Contactez-nous directement",
+        changeCookiePreferences: "Modifier les préférences de cookies",
+      }
     },
     captcha: {
       label: "Vérification de sécurité : Combien font",
@@ -528,6 +608,37 @@ export const translations = {
       incorrect: "Réponse incorrecte. Veuillez réessayer.",
       correct: "¡Correcto!",
       required: "Veuillez compléter correctement la vérification de sécurité.",
+    },
+        cookies : {
+      title : "Consentement à l'utilisation des cookies et au traitement des données",
+      description : "Nous utilisons des cookies et traitons vos données afin de vous offrir la meilleure expérience possible sur notre site web. En acceptant, vous consentez au traitement de vos coordonnées par les services Google à des fins de communication par e-mail et de prise de rendez-vous.",
+      dataProcessing : {
+        title : "Comment nous traitons vos données",
+        email : {
+          title : "Communication par e-mail",
+          description : "Les soumissions de formulaires de contact et les demandes de rendez-vous sont traitées via un compte e-mail Google sécurisé. Vos informations personnelles (nom, e-mail, téléphone, message) seront transmises à hallo (at) raumideenwerk.com pour réponse et suivi.",
+
+        },
+        calendar: {
+          title: "Prise de rendez-vous",
+          description: "Lorsque vous prenez rendez-vous pour une consultation, les détails de votre rendez-vous sont automatiquement ajoutés à notre système Google Agenda. Cela inclut vos coordonnées et vos préférences en matière de rendez-vous afin de faciliter la coordination.",
+        },
+      },
+      privacy : {
+        title : "Vos droits en matière de confidentialité",
+        description : "Nous nous engageons à protéger votre vie privée et à garantir la conformité au RGPD.",
+        point1 : "Vos données sont uniquement utilisées aux fins spécifiques pour lesquelles vous les avez fournies",
+        point2 : "Nous ne partageons pas vos informations avec des tiers en dehors des services Google",
+        point3 : "Vous pouvez demander la suppression de vos données à tout moment en nous contactant",
+        point4 : "Toutes les transmissions de données sont cryptées et sécurisées",
+      },
+      decline : {
+        title : "Si vous refusez les cookies",
+        description : "Vous pouvez toujours nous contacter directement à l'adresse e-mail indiquée dans notre section Contact. Cependant, notre formulaire de contact automatisé et nos fonctionnalités de prise de rendez-vous seront désactivés.",
+        button: "Refuser et utiliser le contact direct",
+      },
+      accept: "Accepter et activer les formulaires de contact",
+      changeSettings: "Vous pouvez modifier vos préférences en matière de cookies à tout moment dans les paramètres du site web.",
     },
     imprint: {
       title: "Mentions légales",
@@ -723,6 +834,12 @@ export const translations = {
         address: "Dirección",
         instagram: "Instagram",
       },
+      cookieError: {
+        title: "Se requiere el consentimiento para el uso de cookies",
+        message: "Para poder utilizar nuestro formulario de contacto, es necesario aceptar la política de cookies. También puede ponerse en contacto con nosotros directamente a través de la dirección de correo electrónico facilitada.",
+        directContact: "Póngase en contacto con nosotros directamente",
+        changeCookiePreferences: "Cambiar preferencias de cookies",
+      },
     },
     captcha: {
       label: "Verificación de seguridad: ¿Cuánto es",
@@ -730,6 +847,37 @@ export const translations = {
       incorrect: "Respuesta incorrecta. Por favor, inténtalo de nuevo.",
       correct: "¡Correcto!",
       required: "Por favor, completa correctamente la verificación de seguridad.",
+    },
+    cookies: {
+      title: "Consentimiento para el uso de cookies y el tratamiento de datos",
+      description: "Utilizamos cookies y tratamos sus datos para ofrecerle la mejor experiencia en nuestro sitio web. Al aceptar, usted da su consentimiento para que tratemos su información de contacto a través de los servicios de Google para la comunicación por correo electrónico y la programación de citas.",
+      dataProcessing: {
+        title:"Cómo procesamos sus datos",
+        email: {
+          title: "Comunicación por correo electrónico",
+          description: "Los envíos de formularios de contacto y las solicitudes de citas se procesan a través de una cuenta de correo electrónico segura de Google. Su información personal (nombre, correo electrónico, teléfono, mensaje) se reenviará a hallo (at) raumideenwerk.com para su respuesta y seguimiento.",
+
+        },
+        calendar: {
+          title: "Programación de citas",
+          description: "Al reservar consultas, los detalles de su cita se añaden automáticamente a nuestro sistema Google Calendar. Esto incluye su información de contacto y sus preferencias de cita para coordinar la programación.",
+        },
+      },
+    privacy:  {
+        title: "Sus derechos de privacidad",
+        description: "Nos comprometemos a proteger su privacidad y a garantizar el cumplimiento del RGPD",
+        point1: "Sus datos solo se utilizan para el fin específico para el que los ha facilitado",
+        point2: "No compartimos su información con terceros ajenos a los servicios de Google",
+        point3: "Puede solicitar la eliminación de sus datos en cualquier momento poniéndose en contacto con nosotros",
+        point4: "Todas las transmisiones de datos están encriptadas y son seguras",
+      },
+      decline: {
+        title: "Si rechaza las cookies",
+        description: "Aún puede ponerse en contacto con nosotros directamente utilizando la dirección de correo electrónico que se proporciona en nuestra sección de contacto. Sin embargo, nuestro formulario de contacto automatizado y las funciones de programación de citas quedarán desactivadas.",
+        button: "Rechazar y utilizar el contacto directo",
+      },
+      accept: "Aceptar y habilitar los formularios de contacto",
+      changeConfiguration: "Puede cambiar sus preferencias de cookies en cualquier momento en la configuración del sitio web.",
     },
     imprint: {
       title: "Aviso legal",
@@ -807,5 +955,5 @@ export const translations = {
         cta: "Transformar Espacio",
       },
     },
-  },
+  }
 }

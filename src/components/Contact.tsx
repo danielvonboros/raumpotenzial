@@ -6,13 +6,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Mail, MapPin, Phone, CheckCircle, AlertCircle } from "lucide-react";
+import { useCookieConsent } from "@/contexts/CookieConsentContext";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  CheckCircle,
+  AlertCircle,
+  ExternalLink,
+} from "lucide-react";
 import { useState } from "react";
 import Captcha from "@/components/Captcha";
 import { submitContactForm } from "@/app/actions/SendMail";
 
 export default function Contact() {
   const { t } = useLanguage();
+  const { hasConsented, resetConsent } = useCookieConsent();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,6 +38,14 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!hasConsented) {
+      setSubmitStatus({
+        type: "error",
+        message: t("contact.cookieError.message"),
+      });
+      return;
+    }
 
     if (!isCaptchaValid) {
       setSubmitStatus({
@@ -95,6 +112,14 @@ export default function Contact() {
     setIsCaptchaValid(isValid);
   };
 
+  const generateMailtoLink = () => {
+    const subject = encodeURIComponent(formData.subject || "Contact Request");
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    return `mailto:hallo@raumideenwerk.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <section className="py-20 px-4 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
@@ -110,6 +135,28 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+            {!hasConsented && (
+              <div className="mb-6 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+                <div className="flex items-start gap-3">
+                  <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5" />
+                  <div>
+                    <h4 className="font-medium text-amber-900 dark:text-amber-100 mb-1">
+                      {t("contact.cookieError.title")}
+                    </h4>
+                    <p className="text-sm text-amber-700 dark:text-amber-300 mb-3">
+                      {t("contact.cookieError.message")}
+                    </p>
+                    <p className="text-sm font-medium text-amber-900 dark:text-amber-100">
+                      {t("contact.cookieError.directContact")}
+                    </p>
+                    <p className="text-sm text-amber-700 dark:text-amber-300">
+                      hallo@raumideenwerk.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <Input
@@ -119,7 +166,8 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                  disabled={!hasConsented}
+                  className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
               </div>
               <div>
@@ -130,7 +178,8 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                  disabled={!hasConsented}
+                  className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
               </div>
               <div>
@@ -141,7 +190,8 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                  disabled={!hasConsented}
+                  className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
               </div>
               <div>
@@ -152,15 +202,18 @@ export default function Contact() {
                   onChange={handleChange}
                   rows={6}
                   required
-                  className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                  disabled={!hasConsented}
+                  className="text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
               </div>
 
               {/* Captcha */}
-              <Captcha
-                onValidationChange={handleCaptchaValidation}
-                reset={resetCaptcha}
-              />
+              {hasConsented && (
+                <Captcha
+                  onValidationChange={handleCaptchaValidation}
+                  reset={resetCaptcha}
+                />
+              )}
 
               {/* Status Messages */}
               {submitStatus.type && (
@@ -188,13 +241,27 @@ export default function Contact() {
                 </div>
               )}
 
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={!isCaptchaValid || isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : t("contact.form.send")}
-              </Button>
+              <div className="space-y-3">
+                <Button
+                  type="submit"
+                  className="w-full"
+                  disabled={!hasConsented || !isCaptchaValid || isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : t("contact.form.send")}
+                </Button>
+
+                {!hasConsented && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => window.open(generateMailtoLink(), "_blank")}
+                    className="w-full bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 flex items-center justify-center gap-2"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Open in Email App
+                  </Button>
+                )}
+              </div>
             </form>
           </div>
 
@@ -207,7 +274,7 @@ export default function Contact() {
                   {t("contact.info.phone")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  {t("imprint.content.phone")}
+                  +49 160 495 81 48
                 </p>
               </div>
             </div>
@@ -218,7 +285,7 @@ export default function Contact() {
                   {t("contact.info.email")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  {t("imprint.content.email")}
+                  hallo (at) raumideenwerk.com
                 </p>
               </div>
             </div>
@@ -229,7 +296,9 @@ export default function Contact() {
                   {t("contact.info.address")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  {t("imprint.content.address")}
+                  Kolonnenstraße 8
+                  <br />
+                  10827 Berlin
                   <br />
                   Germany
                 </p>
@@ -237,18 +306,52 @@ export default function Contact() {
             </div>
 
             {/* Email Service Status */}
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+            <div
+              className={`rounded-lg p-4 border ${
+                hasConsented
+                  ? "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800"
+                  : "bg-gray-50 dark:bg-gray-700/50 border-gray-200 dark:border-gray-600"
+              }`}
+            >
               <div className="flex items-start gap-3">
-                <Mail className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5" />
+                <Mail
+                  className={`h-5 w-5 mt-0.5 ${
+                    hasConsented
+                      ? "text-green-600 dark:text-green-400"
+                      : "text-gray-600 dark:text-gray-400"
+                  }`}
+                />
                 <div>
-                  <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-1">
-                    Email Delivery
+                  <h4
+                    className={`text-sm font-semibold mb-1 ${
+                      hasConsented
+                        ? "text-green-900 dark:text-green-100"
+                        : "text-gray-900 dark:text-gray-100"
+                    }`}
+                  >
+                    {hasConsented
+                      ? "Email Service Active"
+                      : "Direct Contact Only"}
                   </h4>
-                  <p className="text-sm text-blue-700 dark:text-blue-300">
-                    Messages are automatically forwarded to
-                    hallo@raumideenwerk.com. You&apos;ll receive a confirmation
-                    email after submitting.
+                  <p
+                    className={`text-sm ${
+                      hasConsented
+                        ? "text-green-700 dark:text-green-300"
+                        : "text-gray-600 dark:text-gray-300"
+                    }`}
+                  >
+                    {hasConsented
+                      ? "Messages are automatically forwarded to hallo@raumideenwerk.com. You'll receive a confirmation email after submitting."
+                      : "Cookie consent required for automated forms. Use direct email contact or accept cookies to enable form submission."}
                   </p>
+                  {!hasConsented && (
+                    <button
+                      onClick={() => resetConsent()}
+                      className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline mt-2"
+                    >
+                      {t("contact.cookieError.changeCookiePreferences")}
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
