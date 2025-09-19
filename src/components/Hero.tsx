@@ -8,17 +8,17 @@ import { useState, useEffect } from "react";
 
 const slides = [
   {
-    image: "/room/sample_room_1_after2.png",
+    image: "/room/sample_room_1_after2.webp",
     alt: "Room Transformation with storage space",
     slideKey: "slide1",
   },
   {
-    image: "/furniture/quadra_1.jpeg",
+    image: "/furniture/quadra_wide.webp",
     alt: "Minimalist Sideboard",
     slideKey: "slide2",
   },
   {
-    image: "/room/sample_room_2-after.png",
+    image: "/room/sample_room_2_after.webp",
     alt: "Room divider and loft bed",
     slideKey: "slide3",
   },

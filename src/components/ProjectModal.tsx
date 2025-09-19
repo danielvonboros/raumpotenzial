@@ -21,22 +21,20 @@ interface ProjectModalProps {
 
 const projectImages = {
   project1: [
-    "/room/sample_room_1_before.jpeg",
-    "/room/sample_room_1-sketch.jpg",
-    "/room/sample_room_1-after.jpg",
-    "/room/sample_room_1_after2.png",
+    "/room/sample_room_1_before.webp",
+    "/room/sample_room_1_sketch.webp",
+    "/room/sample_room_1_after.webp",
+    "/room/sample_room_1_after2.webp",
   ],
   project2: [
-    "/minimalist-bookshelf-storage.png",
-    "/modular-bookshelf.png",
-    "/arranged-bookshelf.png",
-    "/placeholder-idd4q.png",
+    "/furniture/quadra1.webp",
+    "/furniture/quadra2.webp",
+    "/furniture/quadra3.webp",
   ],
   project3: [
-    "/luxury-bedroom-suite.png",
-    "/luxury-headboard-detail.png",
-    "/bedroom-nightstand-charging.png",
-    "/complete-bedroom-suite.png",
+    "/room/sample_room_2_before.webp",
+    "/room/sample_room_2_sketch.webp",
+    "/room/sample_room_2_after.webp",
   ],
 };
 
