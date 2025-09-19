@@ -9,19 +9,19 @@ import ProjectModal from "@/components/ProjectModal";
 const projects = [
   {
     id: "project1",
-    image: "/room/sample_room_1_after2.png",
+    image: "/room/sample_room_1_after2.webp",
     titleKey: "projects.project1.title",
     descriptionKey: "projects.project1.description",
   },
   {
     id: "project2",
-    image: "/furniture/quadra_1.jpeg",
+    image: "/furniture/wide.webp",
     titleKey: "projects.project2.title",
     descriptionKey: "projects.project2.description",
   },
   {
     id: "project3",
-    image: "/room/sample_room_2-after.png",
+    image: "/room/sample_room_2_after.webp",
     titleKey: "projects.project3.title",
     descriptionKey: "projects.project3.description",
   },
