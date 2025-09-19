@@ -15,7 +15,7 @@ const projects = [
   },
   {
     id: "project2",
-    image: "/furniture/wide.webp",
+    image: "/furniture/quadra_wide.webp",
     titleKey: "projects.project2.title",
     descriptionKey: "projects.project2.description",
   },
