@@ -180,11 +180,12 @@ export const translations = {
       subtitle: "Professional interior design consultation packages tailored to your needs",
       bookConsultation: "Book Consultation",
       askQuestions: "Ask Questions",
+      hoursNote: "If the scope of a project isn’t fully defined or no package is selected, I simply charge based on the time invested. My hourly rate is €100.",
       baseRatesNote: "All prices are base rates and may vary based on project complexity and specific requirements.",
       consultationNote: "Book a consultation to discuss your project in detail and receive a personalized quote.",
       spaceImpulses: {
         title: "Space Impulses",
-        price: "€249",
+        price: "€289",
         duration: "Entry Level",
         description: "The package for inspiration and ideas for your rooms. For rooms up to 20m². Online consultation.",
         features: [
@@ -199,7 +200,7 @@ export const translations = {
       },
       spaceConcepts: {
         title: "Space Concepts",
-        price: "€449",
+        price: "€499",
         duration: "Professional Package",
         description: "The complete package for rooms measuring 15m² to 20m². The concept for converting your living space yourself. The well-thought-out design idea with on-site (in Berlin, Germany) consultation.",
         features: [
@@ -220,7 +221,7 @@ export const translations = {
       },
       spaceTransformation: {
         title: "Space Transformation",
-        price: "€849",
+        price: "€899",
         duration: "Complete Solution",
         description: "The worry-free package for transforming your living space with 3D visualization and on-site measurements (in Berlin, Germany). The intelligent, all-inclusive solution for transforming your living space. For rooms up to 20m².",
         features: [
@@ -419,13 +420,14 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       subtitle: "Professionelle Interior Design-Beratungspakete nach Ihren Bedürfnissen",
       bookConsultation: "Beratung buchen",
       askQuestions: "Fragen stellen",
+      hoursNote: "Sollte der Umfang einer Anfrage noch nicht ganz klar sein oder kein Paket gebucht werden, rechne ich meine Arbeit nach Zeitaufwand ab. Mein Stundensatz liegt bei 100 EUR.",
       baseRatesNote:
         "Alle Preise sind Grundpreise und können je nach Projektkomplexität und spezifischen Anforderungen variieren.",
       consultationNote:
         "Buchen Sie eine Beratung, um Ihr Projekt im Detail zu besprechen und ein personalisiertes Angebot zu erhalten.",
       spaceImpulses: {
         title: "Raum Impulse",
-        price: "249€",
+        price: "289€",
         duration: "Online Paket",
         description: "Das Paket für Inspirationen und Ideen für Ihre Räume. Für Räume bis 20m². Online Beratung.",
         features: [
@@ -440,7 +442,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       },
       spaceConcepts: {
         title: "Raum Konzepte",
-        price: "449€",
+        price: "499€",
         duration: "Profi-Paket",
         description: "Das Rundum-Paket für Räume mit einer Größe von 15m² bis 20m². Das Konzept zum Umbau des Wohnraums in Eigenregie. Die durchdachte Gestaltungsidee mit Beratung vor Ort (in Berlin).",
         features: [
@@ -461,7 +463,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       },
       spaceTransformation: {
         title: "Raum Transformation",
-        price: "849€",
+        price: "899€",
         duration: "Komplettlösung",
         description: "Das Sorglos Paket zur Verwandlung des Wohnraumes mit 3D-Visualisierung und Aufmaß vor Ort (in Berlin). Die intelligente All-Inclusive-Lösung zur Verwandlung Ihres Wohnraums. Für Räume bis 20m².",
         features: [
@@ -660,13 +662,14 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       subtitle: "Forfaits de consultation en design d'intérieur professionnel adaptés à vos besoins",
       bookConsultation: "Réserver une Consultation",
       askQuestions: "Poser des Questions",
+      hoursNote: "Si la portée du projet n’est pas encore clairement définie ou qu’aucun forfait n’est choisi, je facture simplement selon le temps consacré. Mon tarif horaire est de 100 €.",
       baseRatesNote:
         "Tous les prix sont des tarifs de base et peuvent varier selon la complexité du projet et les exigences spécifiques.",
       consultationNote:
         "Réservez une consultation pour discuter de votre projet en détail et recevoir un devis personnalisé.",
       spaceImpulses: {
         title: "Impulsions Espace",
-        price: "249€",
+        price: "289€",
         duration: "Niveau Débutant",
         description: "Le forfait pour l'inspiration et les idées pour vos pièces. Pour les pièces jusqu'à 20m². Consultation en ligne.",
         features: [
@@ -681,7 +684,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       },
       spaceConcepts: {
         title: "Concepts Espace",
-        price: "449€",
+        price: "499€",
         duration: "Forfait Professionnel",
         description: "Le forfait complet pour les pièces de 15m² à 20m². Le concept pour transformer votre espace de vie par vous-même. L'idée de conception bien pensée avec une consultation sur place (à Berlin, Allemagne).",
         features: [
@@ -702,7 +705,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       },
       spaceTransformation: {
         title: "Transformation Espace",
-        price: "849€",
+        price: "899€",
         duration: "Solution Complète",
         description: "Le forfait sans souci pour transformer votre espace de vie avec visualisation 3D et mesures sur place (à Berlin, Allemagne). La solution tout-en-un intelligente pour transformer votre espace de vie. Pour les pièces jusqu'à 20m².",
         features: [
@@ -899,13 +902,14 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       subtitle: "Paquetes de consultoría de diseño de interiores profesional adaptados a tus necesidades",
       bookConsultation: "Reservar Consulta",
       askQuestions: "Hacer Preguntas",
+      hoursNote: "Si el alcance del proyecto aún no está claramente definido o no se elige un paquete, cobro según el tiempo dedicado. Mi tarifa por hora es de 100 €.",
       baseRatesNote:
         "Todos los precios son tarifas base y pueden variar según la complejidad del proyecto y los requisitos específicos.",
       consultationNote:
         "Reserva una consulta para discutir tu proyecto en detalle y recibir una cotización personalizada.",
       spaceImpulses: {
         title: "Impulsos Espaciales",
-        price: "249€",
+        price: "289€",
         duration: "Nivel Básico",
         description: "El paquete de inspiración e ideas para sus habitaciones. Para habitaciones de hasta 20 m². Asesoramiento online.",
         features: [
@@ -920,7 +924,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       },
       spaceConcepts: {
         title: "Conceptos Espaciales",
-        price: "449€",
+        price: "499€",
         duration: "Paquete Profesional",
         description: "El paquete completo para habitaciones con un tamaño de entre 15 m² y 20 m². El concepto para reformar el salón por cuenta propia. La idea de diseño bien pensada con asesoramiento in situ. (en Berlín, Alemania).",
         features: [
@@ -941,7 +945,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       },
       spaceTransformation: {
         title: "Transformación Espacial",
-        price: "849€",
+        price: "899€",
         duration: "Solución Completa",
         description: "El paquete sin preocupaciones para transformar su espacio vital con visualización 3D y medición in situ (en Berlín, Alemania). La solución todo en uno inteligente para transformar su espacio vital. Para habitaciones de hasta 20 m².",
         features: [
