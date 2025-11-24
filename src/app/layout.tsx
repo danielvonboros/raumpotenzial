@@ -14,9 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "raumideenwerk",
+  title:
+    "raumideenwerk – Innenarchitektur & Raumkonzepte in Berlin | Smart Space Design",
   description:
-    "Innenraumdesign und Architektur - Raum Konzepte, Möbeldesign, Design, Einrichtung, Beratung",
+    "Innenarchitektur & Interior Design aus Berlin – spezialisiert auf Raumkonzepte, Raumaufteilung, Möbel nach Maß und die Gestaltung kleiner Stadtwohnungen. Individuelle Designlösungen, Beratung und maßgefertigte Möbel.",
   keywords: [
     "interior design",
     "room concepts",
