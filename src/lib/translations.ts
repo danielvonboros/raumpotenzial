@@ -25,6 +25,21 @@ export const translations = {
         subtitle: "Elegant bedroom furniture combining comfort with sophisticated design",
         cta: "All Projects",
       },
+      slide4: {
+        title: "All-in-one furniture for small apartments",
+        subtitle: "Walk-in closet, wall unit, and loft bed all in one",
+        cta: "All Projects",
+      },
+      slide5: {
+        title: "Child-friendly small flat conversion",
+        subtitle: "Additional level creates space for the whole family",
+        cta: "All Projects",
+      },
+      slide6: {
+        title: "Platform bed and wardrobe",
+        subtitle: "Combined wardrobe and bed solution for small apartments",
+        cta: "All Projects",
+      },
     },
     introduction: {
       title: "Smart Space. Better Living.",
@@ -71,6 +86,33 @@ export const translations = {
                  goal: "To separate the living and sleeping areas from each other and integrate them elegantly into the room.",
         materials: "Spruce wood, black",
         dimensions: "Bed: 140x200cm, Shelf: 140x40x200cm",
+        year: "2025",
+      },
+      project4: {
+        title: "Loft Bed with walk-in wardrobe",
+        description: "A multi-purpose solution for a combined living room and bedroom",
+        extendedDescription: "This piece of furniture was designed for a compact apartment in which the living and sleeping areas needed to be clearly separated. The room divider not only provides privacy, but also additional storage space. The integrated loft for the bed creates a cozy sleeping niche and makes optimal use of the vertical space. The design combines functionality with a modern look that zones the room and creates a clear structure at the same time. In addition, the newly created level has created a space below that can be used as a home office or a cozy reading corner",
+                 goal: "To separate the living and sleeping areas from each other and integrate them elegantly into the room.",
+        materials: "melamine-coated plywood",
+        dimensions: "Bed: 160x200cm, Height: 200cm",
+        year: "2025",
+      },
+      project5: {
+        title: "Loft bed for a small family",
+        description: "A new level lifts the bed and makes space for a small family",
+        extendedDescription: "This piece of furniture was designed for a compact apartment in which the living and sleeping areas needed to be clearly separated. The room divider not only provides privacy, but also additional storage space. The integrated loft for the bed creates a cozy sleeping niche and makes optimal use of the vertical space. The design combines functionality with a modern look that zones the room and creates a clear structure at the same time. In addition, the newly created level has created a space below that can be used as a home office or a cozy reading corner",
+                 goal: "To separate the living and sleeping areas from each other and integrate them elegantly into the room.",
+        materials: "Spruce wood, white",
+        dimensions: "Gallery: 300x200cm",
+        year: "2025",
+      },
+      project6: {
+        title: "Room divider and loft bed",
+        description: "A wardrobe-bed solution for a small apartment",
+        extendedDescription: "This piece of furniture was designed for a compact apartment to draw attention away from the bed. The platform offers plenty of additional storage space and replaces a wardrobe. The design resembles a long sideboard and creates space for a mattress without directly resembling a bed. This makes the room appear much tidier than before.",
+        goal: "To separate the living and sleeping areas from each other and integrate them elegantly into the room.",
+        materials: "white coated plywood",
+        dimensions: "Bed: 140x200cm",
         year: "2025",
       },
     },
@@ -169,7 +211,7 @@ export const translations = {
         address: "Kolonnenstrasse 8, 10827 Berlin",
         phone: "Phone: +49 160 495 81 48",
         email: "Email: hallo (at) raumideenwerk.com",
-        vat: "St.-Nr.: 34/236/01118",
+        vat: "VAT ID DE456695805",
         disclaimer: "Disclaimer",
         disclaimerText:
           "The contents of our pages have been created with the utmost care. However, we cannot guarantee the contents' accuracy, completeness or topicality.",
@@ -262,6 +304,24 @@ export const translations = {
         subtitle: "Eine Einbaulösung für die Zonierung eines Wohn- und Schlafzimmers",
         cta: "Projekte ansehen",
       },
+
+      slide4: {
+        title: "Einbaumöbel für kleine Apartments",
+        subtitle: "Begehbarer Kleiderschrank, Wohnwand und Hochbett in einem",
+        cta: "Projekte ansehen",
+      },
+
+      slide5: {
+        title: "Kindgerechter Umbau durch Empore",
+        subtitle: "Zusätzliche Ebene schafft Platz für die ganze Familie",
+        cta: "Projekte ansehen",
+      },
+
+      slide6: {
+        title: "Podestbett für kleine Wohnungen",
+        subtitle: "Kombinierte Lösung aus Kleiderschrank und Bett",
+        cta: "Projekte ansehen",
+      },
     },
         introduction: {
       title: "Smart Space. Better Living.",
@@ -310,6 +370,34 @@ export const translations = {
         goal: "Wohn- und Schlafbereich voneinander trennen und elegant in den Raum einbinden.",
         materials: "Fichtenholz, schwarz lackiert",
         dimensions: "Bett: 140x200cm, Regal: 140x40x200cm",
+        year: "2025",
+      },
+      project4: {
+        title: "Hochbett mit begehbarem Kleiderschrank und Wohnwand",
+        description: "Eine multifunktionale Lösung für einen kombinierten Wohn- und Schlafbereich.",
+        extendedDescription:
+          "Dieses Möbelstück wurde für eine Kompakte Wohnung entworfen, in der zusätzlicher Stauraum durch eine Nutzung unterhalb des Hochbetts als zusätzlicher Stauraum installiert wurde. Das Design kombiniert Funktionalität mit einem modernen Look, der den Raum zoniert und gleichzeitig eine klare Struktur schafft. Zudem ist unter der neu geschaffenen Ebene ein Raum entstanden, der sowohl als begehbarer Kleiderschrank als auch als Wohnwand funktioniert. Dadurch wird der Raum strukturiert und wirkt deutlich aufgeräumter als das zuvor der Fall war.",
+        materials: "melaminharzbeschichtetes Sperrholz",
+        dimensions: "Bett: 160x200cm, Höhe: 200cm",
+        year: "2025",
+      },
+      project5: {
+        title: "Empore für Bett",
+        description: "Einbaulösung für den kindgerechten Umbau eines Mikroapartments.",
+        extendedDescription:"Durch die Verlagerung des Bettes auf eine Hochebene wurde dieses kleine Apartment zu einem kindgerechten Zuhause.Oben schlafen, unten spielen – ein Raum, zwei Welten, perfekt auf die Bedürfnisse der Familie abgestimmt.Durch die zusätzliche Nutzung der Vertikalen entsteht mehr Platz, mehr Ordnung und spürbare Alltagserleichterung für kleine Entdecker.So wird ein winziger Grundriss zu einem funktionalen, klar strukturierten Lebensraum.",
+        goal: "Wohn- und Schlafbereich voneinander trennen und Platz für Kind schaffen. ",
+        materials: "Fichtenholz, weiß lackiert",
+        dimensions: "Hochebene: ca: 300x200cm",
+        year: "2025",
+      },
+      project6: {
+        title: "Raumteiler und Empore für Bett",
+        description: "Eine Einbaulösung für die Zonierung eines Wohn- und Schlafzimmers.",
+        extendedDescription:
+          "Dieses Möbelstück wurde für eine Kompakte Wohnung entworfen, um den Fokus vom Bett zu lenken. Das Podest bietet viel zusätzlichen Stauraum und ersetzt einen Kleiderschrank. Das Design gleicht einem langen Sideboard und schafft Platz für eine Matratze ohne direkt an ein Bett zu erinnern. Dadurch wirkt der Raum deutlich aufgeräumter als das zuvor der Fall war.",
+        goal: "Wohn- und Schlafbereich voneinander trennen und elegant in den Raum einbinden.",
+        materials: "melaminharzbeschichtetes Sperrholz",
+        dimensions: "Bett: 140x200cm",
         year: "2025",
       },
     },
@@ -409,7 +497,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         address: "Kolonnenstraße 8, 10827 Berlin",
         phone: "Telefon: +49 160 495 81 48",
         email: "E-Mail: hallo (at) raumideenwerk.com",
-        vat: "St.-Nr.: 34/236/01118",
+        vat: "St-Nr: DE456695805",
         disclaimer: "Haftungsausschluss",
         disclaimerText:
           "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.",
@@ -504,6 +592,21 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         subtitle: "Une solution intégrée pour délimiter un salon et une chambre à coucher",
         cta: "Découvrir les projets",
       },
+      slide4: {
+        title: "Mobilier tout-en-un pour petits appartements",
+        subtitle: "UDressing, unité murale et lit mezzanine tout-en-un",
+        cta: "Découvrir les projets",
+      },
+      slide5: {
+        title: "Transformation d'un petit appartement adapté aux enfants",
+        subtitle: "Un niveau supplémentaire crée de l'espace pour toute la famille",
+        cta: "Découvrir les projets",
+      },
+      slide6: {
+        title: "Lit plateforme et armoire",
+        subtitle: "Solution combinée armoire et lit pour petits appartements",
+        cta: "Découvrir les projets",
+      },
     },
         introduction: {
       title: "Smart Space. Better Living.",
@@ -553,6 +656,36 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         goal: "Séparer le salon et la chambre à coucher tout en les intégrant élégamment dans la pièce.",
         materials: "Bois d'épicéa, noir",
         dimensions: "Lit : 140x200cm, Étagère : 140x40x200cm",
+        year: "2025",
+      },
+      project4: {
+        title: "Cloison et mezzanine pour lit",
+        description: "Une solution intégrée pour délimiter un salon et une chambre à coucher.",
+        extendedDescription:
+          "Ce meuble a été conçu pour un appartement compact dans lequel un espace de rangement supplémentaire a été installé sous le lit mezzanine. Le design allie fonctionnalité et look moderne, qui divise la pièce en zones tout en créant une structure claire. De plus, l'espace nouvellement créé sous le lit mezzanine peut servir à la fois de dressing et de meuble mural. La pièce est ainsi structurée et semble nettement plus ordonnée qu'auparavant.",
+        goal: "Séparer le salon et la chambre à coucher tout en les intégrant élégamment dans la pièce.",
+        materials: "contreplaqué mélaminé",
+        dimensions: "lit : 160 x 200 cm, hauteur : 200 cm",
+        year: "2025",
+      },
+      project5: {
+        title: "Mezzanine pour lit",
+        description: "Solution d'aménagement pour la transformation d'un micro-appartement adapté aux enfants.",
+        extendedDescription:
+          "En surélevant le lit, ce petit appartement est devenu un logement adapté aux enfants. Dormir en haut, jouer en bas : une pièce, deux mondes, parfaitement adaptés aux besoins de la famille. L'utilisation supplémentaire de la verticale crée plus d'espace, plus d'ordre et facilite considérablement le quotidien des petits explorateurs. Ainsi, un plan d'étage minuscule devient un espace de vie fonctionnel et clairement structuré.",
+        goal: "Séparer le salon et la chambre à coucher et créer de l'espace pour l'enfant.",
+        materials: "Bois d'épicéa, laqué blanc",
+        dimensions: "Plateforme surélevée : env. 300 x 200 cm",
+        year: "2025",
+      },
+      project6: {
+        title: "Séparateur de pièce et mezzanine pour lit",
+        description: "Une solution économique pour aménager un lit surélevé dans un salon-chambre à coucher.",
+        extendedDescription:
+          "Ce meuble a été conçu pour un appartement compact afin de détourner l'attention du lit. La plate-forme offre un espace de rangement supplémentaire important et remplace une armoire. Le design ressemble à un long buffet et crée de l'espace pour un matelas sans rappeler directement un lit. La pièce semble ainsi beaucoup plus rangée qu'auparavant.",
+        goal: "Séparer le salon et la chambre à coucher et les intégrer élégamment dans la pièce. ",
+        materials: "contreplaqué revêtu de blanc",
+        dimensions: "Lit : 140x200cm",
         year: "2025",
       },
     },
@@ -651,7 +784,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         address: "Kolonnenstraße 8, 10827 Berlin",
         phone: "Telefon: +49 160 495 81 48",
         email: "E-Mail: hallo (at) raumideenwerk.com",
-        vat: "St.-Nr.: 34/236/01118",
+        vat: "DE456695805",
         disclaimer: "Avertissement",
         disclaimerText:
           "Le contenu de nos pages a été créé avec le maximum cuidado. Sin embargo, no podemos garantir la exactitud, integridad o actualidad del contenido.",
@@ -746,6 +879,21 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         subtitle: "Una solución empotrada para dividir el salón y el dormitoriodo",
         cta: "Descubrir los proyectos",
       },
+      slide4: {
+        title: "Mobiliario todo en uno para apartamentos pequeños",
+        subtitle: "Vestidor, mueble de pared y cama alta, todo en uno",
+        cta: "Descubrir los proyectos",
+      },
+      slide5: {
+        title: "Reforma de un pequeño piso adaptado a los niños",
+        subtitle: "El nivel adicional crea espacio para toda la familia",
+        cta: "Descubrir los proyectos",
+      },
+      slide6: {
+        title: "Cama con plataforma y armario",
+        subtitle: "Solución combinada de armario y cama para apartamentos pequeños",
+        cta: "Descubrir los proyectos",
+      },
     },
         introduction: {
       title: "Smart Space. Better Living.",
@@ -793,6 +941,36 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
           goal: "Separar la zona de estar y la zona de dormir e integrarlas elegantemente en la habitación",
         materials: "Madera de abeto, lacada en negro",
         dimensions: "Cama: 140x200cm, Estantería: 140x40x200cm",
+        year: "2025",
+      },
+      project4: {
+        title: "Cama alta con armario vestidor y mueble modular",
+        description: "Una solución multifuncional para una zona combinada de salón y dormitorio",
+        extendedDescription:
+          "Este mueble ha sido diseñado para un apartamento compacto en el que se ha instalado espacio de almacenamiento adicional debajo de la cama alta. El diseño combina la funcionalidad con un aspecto moderno que divide la habitación en zonas y, al mismo tiempo, crea una estructura clara. Además, debajo del nuevo nivel se ha creado un espacio que funciona tanto como armario empotrado como mueble de salón. De este modo, la habitación queda estructurada y parece mucho más ordenada que antes",
+          goal: "Separar la zona de estar y la zona de dormir e integrarlas elegantemente en la habitación",
+        materials: "madera contrachapada recubierta de resina de melamina",
+        dimensions: "cama: 160 x 200 cm, altura: 200 cm",
+        year: "2025",
+      },
+      project5: {
+        title: "Altillo para cama",
+        description: "Solución de instalación para la remodelación de un microapartamento adaptado a los niños",
+        extendedDescription:
+          "Al trasladar la cama a un altillo, este pequeño apartamento se convirtió en un hogar adecuado para los niños. Dormir arriba, jugar abajo: un espacio, dos mundos, perfectamente adaptados a las necesidades de la familia. El uso adicional de la verticalidad crea más espacio, más orden y una notable facilidad en la vida cotidiana para los pequeños exploradores. De este modo, una planta minúscula se convierte en un espacio vital funcional y claramente estructurado.",
+          goal: "Separar la zona de estar de la zona de dormir y crear espacio para los niños",
+        materials: "Madera de abeto, lacada en blanco",
+        dimensions: "Plataforma elevada: aprox. 300 x 200 cm",
+        year: "2025",
+      },
+      project6: {
+        title: "Separador de ambientes y altillo para cama",
+        description: "Una solución económica con cama elevada para salón y dormitorio",
+        extendedDescription:
+          "Este mueble se ha diseñado para un piso compacto con el fin de desviar la atención de la cama. La plataforma ofrece mucho espacio de almacenamiento adicional y sustituye al armario. El diseño se asemeja a un aparador largo y crea espacio para un colchón sin recordar directamente a una cama. De este modo, la habitación parece mucho más ordenada que antes.",
+          goal: "SSeparar la zona de estar de la zona de dormir e integrarlas elegantemente en la habitación.",
+        materials: "madera contrachapada recubierta de blanco",
+        dimensions: "Cama: 140x200cm",
         year: "2025",
       },
     },
@@ -891,7 +1069,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         address: "Kolonnenstraße 8, 10827 Berlin",
         phone: "Telefon: +49 160 495 81 48",
         email: "E-Mail: hallo (at) raumideenwerk.com",
-        vat: "St.-Nr.: 34/236/01118",
+        vat: "DE456695805",
         disclaimer: "Descargo de responsabilidad",
         disclaimerText:
           "El contenido de nuestras páginas ha sido creado con el máximo cuidado. Sin embargo, no podemos garantizar la exactitud, integridad o actualidad del contenido.",

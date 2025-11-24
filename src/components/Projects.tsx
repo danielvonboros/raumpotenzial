@@ -25,6 +25,24 @@ const projects = [
     titleKey: "projects.project3.title",
     descriptionKey: "projects.project3.description",
   },
+  {
+    id: "project4",
+    image: "/room/sample_room_4_after.webp",
+    titleKey: "projects.project4.title",
+    descriptionKey: "projects.project3.description",
+  },
+  {
+    id: "project5",
+    image: "/room/sample_room_8_1_after.webp",
+    titleKey: "projects.project5.title",
+    descriptionKey: "projects.project3.description",
+  },
+  {
+    id: "project6",
+    image: "/room/sample_room_11_2_after.webp",
+    titleKey: "projects.project6.title",
+    descriptionKey: "projects.project3.description",
+  },
 ];
 
 export default function Projects() {

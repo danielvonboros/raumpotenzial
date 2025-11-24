@@ -22,6 +22,21 @@ const slides = [
     alt: "Room divider and loft bed",
     slideKey: "slide3",
   },
+  {
+    image: "/room/sample_room_4_after.webp",
+    alt: "Room divider and loft bed",
+    slideKey: "slide4",
+  },
+  {
+    image: "/room/sample_room_8_1_after.webp",
+    alt: "Room divider and loft bed",
+    slideKey: "slide5",
+  },
+  {
+    image: "/room/sample_room_11_2_after.webp",
+    alt: "Room divider and loft bed",
+    slideKey: "slide6",
+  },
 ];
 
 export default function Hero() {

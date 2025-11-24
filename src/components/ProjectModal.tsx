@@ -36,6 +36,27 @@ const projectImages = {
     "/room/sample_room_2_sketch.webp",
     "/room/sample_room_2_after.webp",
   ],
+  project4: [
+    "/room/sample_room_4_before.webp",
+    "/room/sample_room_4_sketch.webp",
+    "/room/sample_room_4_after.webp",
+  ],
+  project5: [
+    "/room/sample_room_8_1_before.webp",
+    "/room/sample_room_8_1_sketch.webp",
+    "/room/sample_room_8_1_after.webp",
+    "/room/sample_room_8_2_before.webp",
+    "/room/sample_room_8_2_sketch.webp",
+    "/room/sample_room_8_2_after.webp",
+  ],
+  project6: [
+    "/room/sample_room_11_2_before.webp",
+    "/room/sample_room_11_2_sketch.webp",
+    "/room/sample_room_11_2_after.webp",
+    "/room/sample_room_11_1_before.webp",
+    "/room/sample_room_11_1_sketch.webp",
+    "/room/sample_room_11_1_after.webp",
+  ],
 };
 
 export default function ProjectModal({
