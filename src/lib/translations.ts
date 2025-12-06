@@ -107,7 +107,7 @@ export const translations = {
         year: "2025",
       },
       project6: {
-        title: "Room divider and loft bed",
+        title: "Platform bed and wardrobe",
         description: "A wardrobe-bed solution for a small apartment",
         extendedDescription: "This piece of furniture was designed for a compact apartment to draw attention away from the bed. The platform offers plenty of additional storage space and replaces a wardrobe. The design resembles a long sideboard and creates space for a mattress without directly resembling a bed. This makes the room appear much tidier than before.",
         goal: "To separate the living and sleeping areas from each other and integrate them elegantly into the room.",
@@ -391,7 +391,7 @@ export const translations = {
         year: "2025",
       },
       project6: {
-        title: "Raumteiler und Empore für Bett",
+        title: "Plattformbett und Kleiderschrank",
         description: "Eine Einbaulösung für die Zonierung eines Wohn- und Schlafzimmers.",
         extendedDescription:
           "Dieses Möbelstück wurde für eine Kompakte Wohnung entworfen, um den Fokus vom Bett zu lenken. Das Podest bietet viel zusätzlichen Stauraum und ersetzt einen Kleiderschrank. Das Design gleicht einem langen Sideboard und schafft Platz für eine Matratze ohne direkt an ein Bett zu erinnern. Dadurch wirkt der Raum deutlich aufgeräumter als das zuvor der Fall war.",
@@ -679,7 +679,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         year: "2025",
       },
       project6: {
-        title: "Séparateur de pièce et mezzanine pour lit",
+        title: "Lit plateforme et armoire",
         description: "Une solution économique pour aménager un lit surélevé dans un salon-chambre à coucher.",
         extendedDescription:
           "Ce meuble a été conçu pour un appartement compact afin de détourner l'attention du lit. La plate-forme offre un espace de rangement supplémentaire important et remplace une armoire. Le design ressemble à un long buffet et crée de l'espace pour un matelas sans rappeler directement un lit. La pièce semble ainsi beaucoup plus rangée qu'auparavant.",
@@ -964,11 +964,11 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         year: "2025",
       },
       project6: {
-        title: "Separador de ambientes y altillo para cama",
+        title: "Plataforma cama y armario",
         description: "Una solución económica con cama elevada para salón y dormitorio",
         extendedDescription:
           "Este mueble se ha diseñado para un piso compacto con el fin de desviar la atención de la cama. La plataforma ofrece mucho espacio de almacenamiento adicional y sustituye al armario. El diseño se asemeja a un aparador largo y crea espacio para un colchón sin recordar directamente a una cama. De este modo, la habitación parece mucho más ordenada que antes.",
-          goal: "SSeparar la zona de estar de la zona de dormir e integrarlas elegantemente en la habitación.",
+          goal: "Separar la zona de estar de la zona de dormir e integrarlas elegantemente en la habitación.",
         materials: "madera contrachapada recubierta de blanco",
         dimensions: "Cama: 140x200cm",
         year: "2025",
