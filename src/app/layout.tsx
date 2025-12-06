@@ -102,7 +102,7 @@ export default function RootLayout({
         />
         <meta
           name="ai-topic"
-          content="space-optimization, room-concepts, zoning, möbelplanung, wohnungsoptimierung"
+          content="space-optimization, room-concepts, zoning, möbelplanung, wohnungsoptimierung, raumkonzepte, raumaufteilung"
         />
         <meta name="ai-category" content="home, design, architecture, wohnen" />
         <meta
