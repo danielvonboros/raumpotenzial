@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useCookieConsent } from "@/contexts/CookieConsentContext";
 import {
   Calendar,
   Clock,
@@ -16,11 +17,10 @@ import {
   Loader2,
   AlertCircle,
   CheckCircle,
-  ExternalLink,
 } from "lucide-react";
 import Captcha from "@/components/Captcha";
 import { googleCalendar } from "@/lib/googleCalendar";
-import { emailService } from "@/app/actions/SendMail";
+import { submitBookingForm } from "@/app/actions/SendMail";
 
 interface BookingCalendarProps {
   isOpen: boolean;
@@ -39,6 +39,7 @@ export default function BookingCalendar({
   selectedService,
 }: BookingCalendarProps) {
   const { t } = useLanguage();
+  const { hasConsented, resetConsent } = useCookieConsent();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string>("");
@@ -61,10 +62,10 @@ export default function BookingCalendar({
 
   // Load available time slots when date is selected
   useEffect(() => {
-    if (selectedDate) {
+    if (selectedDate && hasConsented) {
       loadAvailableTimeSlots(selectedDate);
     }
-  }, [selectedDate]);
+  }, [selectedDate, hasConsented]);
 
   const loadAvailableTimeSlots = async (date: Date) => {
     setLoadingTimeSlots(true);
@@ -147,121 +148,22 @@ export default function BookingCalendar({
   };
 
   const handleDateSelect = (date: Date) => {
-    if (isDateAvailable(date)) {
+    if (isDateAvailable(date) && hasConsented) {
       setSelectedDate(date);
       setSelectedTime("");
     }
   };
 
-  // Generate Google Calendar URL
-  //eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const generateGoogleCalendarUrl = (bookingData: any) => {
-    const startDateTime = new Date(bookingData.date);
-    const [hours, minutes] = bookingData.time.split(":");
-    startDateTime.setHours(
-      Number.parseInt(hours),
-      Number.parseInt(minutes),
-      0,
-      0
-    );
-
-    const endDateTime = new Date(startDateTime);
-    endDateTime.setHours(startDateTime.getHours() + 1); // 1 hour consultation
-
-    const formatDateForGoogle = (date: Date) => {
-      return date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
-    };
-
-    const title = encodeURIComponent(
-      `Design Consultation - ${bookingData.service}`
-    );
-    const details = encodeURIComponent(
-      `Design Consultation Session\n\n` +
-        `Service: ${bookingData.service}\n` +
-        `Client: ${bookingData.name}\n` +
-        `Email: ${bookingData.email}\n` +
-        `Phone: ${bookingData.phone}\n\n` +
-        `Notes: ${bookingData.message || "No additional notes"}\n\n` +
-        `This is a professional interior design consultation session.`
-    );
-    const location = encodeURIComponent(
-      "Design Studio - Address will be confirmed via email"
-    );
-
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${formatDateForGoogle(
-      startDateTime
-    )}/${formatDateForGoogle(
-      endDateTime
-    )}&details=${details}&location=${location}&sf=true&output=xml`;
-
-    return googleCalendarUrl;
-  };
-
-  // Generate ICS file content
-  //eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const generateICSFile = (bookingData: any) => {
-    const startDateTime = new Date(bookingData.date);
-    const [hours, minutes] = bookingData.time.split(":");
-    startDateTime.setHours(
-      Number.parseInt(hours),
-      Number.parseInt(minutes),
-      0,
-      0
-    );
-
-    const endDateTime = new Date(startDateTime);
-    endDateTime.setHours(startDateTime.getHours() + 1);
-
-    const formatDateForICS = (date: Date) => {
-      return date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
-    };
-
-    const icsContent = [
-      "BEGIN:VCALENDAR",
-      "VERSION:2.0",
-      "PRODID:-//Furniture Designer//Design Consultation//EN",
-      "BEGIN:VEVENT",
-      `UID:${Date.now()}@furnituredesigner.com`,
-      `DTSTART:${formatDateForICS(startDateTime)}`,
-      `DTEND:${formatDateForICS(endDateTime)}`,
-      `SUMMARY:Design Consultation - ${bookingData.service}`,
-      `DESCRIPTION:Design Consultation Session\\n\\nService: ${
-        bookingData.service
-      }\\nClient: ${bookingData.name}\\nEmail: ${bookingData.email}\\nPhone: ${
-        bookingData.phone
-      }\\n\\nNotes: ${bookingData.message || "No additional notes"}`,
-      "LOCATION:Design Studio - Address will be confirmed via email",
-      "STATUS:CONFIRMED",
-      "BEGIN:VALARM",
-      "TRIGGER:-PT15M",
-      "ACTION:DISPLAY",
-      "DESCRIPTION:Design Consultation in 15 minutes",
-      "END:VALARM",
-      "END:VEVENT",
-      "END:VCALENDAR",
-    ].join("\r\n");
-
-    return icsContent;
-  };
-
-  //eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const downloadICSFile = (bookingData: any) => {
-    const icsContent = generateICSFile(bookingData);
-    const blob = new Blob([icsContent], {
-      type: "text/calendar;charset=utf-8",
-    });
-    const link = document.createElement("a");
-    link.href = window.URL.createObjectURL(blob);
-    link.download = `design-consultation-${
-      bookingData.date.toISOString().split("T")[0]
-    }.ics`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!hasConsented) {
+      setSubmitStatus({
+        type: "error",
+        message: t("contact.cookieError.message"),
+      });
+      return;
+    }
 
     if (!selectedDate || !selectedTime) {
       setSubmitStatus({
@@ -283,18 +185,17 @@ export default function BookingCalendar({
     setSubmitStatus({ type: null, message: "" });
 
     try {
-      // Prepare booking data
-      const bookingData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        service: selectedService,
-        date: selectedDate.toISOString().split("T")[0],
-        time: selectedTime,
-        message: formData.message,
-      };
+      // Prepare form data for server action
+      const formDataObj = new FormData();
+      formDataObj.append("name", formData.name);
+      formDataObj.append("email", formData.email);
+      formDataObj.append("phone", formData.phone);
+      formDataObj.append("service", selectedService);
+      formDataObj.append("date", selectedDate.toISOString().split("T")[0]);
+      formDataObj.append("time", selectedTime);
+      formDataObj.append("message", formData.message);
 
-      const result = await emailService.sendBookingEmail(bookingData);
+      const result = await submitBookingForm(formDataObj);
 
       if (result.success) {
         setSubmitStatus({
@@ -303,7 +204,7 @@ export default function BookingCalendar({
         });
 
         // Handle booking data for calendar integration
-        const fullBookingData = {
+        const bookingData = {
           service: selectedService,
           date: selectedDate,
           time: selectedTime,
@@ -339,42 +240,17 @@ export default function BookingCalendar({
           console.log("Event created in designer's calendar");
         }
 
-        // Show success and offer calendar options after a delay
+        // Reset form and close modal after success
         setTimeout(() => {
-          const shouldAddToCalendar = window.confirm(
-            "Consultation booked successfully! Would you like to add this appointment to your calendar?"
-          );
-
-          if (shouldAddToCalendar) {
-            // Try to open Google Calendar first
-            const googleCalendarUrl =
-              generateGoogleCalendarUrl(fullBookingData);
-            //eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const newWindow = window.open(googleCalendarUrl, "_blank");
-
-            // If popup is blocked or user prefers, offer ICS download
-            setTimeout(() => {
-              const shouldDownloadICS = window.confirm(
-                "If Google Calendar didn't open, would you like to download a calendar file instead?"
-              );
-              if (shouldDownloadICS) {
-                downloadICSFile(fullBookingData);
-              }
-            }, 2000);
-          }
-
-          // Reset form and close modal after calendar handling
-          setTimeout(() => {
-            setFormData({ name: "", email: "", phone: "", message: "" });
-            setSelectedDate(null);
-            setSelectedTime("");
-            setTimeSlots([]);
-            setIsCaptchaValid(false);
-            setResetCaptcha((prev) => !prev);
-            setSubmitStatus({ type: null, message: "" });
-            onClose();
-          }, 3000);
-        }, 2000);
+          setFormData({ name: "", email: "", phone: "", message: "" });
+          setSelectedDate(null);
+          setSelectedTime("");
+          setTimeSlots([]);
+          setIsCaptchaValid(false);
+          setResetCaptcha((prev) => !prev);
+          setSubmitStatus({ type: null, message: "" });
+          onClose();
+        }, 3000);
       } else {
         setSubmitStatus({
           type: "error",
@@ -411,26 +287,6 @@ export default function BookingCalendar({
     setIsCaptchaValid(isValid);
   };
 
-  const handleMailtoFallback = () => {
-    if (!selectedDate || !selectedTime) {
-      alert("Please select a date and time first.");
-      return;
-    }
-
-    const bookingData = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      service: selectedService,
-      date: selectedDate.toISOString().split("T")[0],
-      time: selectedTime,
-      message: formData.message,
-    };
-
-    const mailtoLink = emailService.generateBookingMailtoLink(bookingData);
-    window.open(mailtoLink, "_blank");
-  };
-
   if (!isOpen) return null;
 
   const days = getDaysInMonth(currentDate);
@@ -451,13 +307,10 @@ export default function BookingCalendar({
             <p className="text-gray-600 dark:text-gray-300">
               {selectedService}
             </p>
-            {!googleCalendar.isConfigured() && (
+            {!hasConsented && (
               <div className="flex items-center gap-2 mt-2 text-sm text-amber-600 dark:text-amber-400">
                 <AlertCircle className="h-4 w-4" />
-                <span>
-                  Using demo availability - Real-time calendar sync not
-                  configured
-                </span>
+                <span>Cookie consent required for booking appointments</span>
               </div>
             )}
           </div>
@@ -472,9 +325,39 @@ export default function BookingCalendar({
         </div>
 
         <div className="p-6">
+          {!hasConsented && (
+            <div className="mb-6 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5" />
+                <div>
+                  <h4 className="font-medium text-amber-900 dark:text-amber-100 mb-1">
+                    {t("contact.cookieError.title")}
+                  </h4>
+                  <p className="text-sm text-amber-700 dark:text-amber-300 mb-3">
+                    {t("contact.cookieError.message")}
+                  </p>
+                  <p className="text-sm font-medium text-amber-900 dark:text-amber-100">
+                    {t("contact.cookieError.directContact")}
+                  </p>
+                  <p className="text-sm text-amber-700 dark:text-amber-300">
+                    hallo@raumideenwerk.com
+                  </p>
+                  <button
+                    onClick={() => resetConsent()}
+                    className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 hover:cursor-pointer dark:hover:text-blue-300 underline mt-2"
+                  >
+                    {t("contact.cookieError.changeCookiePreferences")}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Calendar Section */}
-            <div>
+            <div
+              className={!hasConsented ? "opacity-50 pointer-events-none" : ""}
+            >
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                 <Calendar className="h-5 w-5 mr-2" />
                 Select Date
@@ -487,6 +370,7 @@ export default function BookingCalendar({
                   size="sm"
                   onClick={handlePrevMonth}
                   className="text-gray-600 dark:text-gray-300"
+                  disabled={!hasConsented}
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </Button>
@@ -498,6 +382,7 @@ export default function BookingCalendar({
                   size="sm"
                   onClick={handleNextMonth}
                   className="text-gray-600 dark:text-gray-300"
+                  disabled={!hasConsented}
                 >
                   <ChevronRight className="h-4 w-4" />
                 </Button>
@@ -519,11 +404,11 @@ export default function BookingCalendar({
                   <button
                     key={index}
                     onClick={() => day && handleDateSelect(day)}
-                    disabled={!day || !isDateAvailable(day)}
+                    disabled={!day || !isDateAvailable(day) || !hasConsented}
                     className={`p-2 text-sm rounded-lg transition-colors ${
                       !day
                         ? "invisible"
-                        : !isDateAvailable(day)
+                        : !isDateAvailable(day) || !hasConsented
                         ? "text-gray-300 dark:text-gray-600 cursor-not-allowed"
                         : selectedDate &&
                           day.toDateString() === selectedDate.toDateString()
@@ -537,7 +422,7 @@ export default function BookingCalendar({
               </div>
 
               {/* Time Slots */}
-              {selectedDate && (
+              {selectedDate && hasConsented && (
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
                     <Clock className="h-5 w-5 mr-2" />
@@ -589,13 +474,6 @@ export default function BookingCalendar({
                           </button>
                         ))}
                   </div>
-
-                  {googleCalendar.isConfigured() && (
-                    <p className="text-xs text-green-600 dark:text-green-400 mt-2 flex items-center gap-1">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      Real-time availability from Google Calendar
-                    </p>
-                  )}
                 </div>
               )}
             </div>
@@ -615,7 +493,8 @@ export default function BookingCalendar({
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                    disabled={!hasConsented}
+                    className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
                 <div>
@@ -626,7 +505,8 @@ export default function BookingCalendar({
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                    disabled={!hasConsented}
+                    className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
                 <div>
@@ -637,7 +517,8 @@ export default function BookingCalendar({
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                    disabled={!hasConsented}
+                    className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
                 <div>
@@ -647,15 +528,18 @@ export default function BookingCalendar({
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                    disabled={!hasConsented}
+                    className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
                 {/* Captcha */}
-                <Captcha
-                  onValidationChange={handleCaptchaValidation}
-                  reset={resetCaptcha}
-                />
+                {hasConsented && (
+                  <Captcha
+                    onValidationChange={handleCaptchaValidation}
+                    reset={resetCaptcha}
+                  />
+                )}
 
                 {/* Status Messages */}
                 {submitStatus.type && (
@@ -683,27 +567,55 @@ export default function BookingCalendar({
                   </div>
                 )}
 
-                {/* Local Email Service Info */}
-                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+                {/* Cookie Consent Integration Info */}
+                <div
+                  className={`rounded-lg p-4 border ${
+                    hasConsented
+                      ? "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800"
+                      : "bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800"
+                  }`}
+                >
                   <div className="flex items-start gap-3">
-                    <Calendar className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5" />
+                    <Calendar
+                      className={`h-5 w-5 mt-0.5 ${
+                        hasConsented
+                          ? "text-green-600 dark:text-green-400"
+                          : "text-amber-600 dark:text-amber-400"
+                      }`}
+                    />
                     <div>
-                      <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-1">
-                        Local Email Service
+                      <h4
+                        className={`text-sm font-semibold mb-1 ${
+                          hasConsented
+                            ? "text-green-900 dark:text-green-100"
+                            : "text-amber-900 dark:text-amber-100"
+                        }`}
+                      >
+                        {hasConsented
+                          ? "Google Integration Active"
+                          : "Cookie Consent Required"}
                       </h4>
-                      <p className="text-sm text-blue-700 dark:text-blue-300">
-                        Booking processed locally in your browser. Works with
-                        static builds. Use (Email App) button as fallback.
+                      <p
+                        className={`text-sm ${
+                          hasConsented
+                            ? "text-green-700 dark:text-green-300"
+                            : "text-amber-700 dark:text-amber-300"
+                        }`}
+                      >
+                        {hasConsented
+                          ? "Booking confirmations are sent via Gmail SMTP to both you and hallo@raumideenwerk.com. Appointments are automatically added to Google Calendar."
+                          : "Accept cookies to enable automated booking with Google Calendar integration and email notifications."}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="space-y-3">
+                <div className="flex gap-4 pt-4">
                   <Button
                     type="submit"
-                    className="w-full"
+                    className="flex-1 hover:cursor-pointer"
                     disabled={
+                      !hasConsented ||
                       !selectedDate ||
                       !selectedTime ||
                       !isCaptchaValid ||
@@ -712,28 +624,15 @@ export default function BookingCalendar({
                   >
                     {isSubmitting ? "Booking..." : "Book Consultation"}
                   </Button>
-
-                  <div className="flex gap-3">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={handleMailtoFallback}
-                      className="flex-1 bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 flex items-center justify-center gap-2"
-                      disabled={!selectedDate || !selectedTime}
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                      Email App
-                    </Button>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={onClose}
-                      className="flex-1 bg-transparent"
-                      disabled={isSubmitting}
-                    >
-                      Cancel
-                    </Button>
-                  </div>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={onClose}
+                    className="flex-1 bg-transparent"
+                    disabled={isSubmitting}
+                  >
+                    Cancel
+                  </Button>
                 </div>
               </form>
             </div>

@@ -187,6 +187,9 @@ export default function Pricing() {
 
         <div className="text-center mt-12">
           <p className="text-gray-600 dark:text-gray-400 mb-4">
+            {t("pricing.hoursNote")}
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
             {t("pricing.baseRatesNote")}
           </p>
           <p className="text-gray-600 dark:text-gray-400">

@@ -1,11 +1,7 @@
-"use client";
+"use server";
 
-// EmailJS configuration - these would be your EmailJS credentials
-const EMAILJS_CONFIG = {
-  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_default",
-  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_default",
-  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "your_public_key",
-};
+import nodemailer from "nodemailer";
+import LogoLight from "@/assets/LogoLight.svg";
 
 interface ContactFormData {
   name: string;
@@ -14,229 +10,388 @@ interface ContactFormData {
   message: string;
 }
 
-interface BookingFormData {
-  name: string;
-  email: string;
-  phone: string;
-  service: string;
-  date: string;
-  time: string;
-  message: string;
-}
+const smtpPass = Buffer.from(
+  process.env.GMAIL_APP_PASSWORD!,
+  "base64"
+).toString("utf-8");
 
-// Fallback email service that works entirely in the browser
-class LocalEmailService {
-  private isConfigured(): boolean {
-    return !!(
-      EMAILJS_CONFIG.serviceId !== "service_default" &&
-      EMAILJS_CONFIG.templateId !== "template_default" &&
-      EMAILJS_CONFIG.publicKey !== "your_public_key"
-    );
-  }
+// Create SMTP transporter for Gmail
+const createTransporter = () => {
+  return nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: smtpPass,
+    },
+  });
+};
 
-  async sendContactEmail(
-    data: ContactFormData
-  ): Promise<{ success: boolean; message?: string; error?: string }> {
-    try {
-      // Validate required fields
-      if (!data.name || !data.email || !data.subject || !data.message) {
-        return {
-          success: false,
-          error: "All fields are required",
-        };
-      }
+export async function submitContactForm(formData: FormData) {
+  try {
+    // Extract form data
+    const contactData: ContactFormData = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      subject: formData.get("subject") as string,
+      message: formData.get("message") as string,
+    };
 
-      // Email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(data.email)) {
-        return {
-          success: false,
-          error: "Please enter a valid email address",
-        };
-      }
-
-      // If EmailJS is not configured, simulate success for demo
-      if (!this.isConfigured()) {
-        console.log("📧 Contact Form Submission (Demo Mode):");
-        console.log("Name:", data.name);
-        console.log("Email:", data.email);
-        console.log("Subject:", data.subject);
-        console.log("Message:", data.message);
-        console.log("Timestamp:", new Date().toLocaleString());
-
-        // Simulate network delay
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-
-        return {
-          success: true,
-          message:
-            "Message sent successfully! (Demo mode - check console for details)",
-        };
-      }
-
-      // If EmailJS is configured, use it
-      const { default: emailjs } = await import("@emailjs/browser");
-
-      const templateParams = {
-        from_name: data.name,
-        from_email: data.email,
-        subject: data.subject,
-        message: data.message,
-        to_email: "hallo@raumideenwerk.com",
-        timestamp: new Date().toLocaleString(),
-      };
-
-      await emailjs.send(
-        EMAILJS_CONFIG.serviceId,
-        EMAILJS_CONFIG.templateId,
-        templateParams,
-        EMAILJS_CONFIG.publicKey
-      );
-
+    // Validate required fields
+    if (
+      !contactData.name ||
+      !contactData.email ||
+      !contactData.subject ||
+      !contactData.message
+    ) {
       return {
-        success: true,
-        message: "Message sent successfully! We will get back to you soon.",
+        success: false,
+        error: "All fields are required",
       };
-    } catch (error) {
-      console.error("Email sending error:", error);
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(contactData.email)) {
+      return {
+        success: false,
+        error: "Please enter a valid email address",
+      };
+    }
+
+    // Check if Gmail SMTP is configured
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.log("Gmail SMTP not configured. Contact form data:");
+      console.log(contactData);
       return {
         success: false,
         error:
-          "Failed to send message. Please try again later or contact us directly at hallo@raumideenwerk.com",
+          "Email service not configured. Please contact us directly at hallo@raumideenwerk.com",
       };
     }
+
+    const transporter = createTransporter();
+
+    // Prepare email content
+    const emailHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 8px;">
+        <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <img src=${LogoLight} height="250" alt="RaumIdeenWerk Logo" style="display: block; margin-bottom: 20px;" />
+          <h2 style="color: #1f2937; margin-bottom: 20px; border-bottom: 2px solid #3b82f6; padding-bottom: 10px;">
+            New Contact Form Submission
+          </h2>
+          
+          <div style="margin-bottom: 20px;">
+            <h3 style="color: #374151; margin-bottom: 10px;">Contact Information:</h3>
+            <p style="margin: 5px 0;"><strong>Name:</strong> ${
+              contactData.name
+            }</p>
+            <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:${
+              contactData.email
+            }" style="color: #3b82f6;">${contactData.email}</a></p>
+            <p style="margin: 5px 0;"><strong>Subject:</strong> ${
+              contactData.subject
+            }</p>
+          </div>
+          
+          <div style="margin-bottom: 20px;">
+            <h3 style="color: #374151; margin-bottom: 10px;">Message:</h3>
+            <div style="background-color: #f3f4f6; padding: 15px; border-radius: 6px; border-left: 4px solid #3b82f6;">
+              <p style="margin: 0; line-height: 1.6; white-space: pre-wrap;">${
+                contactData.message
+              }</p>
+            </div>
+          </div>
+          
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+            <p style="color: #6b7280; font-size: 14px; margin: 0;">
+              This message was sent from the RaumIdeenWerk contact form on ${new Date().toLocaleString()}.
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const emailText = `
+New Contact Form Submission
+
+Contact Information:
+Name: ${contactData.name}
+Email: ${contactData.email}
+Subject: ${contactData.subject}
+
+Message:
+${contactData.message}
+
+---
+This message was sent from the RaumIdeenWerk contact form on ${new Date().toLocaleString()}.
+    `;
+
+    // Send email to your business email
+    await transporter.sendMail({
+      from: `"RaumIdeenWerk" <${process.env.GMAIL_USER}>`,
+      to: "hallo@raumideenwerk.com",
+      replyTo: contactData.email,
+      subject: `Contact Form: ${contactData.subject}`,
+      html: emailHtml,
+      text: emailText,
+    });
+
+    // Send auto-reply to the user
+    const autoReplyHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 8px;">
+        <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <h2 style="color: #1f2937; margin-bottom: 20px;">Thank you for your message!</h2>
+          
+          <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;">
+            Dear ${contactData.name},
+          </p>
+          
+          <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;">
+            Thank you for reaching out through our contact form. We have received your message regarding "${contactData.subject}" and will get back to you as soon as possible.
+          </p>
+          
+          <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;">
+            We typically respond to inquiries within 24-48 hours during business days. If your inquiry is urgent, please feel free to call us directly.
+          </p>
+          
+          <div style="background-color: #f3f4f6; padding: 15px; border-radius: 6px; margin: 20px 0;">
+            <h3 style="color: #374151; margin-bottom: 10px;">Your Message Summary:</h3>
+            <p style="margin: 5px 0;"><strong>Subject:</strong> ${contactData.subject}</p>
+            <p style="margin: 5px 0;"><strong>Message:</strong></p>
+            <p style="margin: 10px 0; font-style: italic; white-space: pre-wrap;">${contactData.message}</p>
+          </div>
+          
+          <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;">
+            Best regards,<br>
+            RaumIdeenWerk<br>
+            <a href="mailto:hallo@raumideenwerk.com" style="color: #3b82f6;">hallo@raumideenwerk.com</a>
+          </p>
+          
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+            <p style="color: #6b7280; font-size: 14px; margin: 0;">
+              This is an automated confirmation email. Please do not reply to this message directly.
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
+
+    await transporter.sendMail({
+      from: `"RaumIdeenWerk" <${process.env.GMAIL_USER}>`,
+      to: contactData.email,
+      subject: "Thank you for your message - RaumIdeenWerk",
+      html: autoReplyHtml,
+      text: `Dear ${contactData.name},\n\nThank you for reaching out through our contact form. We have received your message regarding "${contactData.subject}" and will get back to you as soon as possible.\n\nWe typically respond to inquiries within 24-48 hours during business days.\n\nBest regards,\nThe Furniture Design Team\nhallo@raumideenwerk.com`,
+    });
+
+    return {
+      success: true,
+      message: "Message sent successfully! We will get back to you soon.",
+    };
+  } catch (error) {
+    console.error("Contact form error:", error);
+    return {
+      success: false,
+      error:
+        "Failed to send message. Please try again later or contact us directly at hallo@raumideenwerk.com",
+    };
   }
+}
 
-  async sendBookingEmail(
-    data: BookingFormData
-  ): Promise<{ success: boolean; message?: string; error?: string }> {
-    try {
-      // Validate required fields
-      if (
-        !data.name ||
-        !data.email ||
-        !data.phone ||
-        !data.service ||
-        !data.date ||
-        !data.time
-      ) {
-        return {
-          success: false,
-          error: "All required fields must be filled",
-        };
-      }
+export async function submitBookingForm(formData: FormData) {
+  try {
+    // Extract booking form data
+    const bookingData = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      service: formData.get("service") as string,
+      date: formData.get("date") as string,
+      time: formData.get("time") as string,
+      message: formData.get("message") as string,
+    };
 
-      // Format date for better readability
-      const formattedDate = new Date(data.date).toLocaleDateString("en-US", {
+    // Validate required fields
+    if (
+      !bookingData.name ||
+      !bookingData.email ||
+      !bookingData.phone ||
+      !bookingData.service ||
+      !bookingData.date ||
+      !bookingData.time
+    ) {
+      return {
+        success: false,
+        error: "All required fields must be filled",
+      };
+    }
+
+    // Check if Gmail SMTP is configured
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.log("Gmail SMTP not configured. Booking data:");
+      console.log(bookingData);
+      return {
+        success: false,
+        error:
+          "Email service not configured. Please contact us directly at hallo@raumideenwerk.com",
+      };
+    }
+
+    const transporter = createTransporter();
+
+    // Format date for better readability
+    const formattedDate = new Date(bookingData.date).toLocaleDateString(
+      "en-US",
+      {
         weekday: "long",
         year: "numeric",
         month: "long",
         day: "numeric",
-      });
-
-      // If EmailJS is not configured, simulate success for demo
-      if (!this.isConfigured()) {
-        console.log("📅 Booking Form Submission (Demo Mode):");
-        console.log("Name:", data.name);
-        console.log("Email:", data.email);
-        console.log("Phone:", data.phone);
-        console.log("Service:", data.service);
-        console.log("Date:", formattedDate);
-        console.log("Time:", data.time);
-        console.log("Message:", data.message);
-        console.log("Timestamp:", new Date().toLocaleString());
-
-        // Simulate network delay
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-
-        return {
-          success: true,
-          message:
-            "Consultation booked successfully! (Demo mode - check console for details)",
-        };
       }
-
-      // If EmailJS is configured, use it
-      const { default: emailjs } = await import("@emailjs/browser");
-
-      const templateParams = {
-        client_name: data.name,
-        client_email: data.email,
-        client_phone: data.phone,
-        service_type: data.service,
-        appointment_date: formattedDate,
-        appointment_time: data.time,
-        additional_notes: data.message || "No additional notes",
-        to_email: "hallo@raumideenwerk.com",
-        timestamp: new Date().toLocaleString(),
-      };
-
-      await emailjs.send(
-        EMAILJS_CONFIG.serviceId,
-        "template_booking", // Different template for bookings
-        templateParams,
-        EMAILJS_CONFIG.publicKey
-      );
-
-      return {
-        success: true,
-        message:
-          "Consultation booked successfully! You will receive a confirmation email shortly.",
-      };
-    } catch (error) {
-      console.error("Booking error:", error);
-      return {
-        success: false,
-        error:
-          "Failed to book consultation. Please try again later or contact us directly at hallo@raumideenwerk.com",
-      };
-    }
-  }
-
-  // Generate mailto link as fallback
-  generateMailtoLink(data: ContactFormData): string {
-    const subject = encodeURIComponent(`Contact Form: ${data.subject}`);
-    const body = encodeURIComponent(
-      `Name: ${data.name}\n` +
-        `Email: ${data.email}\n` +
-        `Subject: ${data.subject}\n\n` +
-        `Message:\n${data.message}\n\n` +
-        `---\n` +
-        `Sent from Furniture Portfolio website on ${new Date().toLocaleString()}`
     );
 
-    return `mailto:hallo@raumideenwerk.com?subject=${subject}&body=${body}`;
-  }
+    // Prepare booking email content
+    const bookingEmailHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 8px;">
+        <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <h2 style="color: #1f2937; margin-bottom: 20px; border-bottom: 2px solid #10b981; padding-bottom: 10px;">
+            🗓️ New Consultation Booking
+          </h2>
+          
+          <div style="margin-bottom: 20px;">
+            <h3 style="color: #374151; margin-bottom: 10px;">👤 Client Information:</h3>
+            <p style="margin: 5px 0;"><strong>Name:</strong> ${
+              bookingData.name
+            }</p>
+            <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:${
+              bookingData.email
+            }" style="color: #3b82f6;">${bookingData.email}</a></p>
+            <p style="margin: 5px 0;"><strong>Phone:</strong> <a href="tel:${
+              bookingData.phone
+            }" style="color: #3b82f6;">${bookingData.phone}</a></p>
+          </div>
+          
+          <div style="margin-bottom: 20px; background-color: #f0f9ff; padding: 20px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+            <h3 style="color: #1e40af; margin-bottom: 15px;">📅 Appointment Details:</h3>
+            <p style="margin: 8px 0; font-size: 16px;"><strong>Service:</strong> ${
+              bookingData.service
+            }</p>
+            <p style="margin: 8px 0; font-size: 16px;"><strong>Date:</strong> ${formattedDate}</p>
+            <p style="margin: 8px 0; font-size: 16px;"><strong>Time:</strong> ${
+              bookingData.time
+            }</p>
+          </div>
+          
+          ${
+            bookingData.message
+              ? `
+          <div style="margin-bottom: 20px;">
+            <h3 style="color: #374151; margin-bottom: 10px;">💬 Additional Notes:</h3>
+            <div style="background-color: #f3f4f6; padding: 15px; border-radius: 6px; border-left: 4px solid #10b981;">
+              <p style="margin: 0; line-height: 1.6; white-space: pre-wrap;">${bookingData.message}</p>
+            </div>
+          </div>
+          `
+              : ""
+          }
+          
+          <div style="margin-top: 30px; padding: 20px; background-color: #fef3c7; border-radius: 8px; border-left: 4px solid #f59e0b;">
+            <h4 style="color: #92400e; margin-bottom: 10px;">⚡ Action Required:</h4>
+            <ul style="color: #92400e; margin: 0; padding-left: 20px;">
+              <li>Confirm appointment availability</li>
+              <li>Send location details to client</li>
+              <li>Add to your calendar</li>
+              <li>Prepare consultation materials</li>
+            </ul>
+          </div>
+          
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+            <p style="color: #6b7280; font-size: 14px; margin: 0;">
+              📧 This booking was made through the RaumIdeenWerk website on ${new Date().toLocaleString()}.
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
 
-  // Generate booking mailto link
-  generateBookingMailtoLink(data: BookingFormData): string {
-    const formattedDate = new Date(data.date).toLocaleDateString("en-US", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
+    // Send booking notification email
+    await transporter.sendMail({
+      from: `"RaumIdeenWerk" <${process.env.GMAIL_USER}>`,
+      to: "hallo@raumideenwerk.com",
+      replyTo: bookingData.email,
+      subject: `🗓️ New Consultation Booking - ${bookingData.service} (${formattedDate} at ${bookingData.time})`,
+      html: bookingEmailHtml,
     });
 
-    const subject = encodeURIComponent(
-      `Consultation Booking - ${data.service}`
-    );
-    const body = encodeURIComponent(
-      `New Consultation Booking Request\n\n` +
-        `Client Information:\n` +
-        `Name: ${data.name}\n` +
-        `Email: ${data.email}\n` +
-        `Phone: ${data.phone}\n\n` +
-        `Appointment Details:\n` +
-        `Service: ${data.service}\n` +
-        `Date: ${formattedDate}\n` +
-        `Time: ${data.time}\n\n` +
-        `Additional Notes:\n${data.message || "No additional notes"}\n\n` +
-        `---\n` +
-        `Booking made through Furniture Portfolio website on ${new Date().toLocaleString()}`
-    );
+    // Send confirmation to client
+    const clientConfirmationHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 8px;">
+        <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <h2 style="color: #1f2937; margin-bottom: 20px;">✅ Consultation Booking Confirmed!</h2>
+          
+          <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;">
+            Dear ${bookingData.name},
+          </p>
+          
+          <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;">
+            Thank you for booking a consultation with us! Your appointment request has been received and we're excited to work with you.
+          </p>
+          
+          <div style="background-color: #f0f9ff; padding: 20px; border-radius: 6px; border-left: 4px solid #3b82f6; margin: 20px 0;">
+            <h3 style="color: #1e40af; margin-bottom: 15px;">📅 Your Appointment Details</h3>
+            <p style="margin: 8px 0; font-size: 16px;"><strong>Service:</strong> ${bookingData.service}</p>
+            <p style="margin: 8px 0; font-size: 16px;"><strong>Date:</strong> ${formattedDate}</p>
+            <p style="margin: 8px 0; font-size: 16px;"><strong>Time:</strong> ${bookingData.time}</p>
+          </div>
+          
+          <div style="background-color: #fef3c7; padding: 20px; border-radius: 6px; border-left: 4px solid #f59e0b; margin: 20px 0;">
+            <h4 style="color: #92400e; margin-bottom: 10px;">📋 What happens next?</h4>
+            <ul style="color: #92400e; margin: 0; padding-left: 20px; line-height: 1.6;">
+              <li>We'll confirm your appointment within 24 hours</li>
+              <li>You'll receive the exact location and meeting details</li>
+              <li>We recommend adding this to your calendar</li>
+              <li>Feel free to prepare any questions or ideas you'd like to discuss</li>
+            </ul>
+          </div>
+          
+          <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;">
+            If you need to reschedule or have any questions before our meeting, please don't hesitate to contact us at <a href="mailto:hallo@raumideenwerk.com" style="color: #3b82f6;">hallo@raumideenwerk.com</a>.
+          </p>
+          
+          <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;">
+            We look forward to bringing your design vision to life!<br><br>
+            Best regards,<br>
+            <strong>RaumIdeenWerk</strong><br>
+            <a href="mailto:hallo@raumideenwerk.com" style="color: #3b82f6;">hallo@raumideenwerk.com</a>
+          </p>
+          
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+            <p style="color: #6b7280; font-size: 14px; margin: 0;">
+              This is an automated confirmation email. If you have any questions, please reply to this email or contact us directly.
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
 
-    return `mailto:hallo@raumideenwerk.com?subject=${subject}&body=${body}`;
+    await transporter.sendMail({
+      from: `"Furniture Portfolio" <${process.env.GMAIL_USER}>`,
+      to: bookingData.email,
+      subject: "✅ Consultation Booking Confirmed - Furniture Portfolio",
+      html: clientConfirmationHtml,
+    });
+
+    return {
+      success: true,
+      message:
+        "Consultation booked successfully! You will receive a confirmation email shortly.",
+    };
+  } catch (error) {
+    console.error("Booking form error:", error);
+    return {
+      success: false,
+      error:
+        "Failed to book consultation. Please try again later or contact us directly at hallo@raumideenwerk.com",
+    };
   }
 }
-
-export const emailService = new LocalEmailService();
