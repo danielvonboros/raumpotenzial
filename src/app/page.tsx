@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
@@ -14,9 +15,11 @@ import Imprint from "@/components/Imprint";
 import Introduction from "@/components/Introduction";
 import { CookieConsentProvider } from "@/contexts/CookieConsentContext";
 import CookieConsentModal from "@/components/CookieConsentModal";
+import PromotionalBadge from "@/components/PromotionalBadge";
 
 function PortfolioContent() {
   const [currentSection, setCurrentSection] = useState("home");
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,6 +85,11 @@ function PortfolioContent() {
           <Imprint />
         </section>
         <CookieConsentModal />
+        <PromotionalBadge
+          shape="christmas-bulb"
+          targetSection="pricing"
+          endDate={t("promotional.endDate")}
+        />
       </main>
     </div>
   );

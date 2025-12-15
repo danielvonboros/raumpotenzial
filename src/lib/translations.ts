@@ -9,6 +9,12 @@ export const translations = {
       imprint: "Imprint",
       pricing: "Pricing",
     },
+    promotional: {
+      title: "Winter Special",
+      ariaLabel: "Click to view winter special pricing",
+      endDate: "ends January 5th",
+      close: "Close promotional badge",
+    },
     hero: {
       slide1: {
         title: "Room transformation with storage space",
@@ -290,6 +296,12 @@ export const translations = {
       contact: "Kontakt",
       imprint: "Impressum",
       pricing: "Preise",
+    },
+        promotional: {
+      title: "Winter Angebot",
+      ariaLabel: "Hier klicken um das Winter Angebot zu sehen",
+      endDate: "endet am 5. Januar",
+      close: "Angebots-Badge schließen",
     },
     hero: {
       slide1: {
@@ -582,6 +594,12 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       imprint: "Mentions légales",
       pricing: "Tarifs",
     },
+        promotional: {
+      title: "Special d'hiver",
+      ariaLabel: "Cliquez ici pour voir l'offre spéciale d'hiver",
+      endDate: "se termine le 5 janvier",
+      close: "Fermer le badge d'offre",
+    },
     hero: {
       slide1: {
         title: "Transformation d'une pièce avec espace de rangement",
@@ -871,6 +889,12 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       contact: "Contacto",
       imprint: "Aviso legal",
       pricing: "Precios",
+    },
+            promotional: {
+      title: "Especial de invierno",
+      ariaLabel: "Haz clic aquí para ver la oferta especial de invierno",
+      endDate: "terminara el 5 de enero",
+      close: "Cerrar la insignia de oferta",
     },
     hero: {
       slide1: {
