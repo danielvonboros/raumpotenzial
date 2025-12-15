@@ -181,7 +181,7 @@ export default function Pricing() {
                   <Button
                     onClick={() => handleServiceClick(t(plan.titleKey))}
                     variant="outline"
-                    className="w-full py-2 text-sm bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    className="w-full py-2 text-sm bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 "
                   >
                     {t("pricing.askQuestions")}
                   </Button>
