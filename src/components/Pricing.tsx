@@ -18,6 +18,7 @@ export default function Pricing() {
     {
       id: "spaceImpulses",
       titleKey: "pricing.spaceImpulses.title",
+      oldPriceKey: "pricing.spaceImpulses.oldPrice",
       priceKey: "pricing.spaceImpulses.price",
       durationKey: "pricing.spaceImpulses.duration",
       descriptionKey: "pricing.spaceImpulses.description",
@@ -28,6 +29,7 @@ export default function Pricing() {
     {
       id: "spaceConcepts",
       titleKey: "pricing.spaceConcepts.title",
+      oldPriceKey: "pricing.spaceConcepts.oldPrice",
       priceKey: "pricing.spaceConcepts.price",
       durationKey: "pricing.spaceConcepts.duration",
       descriptionKey: "pricing.spaceConcepts.description",
@@ -39,6 +41,7 @@ export default function Pricing() {
     {
       id: "spaceTransformation",
       titleKey: "pricing.spaceTransformation.title",
+      oldPriceKey: "pricing.spaceTransformation.oldPrice",
       priceKey: "pricing.spaceTransformation.price",
       durationKey: "pricing.spaceTransformation.duration",
       descriptionKey: "pricing.spaceTransformation.description",
@@ -108,6 +111,9 @@ export default function Pricing() {
                     {t(plan.titleKey)}
                   </h3>
                   <div className="mb-2">
+                    <span className="text-gray-600 dark:text-gray-300 block text-sm text-decoration line-through">
+                      {t(plan.oldPriceKey)}
+                    </span>
                     <span className="text-4xl font-bold text-gray-900 dark:text-white">
                       {t(plan.priceKey)}
                     </span>
@@ -149,7 +155,7 @@ export default function Pricing() {
                           <span className="text-gray-700 dark:text-gray-300">
                             {addOn.name}
                           </span>
-                          <span className="font-semibold text-gray-900 dark:text-white">
+                          <span className="font-semibold text-gray-900 dark:text-white min-w-fit">
                             {addOn.price}
                           </span>
                         </li>
