@@ -221,6 +221,12 @@ export const translations = {
         disclaimer: "Disclaimer",
         disclaimerText:
           "The contents of our pages have been created with the utmost care. However, we cannot guarantee the contents' accuracy, completeness or topicality.",
+        processingData: "Processing of Personal Data",
+        processingDataText: "When using this website, personal data may be processed.If you contact us or book appointments, the submitted contact details are stored and used for the purpose of communication and appointment scheduling.Communication and scheduling are handled via Google Mail (Gmail) and Google Calendar. Personal data may therefore be transmitted to and processed by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland.Processing is based on Art. 6(1)(b) and (f) GDPR.",
+        liabilityHeader: "Liability for Content",
+        liabilityText:"As a service provider, we are responsible for our own content on these pages in accordance with § 7(1) TMG.According to §§ 8–10 TMG, we are not obliged to monitor transmitted or stored third-party information.",
+        linksHeader: "Liability for Links",
+        linksText:"Our website contains links to external third-party websites. We have no influence over their content and therefore assume no liability.",
       },
     },
     pricing: {
@@ -234,7 +240,7 @@ export const translations = {
       spaceImpulses: {
         title: "Space Impulses",
         oldPrice: "€349",
-        price: "€289",
+        price: "€349",
         duration: "Entry Level",
         description: "The package for inspiration and ideas for your rooms. For rooms up to 20m². Online consultation.",
         features: [
@@ -250,7 +256,7 @@ export const translations = {
       spaceConcepts: {
         title: "Space Concepts",
         oldPrice: "€599",
-        price: "€499",
+        price: "€599",
         duration: "Professional Package",
         description: "The complete package for rooms measuring 15m² to 20m². The concept for converting your living space yourself. The well-thought-out design idea with on-site (in Berlin, Germany) consultation.",
         features: [
@@ -272,7 +278,7 @@ export const translations = {
       spaceTransformation: {
         title: "Space Transformation",
         oldPrice: "€1,099",
-        price: "€899",
+        price: "€1.099",
         duration: "Complete Solution",
         description: "The worry-free package for transforming your living space with 3D visualization and on-site measurements (in Berlin, Germany). The intelligent, all-inclusive solution for transforming your living space. For rooms up to 20m².",
         features: [
@@ -516,6 +522,12 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         disclaimer: "Haftungsausschluss",
         disclaimerText:
           "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.",
+        processingData: "Verarbeitung personenbezogener Daten",
+        processingDataText: "Im Rahmen der Nutzung dieser Website werden personenbezogene Daten verarbeitet. Bei einer Kontaktaufnahme(z. B. per E-Mail oder Terminvereinbarung) werden die von den Interessenten übermittelten Kontaktdaten zum Zwecke der Kontaktaufnahme und Terminvereinbarung gespeichert und verwendet. Die Kommunikation sowie Terminabstimmung erfolgen über Google Mail (Gmail) und Google Calendar. Dabei können personenbezogene Daten an die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland übermittelt und dort verarbeitet werden.Die Verarbeitung erfolgt gemäß Art. 6 Abs. 1 lit. b und lit. f DSGVO.",
+        liabilityHeader: "Haftung für Inhalte",
+        liabilityText:"Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.",
+        linksHeader: "Haftung für Links",
+        linksText:"Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte wird daher keine Gewähr übernommen (§ 7 Abs. 2 TMG).",
       },
     },
     pricing: {
@@ -531,7 +543,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       spaceImpulses: {
         title: "Raum Impulse",
         oldPrice:"349€",
-        price: "289€",
+        price: "349€",
         duration: "Online Paket",
         description: "Das Paket für Inspirationen und Ideen für Ihre Räume. Für Räume bis 20m². Online Beratung.",
         features: [
@@ -547,7 +559,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       spaceConcepts: {
         title: "Raum Konzepte",
         oldPrice: "599€",
-        price: "499€",
+        price: "599€",
         duration: "Profi-Paket",
         description: "Das Rundum-Paket für Räume mit einer Größe von 15m² bis 20m². Das Konzept zum Umbau des Wohnraums in Eigenregie. Die durchdachte Gestaltungsidee mit Beratung vor Ort (in Berlin).",
         features: [
@@ -569,7 +581,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       spaceTransformation: {
         title: "Raum Transformation",
         oldPrice: "1.099€",
-        price: "899€",
+        price: "1.099€",
         duration: "Komplettlösung",
         description: "Das Sorglos Paket zur Verwandlung des Wohnraumes mit 3D-Visualisierung und Aufmaß vor Ort (in Berlin). Die intelligente All-Inclusive-Lösung zur Verwandlung Ihres Wohnraums. Für Räume bis 20m².",
         features: [
@@ -812,6 +824,12 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         disclaimer: "Avertissement",
         disclaimerText:
           "Le contenu de nos pages a été créé avec le maximum cuidado. Sin embargo, no podemos garantir la exactitud, integridad o actualidad del contenido.",
+        processingData: "Traitement des données personnelles",
+        processingDataText: "Lors de l’utilisation de ce site web, des données personnelles peuvent être traitées. Les données de contact transmises lors d’une prise de contact ou d’une prise de rendez-vous sont conservées et utilisées exclusivement à des fins de communication et de planification de rendez-vous. La communication et la planification s’effectuent via Google Mail (Gmail) et Google Calendar. Les données peuvent être transmises à Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irlande.Le traitement repose sur l’article 6, paragraphe 1, points b et f du RGPD.",
+        liabilityHeader: "Liability for Content",
+        liabilityText:"As a service provider, we are responsible for our own content on these pages in accordance with § 7(1) TMG.According to §§ 8–10 TMG, we are not obliged to monitor transmitted or stored third-party information.",
+        linksHeader: "Liability for Links",
+        linksText:"Our website contains links to external third-party websites. We have no influence over their content and therefore assume no liability.",
       },
     },
     pricing: {
@@ -826,7 +844,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         "Réservez une consultation pour discuter de votre projet en détail et recevoir un devis personnalisé.",
       spaceImpulses: {
         title: "Impulsions Espace",
-        price: "289€",
+        price: "349€",
         oldPrice: "349€",
         duration: "Niveau Débutant",
         description: "Le forfait pour l'inspiration et les idées pour vos pièces. Pour les pièces jusqu'à 20m². Consultation en ligne.",
@@ -843,7 +861,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       spaceConcepts: {
         title: "Concepts Espace",
         oldPrice: "599€",
-        price: "499€",
+        price: "599€",
         duration: "Forfait Professionnel",
         description: "Le forfait complet pour les pièces de 15m² à 20m². Le concept pour transformer votre espace de vie par vous-même. L'idée de conception bien pensée avec une consultation sur place (à Berlin, Allemagne).",
         features: [
@@ -865,7 +883,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       spaceTransformation: {
         title: "Transformation Espace",
         oldPrice: "1.099€",
-        price: "899€",
+        price: "1.099€",
         duration: "Solution Complète",
         description: "Le forfait sans souci pour transformer votre espace de vie avec visualisation 3D et mesures sur place (à Berlin, Allemagne). La solution tout-en-un intelligente pour transformer votre espace de vie. Pour les pièces jusqu'à 20m².",
         features: [
@@ -1106,6 +1124,12 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         disclaimer: "Descargo de responsabilidad",
         disclaimerText:
           "El contenido de nuestras páginas ha sido creado con el máximo cuidado. Sin embargo, no podemos garantizar la exactitud, integridad o actualidad del contenido.",
+                  processingData: "Tratamiento de datos personales",
+        processingDataText: "Durante el uso de este sitio web se procesan datos personales. Los datos de contacto facilitados para consultas o concertación de citas se almacenan y utilizan con el fin de contacto y gestión de citas. La comunicación y la planificación de citas se realizan mediante Google Mail (Gmail) y Google Calendar. Los datos pueden ser transferidos a Google Ireland Limited, Gordon House, Barrow Street, Dublín 4, Irlanda. El tratamiento se basa en el artículo 6, apartado 1, letras b y f del RGPD.",
+        liabilityHeader: "Liability for Content",
+        liabilityText:"As a service provider, we are responsible for our own content on these pages in accordance with § 7(1) TMG.According to §§ 8–10 TMG, we are not obliged to monitor transmitted or stored third-party information.",
+        linksHeader: "Liability for Links",
+        linksText:"Our website contains links to external third-party websites. We have no influence over their content and therefore assume no liability.",
       },
     },
     pricing: {
@@ -1121,7 +1145,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       spaceImpulses: {
         title: "Impulsos Espaciales",
         oldPrice: "349€",
-        price: "289€",
+        price: "349€",
         duration: "Nivel Básico",
         description: "El paquete de inspiración e ideas para sus habitaciones. Para habitaciones de hasta 20 m². Asesoramiento online.",
         features: [
@@ -1137,7 +1161,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       spaceConcepts: {
         title: "Conceptos Espaciales",
         oldPrice: "599€",
-        price: "499€",
+        price: "599€",
         duration: "Paquete Profesional",
         description: "El paquete completo para habitaciones con un tamaño de entre 15 m² y 20 m². El concepto para reformar el salón por cuenta propia. La idea de diseño bien pensada con asesoramiento in situ. (en Berlín, Alemania).",
         features: [
@@ -1159,7 +1183,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       spaceTransformation: {
         title: "Transformación Espacial",
         oldPrice: "1.099€",
-        price: "899€",
+        price: "1.099€",
         duration: "Solución Completa",
         description: "El paquete sin preocupaciones para transformar su espacio vital con visualización 3D y medición in situ (en Berlín, Alemania). La solución todo en uno inteligente para transformar su espacio vital. Para habitaciones de hasta 20 m².",
         features: [

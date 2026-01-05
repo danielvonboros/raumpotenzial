@@ -111,9 +111,10 @@ export default function Pricing() {
                     {t(plan.titleKey)}
                   </h3>
                   <div className="mb-2">
-                    <span className="text-gray-600 dark:text-gray-300 block text-sm text-decoration line-through">
+                    {/* <span className="text-gray-600 dark:text-gray-300 block text-sm text-decoration line-through">
                       {t(plan.oldPriceKey)}
-                    </span>
+                    </span> */}
+                    {/*removed because of pricing update */}
                     <span className="text-4xl font-bold text-gray-900 dark:text-white">
                       {t(plan.priceKey)}
                     </span>

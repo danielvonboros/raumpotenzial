@@ -20,7 +20,8 @@ export default function PromotionalBadge({
   endDate,
 }: PromotionalBadgeProps) {
   const { t } = useLanguage();
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  // visibility set to false intentionally to disable badge display
 
   const handleClick = () => {
     const element = document.getElementById(targetSection);

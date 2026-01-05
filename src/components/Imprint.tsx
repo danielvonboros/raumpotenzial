@@ -31,6 +31,21 @@ export default function Imprint() {
             </div>
           </div>
 
+          <div className="space-y-6">
+            <div className="text-gray-700 dark:text-white space-y-2">
+              <h2>{t("imprint.content.processingData")}</h2>
+              <p>{t("imprint.content.processingDataText")}</p>
+            </div>
+            <div className="text-gray-700 dark:text-white space-y-2">
+              <h2>{t("imprint.content.liabilityHeader")}</h2>
+              <p>{t("imprint.content.liabilityText")}</p>
+            </div>
+            <div className="text-gray-700 dark:text-white space-y-2">
+              <h2>{t("imprint.content.linksHeader")}</h2>
+              <p>{t("imprint.content.linksText")}</p>
+            </div>
+          </div>
+
           <div className="border-t pt-8">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
               {t("imprint.content.disclaimer")}
