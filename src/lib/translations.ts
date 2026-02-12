@@ -239,8 +239,8 @@ export const translations = {
       consultationNote: "Book a consultation to discuss your project in detail and receive a personalized quote.",
       spaceImpulses: {
         title: "Space Impulses",
-        oldPrice: "€349",
-        price: "€349",
+        oldPrice: "€490",
+        price: "€490",
         duration: "Entry Level",
         description: "The package for inspiration and ideas for your rooms. For rooms up to 20m². Online consultation.",
         features: [
@@ -256,8 +256,8 @@ export const translations = {
       },
       spaceConcepts: {
         title: "Space Concepts",
-        oldPrice: "€599",
-        price: "€599",
+        oldPrice: "€790",
+        price: "€790",
         duration: "Professional Package",
         description: "The complete package for rooms measuring 15m² to 20m². The concept for converting your living space yourself. The well-thought-out design idea with on-site (in Berlin, Germany) consultation.",
         features: [
@@ -279,8 +279,8 @@ export const translations = {
       },
       spaceTransformation: {
         title: "Space Transformation",
-        oldPrice: "€1,099",
-        price: "€1.099",
+        oldPrice: "€1,290",
+        price: "€1,290",
         duration: "Complete Solution",
         description: "The worry-free package for transforming your living space with 3D visualization and on-site measurements (in Berlin, Germany). The intelligent, all-inclusive solution for transforming your living space. For rooms up to 20m².",
         features: [
@@ -545,8 +545,8 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         "Buchen Sie eine Beratung, um Ihr Projekt im Detail zu besprechen und ein personalisiertes Angebot zu erhalten.",
       spaceImpulses: {
         title: "Raum Impulse",
-        oldPrice:"349€",
-        price: "349€",
+        oldPrice:"490€",
+        price: "490€",
         duration: "Online Paket",
         description: "Das Paket für Inspirationen und Ideen für Ihre Räume. Für Räume bis 20m². Online Beratung.",
         features: [
@@ -562,8 +562,8 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       },
       spaceConcepts: {
         title: "Raum Konzepte",
-        oldPrice: "599€",
-        price: "599€",
+        oldPrice: "790€",
+        price: "790€",
         duration: "Profi-Paket",
         description: "Das Rundum-Paket für Räume mit einer Größe von 15m² bis 20m². Das Konzept zum Umbau des Wohnraums in Eigenregie. Die durchdachte Gestaltungsidee mit Beratung vor Ort (in Berlin).",
         features: [
@@ -585,8 +585,8 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       },
       spaceTransformation: {
         title: "Raum Transformation",
-        oldPrice: "1.099€",
-        price: "1.099€",
+        oldPrice: "1.290€",
+        price: "1.290€",
         duration: "Komplettlösung",
         description: "Das Sorglos Paket zur Verwandlung des Wohnraumes mit 3D-Visualisierung und Aufmaß vor Ort (in Berlin). Die intelligente All-Inclusive-Lösung zur Verwandlung Ihres Wohnraums. Für Räume bis 20m².",
         features: [
@@ -850,8 +850,8 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         "Réservez une consultation pour discuter de votre projet en détail et recevoir un devis personnalisé.",
       spaceImpulses: {
         title: "Impulsions Espace",
-        price: "349€",
-        oldPrice: "349€",
+        price: "490€",
+        oldPrice: "490€",
         duration: "Niveau Débutant",
         description: "Le forfait pour l'inspiration et les idées pour vos pièces. Pour les pièces jusqu'à 20m². Consultation en ligne.",
         features: [
@@ -867,8 +867,8 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       },
       spaceConcepts: {
         title: "Concepts Espace",
-        oldPrice: "599€",
-        price: "599€",
+        oldPrice: "790€",
+        price: "790€",
         duration: "Forfait Professionnel",
         description: "Le forfait complet pour les pièces de 15m² à 20m². Le concept pour transformer votre espace de vie par vous-même. L'idée de conception bien pensée avec une consultation sur place (à Berlin, Allemagne).",
         features: [
@@ -890,8 +890,8 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       },
       spaceTransformation: {
         title: "Transformation Espace",
-        oldPrice: "1.099€",
-        price: "1.099€",
+        oldPrice: "1.290€",
+        price: "1.290€",
         duration: "Solution Complète",
         description: "Le forfait sans souci pour transformer votre espace de vie avec visualisation 3D et mesures sur place (à Berlin, Allemagne). La solution tout-en-un intelligente pour transformer votre espace de vie. Pour les pièces jusqu'à 20m².",
         features: [
@@ -1153,8 +1153,8 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         "Reserva una consulta para discutir tu proyecto en detalle y recibir una cotización personalizada.",
       spaceImpulses: {
         title: "Impulsos Espaciales",
-        oldPrice: "349€",
-        price: "349€",
+        oldPrice: "490€",
+        price: "490€",
         duration: "Nivel Básico",
         description: "El paquete de inspiración e ideas para sus habitaciones. Para habitaciones de hasta 20 m². Asesoramiento online.",
         features: [
@@ -1170,8 +1170,8 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       },
       spaceConcepts: {
         title: "Conceptos Espaciales",
-        oldPrice: "599€",
-        price: "599€",
+        oldPrice: "790€",
+        price: "790€",
         duration: "Paquete Profesional",
         description: "El paquete completo para habitaciones con un tamaño de entre 15 m² y 20 m². El concepto para reformar el salón por cuenta propia. La idea de diseño bien pensada con asesoramiento in situ. (en Berlín, Alemania).",
         features: [
@@ -1193,8 +1193,8 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       },
       spaceTransformation: {
         title: "Transformación Espacial",
-        oldPrice: "1.099€",
-        price: "1.099€",
+        oldPrice: "1.290€",
+        price: "1.290€",
         duration: "Solución Completa",
         description: "El paquete sin preocupaciones para transformar su espacio vital con visualización 3D y medición in situ (en Berlín, Alemania). La solución todo en uno inteligente para transformar su espacio vital. Para habitaciones de hasta 20 m².",
         features: [
