@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import PainPoints from "@/components/PainPoints";
 import Projects from "@/components/Projects";
 import Pricing from "@/components/Pricing";
 import About from "@/components/About";
@@ -65,6 +66,9 @@ function PortfolioContent() {
         </section>
         <section id="introduction">
           <Introduction />
+        </section>
+        <section id="painpoints">
+          <PainPoints />
         </section>
         <section id="projects">
           <Projects />

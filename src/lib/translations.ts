@@ -1,3 +1,5 @@
+import { text } from "stream/consumers";
+
 export const translations = {
   en: {
     nav: {
@@ -46,6 +48,16 @@ export const translations = {
         subtitle: "Combined wardrobe and bed solution for small apartments",
         cta: "All Projects",
       },
+    },
+    painpoints:{
+      heading1: "Small apartment in Berlin",
+      text1: "You have limited square footage but too many needs? I show you how to get more out of your apartment without moving.",
+      heading2: "Lack of space & no storage",
+      text2: "No room for everything? Clever built-in solutions create storage space where you least expect it.",
+      heading3: "Children's room too small",
+      text3: "Two children, one room — it works. With the right planning, chaos turns into a functional living dream.",
+      heading4: "Dream apartment without moving",
+      text4: "A larger apartment costs a fortune in Berlin. I help you stay in your current apartment — and love it.",
     },
     introduction: {
       title: "Smart Space. Better Living.",
@@ -234,9 +246,10 @@ export const translations = {
       subtitle: "Professional interior design consultation packages tailored to your needs",
       bookConsultation: "Book Consultation",
       askQuestions: "Ask Questions",
-      hoursNote: "If the scope of a project isn’t fully defined or no package is selected, I simply charge based on the time invested. My hourly rate is €120.",
+      hoursNote: "If the scope of a project isn’t fully defined or no package is selected, I simply charge based on the time invested. My hourly rate is €140.",
       baseRatesNote: "All prices are base rates and may vary based on project complexity and specific requirements.",
       consultationNote: "Book a consultation to discuss your project in detail and receive a personalized quote.",
+      mostPopular: "Most Popular",
       spaceImpulses: {
         title: "Space Impulses",
         oldPrice: "€490",
@@ -346,6 +359,16 @@ export const translations = {
         subtitle: "Kombinierte Lösung aus Kleiderschrank und Bett",
         cta: "Projekte ansehen",
       },
+    },
+    painpoints:{
+      heading1: "Kleine Wohnung in Berlin",
+      text1: "Du hast wenig Quadratmeter, aber zu viele Bedürfnisse? Ich zeige dir, wie du ohne Umzug mehr aus deiner Wohnung holst.",
+      heading2: "Platzmangel & kein Stauraum",
+      text2: "Kein Platz für alles? Clevere Einbaulösungen schaffen Stauraum, wo du ihn nicht erwartest.",
+      heading3: "Kinderzimmer zu klein",
+      text3: "Zwei Kinder, ein Zimmer — das geht. Mit der richtigen Planung wird aus Chaos ein funktionaler Wohntraum.",
+      heading4: "Wohntraum ohne Umzug",
+      text4: "Eine größere Wohnung kostet in Berlin ein Vermögen. Ich helfe dir, in deiner jetzigen Wohnung zu bleiben — und sie zu lieben.",
     },
         introduction: {
       title: "Smart Space. Better Living.",
@@ -538,12 +561,13 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       subtitle: "Professionelle Interior Design-Beratungspakete nach Ihren Bedürfnissen",
       bookConsultation: "Beratung buchen",
       askQuestions: "Fragen stellen",
-      hoursNote: "Sollte der Umfang einer Anfrage noch nicht ganz klar sein oder kein Paket gebucht werden, rechne ich meine Arbeit nach Zeitaufwand ab. Mein Stundensatz liegt bei 120 EUR.",
+      hoursNote: "Sollte der Umfang einer Anfrage noch nicht ganz klar sein oder kein Paket gebucht werden, rechne ich meine Arbeit nach Zeitaufwand ab. Mein Stundensatz liegt bei 140 EUR.",
       baseRatesNote:
         "Alle Preise sind Grundpreise und können je nach Projektkomplexität und spezifischen Anforderungen variieren.",
       consultationNote:
         "Buchen Sie eine Beratung, um Ihr Projekt im Detail zu besprechen und ein personalisiertes Angebot zu erhalten.",
-      spaceImpulses: {
+      mostPopular: "Am beliebtesten",
+        spaceImpulses: {
         title: "Raum Impulse",
         oldPrice:"490€",
         price: "490€",
@@ -596,7 +620,7 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
           "Aufmaß vor Ort",
           "Technische Zeichnungen",
           "Vermittlung an Partnertischlerei",
-          "20m² und mehr: +65€ pro weiteren m²",
+          "20m² und mehr: +65€ pro weiterem m²",
         ],
         cta: "Raum transformieren",
       },
@@ -649,6 +673,16 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         subtitle: "Solution combinée armoire et lit pour petits appartements",
         cta: "Découvrir les projets",
       },
+    },
+    painpoints:{
+      heading1: "Petit appartement à Berlin",
+      text1: "Vous avez peu de mètres carrés, mais trop de besoins ? Je vous montre comment tirer le meilleur parti de votre appartement sans déménager.",
+      heading2: "Manque d'espace et pas de rangement",
+      text2: "Pas de place pour tout ? Des solutions d'aménagement intelligentes créent du rangement là où vous ne l'attendez pas.",
+      heading3: "Chambre d'enfant trop petite",
+      text3: "Deux enfants, une chambre - c'est possible. Avec la bonne planification, le chaos devient un rêve de vie fonctionnel.",
+      heading4: "Rêve de vie sans déménagement",
+      text4: "Un appartement plus grand coûte une fortune à Berlin. Je vous aide à rester dans votre appartement actuel - et à l'aimer.",
     },
         introduction: {
       title: "Smart Space. Better Living.",
@@ -843,12 +877,13 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       subtitle: "Forfaits de consultation en design d'intérieur professionnel adaptés à vos besoins",
       bookConsultation: "Réserver une Consultation",
       askQuestions: "Poser des Questions",
-      hoursNote: "Si la portée du projet n’est pas encore clairement définie ou qu’aucun forfait n’est choisi, je facture simplement selon le temps consacré. Mon tarif horaire est de 120 €.",
+      hoursNote: "Si la portée du projet n’est pas encore clairement définie ou qu’aucun forfait n’est choisi, je facture simplement selon le temps consacré. Mon tarif horaire est de 140 €.",
       baseRatesNote:
         "Tous les prix sont des tarifs de base et peuvent varier selon la complexité du projet et les exigences spécifiques.",
       consultationNote:
         "Réservez une consultation pour discuter de votre projet en détail et recevoir un devis personnalisé.",
-      spaceImpulses: {
+      mostPopular: "Le plus populaire",
+        spaceImpulses: {
         title: "Impulsions Espace",
         price: "490€",
         oldPrice: "490€",
@@ -954,6 +989,16 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
         subtitle: "Solución combinada de armario y cama para apartamentos pequeños",
         cta: "Descubrir los proyectos",
       },
+    },
+    painpoints: {
+      heading1: "Pequeño apartamento en Berlín",
+      text1: "¿Tienes pocos metros cuadrados pero demasiadas necesidades? Te muestro cómo sacar el máximo provecho de tu apartamento sin mudarte.",
+      heading2: "Falta de espacio y sin almacenamiento",
+      text2: "¿No hay lugar para todo? Las soluciones de diseño inteligentes crean almacenamiento donde menos lo esperas.",
+      heading3: "Habitación infantil demasiado pequeña",
+      text3: "Dos niños, una habitación: es posible. Con la planificación adecuada, el caos se convierte en un sueño de vida funcional.",
+      heading4: "Sueño de vida sin mudanza",
+      text4: "Un apartamento más grande cuesta una fortuna en Berlín. Te ayudo a quedarte en tu apartamento actual y a amarlo.",
     },
         introduction: {
       title: "Smart Space. Better Living.",
@@ -1146,12 +1191,13 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       subtitle: "Paquetes de consultoría de diseño de interiores profesional adaptados a tus necesidades",
       bookConsultation: "Reservar Consulta",
       askQuestions: "Hacer Preguntas",
-      hoursNote: "Si el alcance del proyecto aún no está claramente definido o no se elige un paquete, cobro según el tiempo dedicado. Mi tarifa por hora es de 120 €.",
+      hoursNote: "Si el alcance del proyecto aún no está claramente definido o no se elige un paquete, cobro según el tiempo dedicado. Mi tarifa por hora es de 140 €.",
       baseRatesNote:
         "Todos los precios son tarifas base y pueden variar según la complejidad del proyecto y los requisitos específicos.",
       consultationNote:
         "Reserva una consulta para discutir tu proyecto en detalle y recibir una cotización personalizada.",
-      spaceImpulses: {
+      mostPopular: "El más popular",
+        spaceImpulses: {
         title: "Impulsos Espaciales",
         oldPrice: "490€",
         price: "490€",

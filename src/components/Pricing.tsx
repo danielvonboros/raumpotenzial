@@ -101,7 +101,7 @@ export default function Pricing() {
               {plan.popular && (
                 <div className="absolute top-0 left-0 right-0 bg-blue-500 text-white text-center py-2 text-sm font-semibold">
                   <Star className="inline-block w-4 h-4 mr-1" />
-                  Most Popular
+                  {t("pricing.mostPopular")}
                 </div>
               )}
 
