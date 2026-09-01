@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 import { translations } from "@/lib/translations";
 
-type Language = "en" | "de" | "fr" | "es";
+type Language = "en" | "de";
 
 interface LanguageContextType {
   language: Language;
@@ -12,7 +12,7 @@ interface LanguageContextType {
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
