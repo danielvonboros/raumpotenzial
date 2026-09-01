@@ -29,7 +29,7 @@ export default function PainPoints() {
         {PAIN_POINTS.map((point, index) => (
           <div
             key={index}
-            className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed space-y-4"
+            className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed space-y-4 py-2"
           >
             <p>{point.heading}</p>
             <p>{point.text}</p>

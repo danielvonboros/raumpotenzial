@@ -1,5 +1,3 @@
-import { text } from "stream/consumers";
-
 export const translations = {
   en: {
     nav: {

@@ -9,32 +9,32 @@ import { useState, useEffect } from "react";
 const slides = [
   {
     image: "/room/sample_room_1_after2.webp",
-    alt: "Room Transformation with storage space",
+    alt: "Kleine Wohnung Berlin optimiert - Schlechte Raumaufteilung – Einbauelement mit Hochebene und Kleiderkammer, Raumtransformation Vorher Nachher",
     slideKey: "slide1",
   },
   {
     image: "/furniture/quadra_wide.webp",
-    alt: "Minimalist Sideboard",
+    alt: "Minimalistisches Sideboard aus Akazie individuelles Möbeldesign, maßgefertigt für Berliner Altbauwohnung, modernes Möbel",
     slideKey: "slide2",
   },
   {
     image: "/room/sample_room_2_after.webp",
-    alt: "Room divider and loft bed",
+    alt: "Kleine Wohnung Berlin optimiert – Raumteiler und Loft-Bett, Raumtransformation Vorher Nachher",
     slideKey: "slide3",
   },
   {
     image: "/room/sample_room_4_after.webp",
-    alt: "Room divider and loft bed",
+    alt: "Wohnung zu klein – Stauraum, Struktur und Design in einem Möbel, Raumtransformation Vorher Nachher",
     slideKey: "slide4",
   },
   {
     image: "/room/sample_room_8_1_after.webp",
-    alt: "Room divider and loft bed",
+    alt: "Umbau statt Umzug – Intelligente Raumaufteilung und maßgeschneiderte Einrichtungslösung, Raumtransformation Vorher Nachher",
     slideKey: "slide5",
   },
   {
     image: "/room/sample_room_11_2_after.webp",
-    alt: "Room divider and loft bed",
+    alt: "Small Apartment Ideas Berlin – Creatve Zoning, Room Transformation Before After",
     slideKey: "slide6",
   },
 ];
