@@ -23,7 +23,7 @@ export default function CookieConsentModal() {
   const { t, language, setLanguage } = useLanguage();
   const { showModal, acceptCookies, declineCookies } = useCookieConsent();
 
-  type Language = "en" | "de" | "fr" | "es";
+  type Language = "en" | "de";
 
   if (!showModal) return null;
 
