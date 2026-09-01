@@ -42,7 +42,7 @@ export default function Navigation({
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  type Language = "en" | "de" | "fr" | "es";
+  type Language = "en" | "de";
 
   const navItems = [
     { id: "home", icon: Home, label: t("nav.home") },
