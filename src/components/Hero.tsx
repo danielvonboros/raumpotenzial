@@ -62,6 +62,7 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <h1 className="sr-only">{t("hero.globalTitle")}</h1>
       {/* Slideshow Background */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
@@ -115,9 +116,9 @@ export default function Hero() {
 
       {/* Hero Content - Dynamic based on current slide */}
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
           {t(`hero.${currentSlideData.slideKey}.title`)}
-        </h1>
+        </h2>
         <p className="text-xl md:text-2xl mb-8 opacity-90">
           {t(`hero.${currentSlideData.slideKey}.subtitle`)}
         </p>

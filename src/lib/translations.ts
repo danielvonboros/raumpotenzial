@@ -18,6 +18,7 @@ export const translations = {
       close: "Close promotional badge",
     },
     hero: {
+      globalTitle: "Interior Design & room planning for small flats in Berlin",
       slide1: {
         title: "Room transformation with storage space",
         subtitle: "Built-in element with additional level and a small walk-in closet",
@@ -246,14 +247,14 @@ export const translations = {
       subtitle: "Professional interior design consultation packages tailored to your needs",
       bookConsultation: "Book Consultation",
       askQuestions: "Ask Questions",
-      hoursNote: "If the scope of a project isn’t fully defined or no package is selected, I simply charge based on the time invested. My hourly rate is €140.",
+      hoursNote: "If the scope of a project isn’t fully defined or no package is selected, I simply charge based on the time invested. My hourly rate is €160.",
       baseRatesNote: "All prices are base rates and may vary based on project complexity and specific requirements.",
       consultationNote: "Book a consultation to discuss your project in detail and receive a personalized quote.",
       mostPopular: "Most Popular",
       spaceImpulses: {
         title: "Space Impulses",
-        oldPrice: "€490",
-        price: "€490",
+        oldPrice: "€590",
+        price: "€590",
         duration: "Entry Level",
         description: "The package for inspiration and ideas for your rooms. For rooms up to 20m². Online consultation.",
         features: [
@@ -263,14 +264,14 @@ export const translations = {
           "Material suggestions",
           "Rough floor plan",
           "Measurements taken by customer",
-          "20m² and more: +€25 per additional m²",
+          "20m² and more: +€30 per additional m²",
         ],
         cta: "Get Started",
       },
       spaceConcepts: {
         title: "Space Concepts",
-        oldPrice: "€790",
-        price: "€790",
+        oldPrice: "€890",
+        price: "€890",
         duration: "Professional Package",
         description: "The complete package for rooms measuring 15m² to 20m². The concept for converting your living space yourself. The well-thought-out design idea with on-site (in Berlin, Germany) consultation.",
         features: [
@@ -281,19 +282,19 @@ export const translations = {
           "Mood board",
           "Shopping list",
           "Perspective sketch",
-          "20m² and more: +€40 per additional m²",
+          "20m² and more: +€45 per additional m²",
         ],
         cta: "Choose Concepts",
         popular: true,
         addOns: [
-          { name: "Custom Furniture Planning", price: "€400-600" },
+          { name: "Custom Furniture Planning", price: "€500-700" },
           { name: "Photorealistic Visualization", price: "€150" },
         ],
       },
       spaceTransformation: {
         title: "Space Transformation",
-        oldPrice: "€1,290",
-        price: "€1,290",
+        oldPrice: "€1,490",
+        price: "€1,490",
         duration: "Complete Solution",
         description: "The worry-free package for transforming your living space with 3D visualization and on-site measurements (in Berlin, Germany). The intelligent, all-inclusive solution for transforming your living space. For rooms up to 20m².",
         features: [
@@ -303,7 +304,7 @@ export const translations = {
           "On-site measurements",
           "Technical drawings",
           "referral to trusted partner carpentry and craftsmen",
-          "20m² and more: +€65 per additional m²",
+          "20m² and more: +€75 per additional m²",
         ],
         cta: "Transform Space",
       },
@@ -326,6 +327,7 @@ export const translations = {
       close: "Angebots-Badge schließen",
     },
     hero: {
+      globalTitle: "Innenarchitektur & Raumplanung für kleine Wohnungen in Berlin",
       slide1: {
         title: "Raumtransformation mit Stauraum",
         subtitle: "Einbauelement mit zusätzlicher Ebene und einer kleinen Kleiderkammer",
@@ -386,8 +388,8 @@ export const translations = {
         aboutProject: "Über dieses Projekt",
         materials: "Materialien",
         dimensions: "Abmessungen",
-        interestedText: "Interessiert an einem ähnlichen Projekt? Lassen Sie uns Ihre Vision besprechen.",
-        startProject: "Ihr Projekt starten",
+        interestedText: "Interessiert an einem ähnlichen Projekt? Lass uns Deine Vision besprechen.",
+        startProject: "Dein Projekt starten",
       },
       project1: {
         title: "Raumtransformation mit Stauraum",
@@ -476,7 +478,7 @@ export const translations = {
     },
     contact: {
       title: "Kontakt aufnehmen",
-      subtitle: "Bereit, Ihr nächstes Möbelprojekt zu besprechen?",
+      subtitle: "Bereit, deine Wohnung zu verwandeln?",
       form: {
         name: "Name",
         email: "E-Mail",
@@ -492,48 +494,48 @@ export const translations = {
       },
             cookieError: {
         title: "Cookie-Zustimmung erforderlich",
-        message: "Um unser Kontaktformular nutzen zu können, ist die Zustimmung zur Cookie-Richtlinie erforderlich. Alternativ können Sie uns auch direkt über die angegebene E-Mail-Adresse kontaktieren.",
-        directContact: "Kontaktieren Sie uns direkt",
+        message: "Um das Kontaktformular nutzen zu können, ist die Zustimmung zur Cookie-Richtlinie erforderlich. Alternativ kannst du mich auch direkt über die angegebene E-Mail-Adresse kontaktieren.",
+        directContact: "Kontaktiere mich direkt",
         changeCookiePreferences: "Cookie-Einstellungen ändern",
       }
     },
     captcha: {
       label: "Sicherheitsprüfung: Was ist",
       newQuestion: "Neue Frage",
-      incorrect: "Falsche Antwort. Bitte versuchen Sie es erneut.",
+      incorrect: "Falsche Antwort. Bitte versuche es erneut.",
       correct: "Richtig!",
-      required: "Bitte vervollständigen Sie die Sicherheitsprüfung korrekt.",
+      required: "Bitte vervollständige die Sicherheitsprüfung.",
     },
     cookies: {
       title: "Zustimmung zur Verwendung von Cookies und zur Datenverarbeitung",
-      description: "Wir verwenden Cookies und verarbeiten Ihre Daten, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. Mit Ihrer Zustimmung erklären Sie sich mit der Verarbeitung Ihrer Kontaktdaten durch Google-Dienste für die E-Mail-Kommunikation und Terminvereinbarung einverstanden.",
+      description: "Wir verwenden Cookies und verarbeiten deine Daten, um dir die bestmögliche Erfahrung auf der Website zu bieten. Mit deiner Zustimmung erklärst du dich mit der Verarbeitung deiner Kontaktdaten durch Google-Dienste für die E-Mail-Kommunikation und Terminvereinbarung einverstanden.",
       dataProcessing: {
-        title:"Wie wir Ihre Daten verarbeiten",
+        title:"Wie wir deine Daten verarbeiten",
         email: {
           title: "E-Mail-Kommunikation",
-          description: "Kontaktformular-Einsendungen und Terminanfragen werden über ein sicheres Google-E-Mail-Konto verarbeitet. Ihre persönlichen Daten (Name, E-Mail-Adresse, Telefonnummer, Nachricht) werden zur Beantwortung und Weiterverfolgung an hallo (at) raumideenwerk.com weitergeleitet.",
+          description: "Kontaktformular-Einsendungen und Terminanfragen werden über ein sicheres Google-E-Mail-Konto verarbeitet. Deine persönlichen Daten (Name, E-Mail-Adresse, Telefonnummer, Nachricht) werden zur Beantwortung und Weiterverfolgung an hallo (at) raumideenwerk.com weitergeleitet.",
 
         },
         calendar: {
           title: "Terminvereinbarung",
-          description: "Bei der Buchung von Beratungsgesprächen werden Ihre Terminangaben automatisch in unser Google-Kalendersystem übernommen. Dazu gehören Ihre Kontaktdaten und Terminwünsche für die Terminkoordination.",
+          description: "Bei der Buchung von Beratungsgesprächen werden deine Terminangaben automatisch in unser Google-Kalendersystem übernommen. Dazu gehören deine Kontaktdaten und Terminwünsche für die Terminkoordination.",
         },
       },
       privacy: {
-        title: "Ihre Datenschutzrechte",
-        description: "Wir verpflichten uns, Ihre Privatsphäre zu schützen und die Einhaltung der DSGVO sicherzustellen.",
-        point1: "Ihre Daten werden nur für den spezifischen Zweck verwendet, für den Sie sie bereitgestellt haben.",
-        point2: "Wir geben Ihre Daten nicht an Dritte außerhalb der Google-Dienste weiter.",
-        point3: "Sie können jederzeit die Löschung Ihrer Daten beantragen, indem Sie sich an uns wenden",
+        title: "Deine Datenschutzrechte",
+        description: "Deine Privatsphäre wird geschützt und die Einhaltung der DSGVO sichergestellt.",
+        point1: "Deine Daten werden nur für den spezifischen Zweck verwendet, für den du sie bereitgestellt hast.",
+        point2: "Deine Daten werden nicht an Dritte außerhalb der Google-Dienste weitergegeben.",
+        point3: "Du kannst jederzeit die Löschung deiner Daten beantragen, indem du dich an mich wendest",
 point4: "Alle Datenübertragungen sind verschlüsselt und sicher",
 },
 decline: {
-title: "Wenn Sie Cookies ablehnen",
-description: "Sie können uns weiterhin direkt über die in unserem Kontaktbereich angegebene E-Mail-Adresse kontaktieren. Allerdings werden dann unser automatisiertes Kontaktformular und die Terminvereinbarungsfunktion deaktiviert.",
+title: "Wenn du Cookies ablehnst",
+description: "Du kannst mich weiterhin direkt über die in unserem Kontaktbereich angegebene E-Mail-Adresse kontaktieren. Allerdings werden dann unser automatisiertes Kontaktformular und die Terminvereinbarungsfunktion deaktiviert.",
         button: "Ablehnen und direkten Kontakt nutzen",
       },
       accept: "Akzeptieren und Kontaktformulare aktivieren",
-      changeSettings: "Sie können Ihre Cookie-Einstellungen jederzeit in den Website-Einstellungen ändern."
+      changeSettings: "Du kannst deine Cookie-Einstellungen jederzeit in den Website-Einstellungen ändern."
     },
     imprint: {
       title: "Impressum",
@@ -558,21 +560,21 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
     },
     pricing: {
       title: "Design-Beratungsleistungen",
-      subtitle: "Professionelle Interior Design-Beratungspakete nach Ihren Bedürfnissen",
+      subtitle: "Professionelle Interior Design-Beratungspakete nach deinen Bedürfnissen",
       bookConsultation: "Beratung buchen",
       askQuestions: "Fragen stellen",
-      hoursNote: "Sollte der Umfang einer Anfrage noch nicht ganz klar sein oder kein Paket gebucht werden, rechne ich meine Arbeit nach Zeitaufwand ab. Mein Stundensatz liegt bei 140 EUR.",
+      hoursNote: "Sollte der Umfang einer Anfrage noch nicht ganz klar sein oder kein Paket gebucht werden, rechne ich meine Arbeit nach Zeitaufwand ab. Mein Stundensatz liegt bei 160 €.",
       baseRatesNote:
         "Alle Preise sind Grundpreise und können je nach Projektkomplexität und spezifischen Anforderungen variieren.",
       consultationNote:
-        "Buchen Sie eine Beratung, um Ihr Projekt im Detail zu besprechen und ein personalisiertes Angebot zu erhalten.",
+        "Buche eine Beratung, um Ihr Projekt im Detail zu besprechen und ein personalisiertes Angebot zu erhalten.",
       mostPopular: "Am beliebtesten",
         spaceImpulses: {
         title: "Raum Impulse",
-        oldPrice:"490€",
-        price: "490€",
+        oldPrice:"590€",
+        price: "590€",
         duration: "Online Paket",
-        description: "Das Paket für Inspirationen und Ideen für Ihre Räume. Für Räume bis 20m². Online Beratung.",
+        description: "Das Paket für Inspirationen und Ideen für deine Räume. Für Räume bis 20m². Online Beratung.",
         features: [
           "Designberatung",
           "Stilberatung",
@@ -580,14 +582,14 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
           "Materialvorschläge",
           "grober Grundriss",
           "Aufmaß durch Kunden",
-          "20m² und mehr: +25€ pro weiterem m²",
+          "20m² und mehr: +30€ pro weiterem m²",
         ],
         cta: "Loslegen",
       },
       spaceConcepts: {
         title: "Raum Konzepte",
-        oldPrice: "790€",
-        price: "790€",
+        oldPrice: "890€",
+        price: "890€",
         duration: "Profi-Paket",
         description: "Das Rundum-Paket für Räume mit einer Größe von 15m² bis 20m². Das Konzept zum Umbau des Wohnraums in Eigenregie. Die durchdachte Gestaltungsidee mit Beratung vor Ort (in Berlin).",
         features: [
@@ -598,21 +600,21 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
           "Moodboard",
           "Shoppingliste",
           "Perspektivische Skizze",
-          "20m² und mehr: +40€ pro weiterem m²",
+          "20m² und mehr: +45€ pro weiterem m²",
         ],
         cta: "Konzepte wählen",
         popular: true,
         addOns: [
-          { name: "individuelle Möbelplanung", price: "400-600€" },
+          { name: "individuelle Möbelplanung", price: "500-700€" },
           { name: "Fotorealistische Visualisierung", price: "150€" },
         ],
       },
       spaceTransformation: {
         title: "Raum Transformation",
-        oldPrice: "1.290€",
-        price: "1.290€",
+        oldPrice: "1.490€",
+        price: "1.490€",
         duration: "Komplettlösung",
-        description: "Das Sorglos Paket zur Verwandlung des Wohnraumes mit 3D-Visualisierung und Aufmaß vor Ort (in Berlin). Die intelligente All-Inclusive-Lösung zur Verwandlung Ihres Wohnraums. Für Räume bis 20m².",
+        description: "Das Sorglos Paket zur Verwandlung des Wohnraumes mit 3D-Visualisierung und Aufmaß vor Ort (in Berlin). Die intelligente All-Inclusive-Lösung zur Verwandlung deines Wohnraums. Für Räume bis 20m².",
         features: [
           "zusätzlich zu Raum-Konzepte",
           "individuelle Möbelplanung (inklusive)",
@@ -620,13 +622,14 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
           "Aufmaß vor Ort",
           "Technische Zeichnungen",
           "Vermittlung an Partnertischlerei",
-          "20m² und mehr: +65€ pro weiterem m²",
+          "20m² und mehr: +75€ pro weiterem m²",
         ],
         cta: "Raum transformieren",
       },
     },
   },
-  fr: {
+}
+  {/*fr: {
     nav: {
       home: "Accueil",
       projects: "Projets",
@@ -1256,4 +1259,4 @@ description: "Sie können uns weiterhin direkt über die in unserem Kontaktberei
       },
     },
   }
-}
+}*/}
