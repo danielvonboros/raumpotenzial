@@ -9,37 +9,46 @@ import ProjectModal from "@/components/ProjectModal";
 const projects = [
   {
     id: "project1",
-    image: "/room/sample_room_1_after2.webp",
+    image: "/room/room1/nische_berliner-zimmer_hochbett_stauraum.webp",
+    alt: "Nische in einem Berliner Zimmer mit Hochbett und Stauraum",
     titleKey: "projects.project1.title",
     descriptionKey: "projects.project1.description",
   },
   {
     id: "project2",
-    image: "/furniture/quadra_wide.webp",
+    image: "/furniture/quadra/moebeldesign_akazienholz_sideboard_wide.webp",
+    alt: "Möbeldesign Sideboard aus Akazienholz",
     titleKey: "projects.project2.title",
     descriptionKey: "projects.project2.description",
   },
   {
     id: "project3",
-    image: "/room/sample_room_2_after.webp",
+    image:
+      "/room/room2/raumteiler_homeoffice_studio_kleine_wohnung_raumkonzept.webp",
+    alt: "Raumteiler für Homeoffice in einem Studio in einer kleinen Wohnung mit Raumkonzept",
     titleKey: "projects.project3.title",
     descriptionKey: "projects.project3.description",
   },
   {
     id: "project4",
-    image: "/room/sample_room_4_after.webp",
+    image:
+      "/room/room4/einbauschrank_stauraum_bettschrank_kleine_wohnung_berlin.webp",
+    alt: "Einbauschrank mit Stauraum und Bettschrank in einer kleinen Wohnung in Berlin",
     titleKey: "projects.project4.title",
     descriptionKey: "projects.project4.description",
   },
   {
     id: "project5",
-    image: "/room/sample_room_8_1_after.webp",
+    image: "/room/room13/kleines_arbeitszimmer_nachher_1.webp",
+    alt: "Kleines Arbeitszimmer in Wohnung mit Stauraum und Schreibtisch",
     titleKey: "projects.project5.title",
     descriptionKey: "projects.project5.description",
   },
   {
     id: "project6",
-    image: "/room/sample_room_11_2_after.webp",
+    image:
+      "/room/room11/podestbett_arbeitsplatz_altbauwohnung_studio_stauraum.webp",
+    alt: "Podestbett mit Arbeitsplatz in einer Altbauwohnung mit Studio und Stauraum",
     titleKey: "projects.project6.title",
     descriptionKey: "projects.project6.description",
   },

@@ -8,33 +8,36 @@ import { useState, useEffect } from "react";
 
 const slides = [
   {
-    image: "/room/sample_room_1_after2.webp",
-    alt: "Room Transformation with storage space",
+    image: "/room/room1/nische_berliner-zimmer_hochbett_stauraum.webp",
+    alt: "Niche in Berlin Apartment with Loft Bed",
     slideKey: "slide1",
   },
   {
-    image: "/furniture/quadra_wide.webp",
-    alt: "Minimalist Sideboard",
+    image: "/furniture/quadra/moebeldesign_akazienholz_sideboard_wide.webp",
+    alt: "Custom Furniture Design Sideboard made of Acacia Wood",
     slideKey: "slide2",
   },
   {
-    image: "/room/sample_room_2_after.webp",
-    alt: "Room divider and loft bed",
+    image:
+      "/room/room2/raumteiler_homeoffice_studio_kleine_wohnung_raumkonzept.webp",
+    alt: "Room Divider for Home Office in a Studio Apartment with Space Concept",
     slideKey: "slide3",
   },
   {
-    image: "/room/sample_room_4_after.webp",
-    alt: "Room divider and loft bed",
+    image:
+      "/room/room4/einbauschrank_stauraum_bettschrank_kleine_wohnung_berlin.webp",
+    alt: "Built-in Wardrobe with Storage and Bed Cabinet in a Small Apartment in Berlin",
     slideKey: "slide4",
   },
   {
-    image: "/room/sample_room_8_1_after.webp",
-    alt: "Room divider and loft bed",
+    image: "/room/room13/kleines_arbeitszimmer_nachher_1.webp",
+    alt: "Small Home Office in an Apartment with Storage and Desk",
     slideKey: "slide5",
   },
   {
-    image: "/room/sample_room_11_2_after.webp",
-    alt: "Room divider and loft bed",
+    image:
+      "/room/room11/podestbett_stauraum_homeoffice_raumkonzept_farbkonzept.webp",
+    alt: "Podium Bed with Workspace in a Studio Apartment with Storage and Color Concept",
     slideKey: "slide6",
   },
 ];
