@@ -3,21 +3,38 @@
 export default function StructuredData() {
   const schema = {
     "@context": "https://schema.org",
+
     "@graph": [
-      // ── 1. LOCAL BUSINESS ──────────────────────────────────────────
+      // ─────────────────────────────────────────────────────────────
+      // 1. LOCAL BUSINESS
+      // ─────────────────────────────────────────────────────────────
       {
-        "@type": ["LocalBusiness", "InteriorDesignBusiness"],
-        "@id": "https://www.raumideenwerk.com/",
+        "@type": "LocalBusiness",
+        "@id": "https://www.raumideenwerk.com/#business",
+
         name: "raumideenwerk",
         legalName: "raumideenwerk - Daniel von Boros",
+
         url: "https://www.raumideenwerk.com",
-        logo: "https://www.raumideenwerk.com/_next/static/media/LogoLightWide.3f64a38c.svg",
-        image: "https://www.raumideenwerk.com/room/sample_room_1_after2.webp",
+
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.raumideenwerk.com/logo.svg",
+        },
+
+        image: {
+          "@type": "ImageObject",
+          url: "https://www.raumideenwerk.com/website.webp",
+          width: 1200,
+          height: 630,
+        },
+
         description:
-          "Einrichtungsberatung und Innenarchitektur für kleine Wohnungen in Berlin. Spezialisiert auf Kinderzimmer, Mikroapartments und schlecht geschnittene Grundrisse.",
-        telephone: "+49160495 8148",
+          "Innenarchitektur und Raumplanung für kleine Wohnungen in Berlin. Spezialisiert auf intelligente Raumkonzepte, Zonierung, Stauraumlösungen und individuelle Möbelplanung.",
+
+        telephone: "+491604958148",
         email: "hallo@raumideenwerk.com",
-        vatID: "DE456695805",
+
         address: {
           "@type": "PostalAddress",
           streetAddress: "Kolonnenstraße 8",
@@ -25,111 +42,169 @@ export default function StructuredData() {
           addressLocality: "Berlin",
           addressCountry: "DE",
         },
+
         geo: {
           "@type": "GeoCoordinates",
-          latitude: "52.48627243666373",
-          longitude: "13.35993720266727",
+          latitude: 52.48627243666373,
+          longitude: 13.35993720266727,
         },
-        areaServed: { "@type": "City", name: "Berlin" },
+
+        areaServed: {
+          "@type": "City",
+          name: "Berlin",
+        },
+
         priceRange: "€€",
         currenciesAccepted: "EUR",
-        founder: { "@id": "https://www.raumideenwerk.com/" },
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "5",
-          reviewCount: "3",
-          bestRating: "5",
+
+        founder: {
+          "@id": "https://www.raumideenwerk.com/#person",
+        },
+
+        sameAs: ["https://www.instagram.com/raum.ideen.werk.berlin"],
+
+        hasOfferCatalog: {
+          "@id": "https://www.raumideenwerk.com/#services",
         },
       },
 
-      // ── 2. PERSON ──────────────────────────────────────────────────
+      // ─────────────────────────────────────────────────────────────
+      // 2. PERSON
+      // ─────────────────────────────────────────────────────────────
       {
         "@type": "Person",
-        "@id": "https://www.raumideenwerk.com/",
+        "@id": "https://www.raumideenwerk.com/#person",
+
         name: "Daniel von Boros",
-        jobTitle: "Architekt & Innenarchitekt",
+
+        jobTitle: "Architekt & Interior Designer",
+
         description:
-          "Architekt mit über 5 Jahren Erfahrung im Umbau kleiner Wohnräume in Berlin.",
-        image: "https://www.raumideenwerk.com/image_daniel.jpeg",
+          "Architekt und Gründer von raumideenwerk mit Schwerpunkt auf Raumplanung, Wohnungsoptimierung und individuellen Lösungen für kleine Wohnungen.",
+
+        image: {
+          "@type": "ImageObject",
+          url: "https://www.raumideenwerk.com/image_daniel.jpeg",
+        },
+
         url: "https://www.raumideenwerk.com",
-        worksFor: { "@id": "https://www.raumideenwerk.com/" },
+
+        worksFor: {
+          "@id": "https://www.raumideenwerk.com/#business",
+        },
+
         sameAs: [
           "https://www.linkedin.com/in/danielvonboros",
           "https://www.instagram.com/raum.ideen.werk.berlin",
         ],
+
+        knowsAbout: [
+          "Innenarchitektur",
+          "Raumplanung",
+          "Raumkonzepte",
+          "Wohnungsoptimierung",
+          "kleine Wohnungen",
+          "Stauraumplanung",
+          "Möbelplanung",
+          "Grundrissoptimierung",
+        ],
       },
 
-      // ── 3. SERVICES (one per package) ──────────────────────────────
+      // ─────────────────────────────────────────────────────────────
+      // 3. SERVICE CATALOG
+      // ─────────────────────────────────────────────────────────────
       {
-        "@type": "Service",
-        name: "Raum Impulse",
-        serviceType: "Einrichtungsberatung",
-        description:
-          "Online-Beratungspaket für Räume bis 20m². Inkl. Designberatung, Stilberatung, Materialvorschläge und Grundriss.",
-        url: "https://www.raumideenwerk.com/",
-        provider: { "@id": "https://www.raumideenwerk.com/" },
-        areaServed: { "@type": "City", name: "Berlin" },
-        offers: {
-          "@type": "Offer",
-          price: "490",
-          priceCurrency: "EUR",
-        },
-      },
-      {
-        "@type": "Service",
-        name: "Raum Konzepte",
-        serviceType: "Einrichtungsberatung",
-        description:
-          "Profi-Paket für Räume 15–20m². Inkl. Stilkonzept, Raumkonzept, Moodboard, Shoppingliste und Beratung vor Ort in Berlin.",
-        url: "https://www.raumideenwerk.com/",
-        provider: { "@id": "https://www.raumideenwerk.com/" },
-        areaServed: { "@type": "City", name: "Berlin" },
-        offers: {
-          "@type": "Offer",
-          price: "790",
-          priceCurrency: "EUR",
-        },
-      },
-      {
-        "@type": "Service",
-        name: "Raum Transformation",
-        serviceType: "Einrichtungsberatung",
-        description:
-          "Komplettlösung für Räume bis 20m². Inkl. Möbelplanung, fotorealistischer 3D-Visualisierung, technischen Zeichnungen und Tischlervermittlung.",
-        url: "https://www.raumideenwerk.com/",
-        provider: { "@id": "https://www.raumideenwerk.com/" },
-        areaServed: { "@type": "City", name: "Berlin" },
-        offers: {
-          "@type": "Offer",
-          price: "1290",
-          priceCurrency: "EUR",
-        },
-      },
+        "@type": "OfferCatalog",
+        "@id": "https://www.raumideenwerk.com/#services",
 
-      // ── 4. REVIEWS ─────────────────────────────────────────────────
-      {
-        "@type": "Review",
-        itemReviewed: { "@id": "https://www.raumideenwerk.com/" },
-        author: { "@type": "Person", name: "Lisa V." },
-        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-        reviewBody:
-          "Die neue Aufteilung wirkt viel offener und einladender. Man schaut nicht mehr direkt auf die Rückseite der Couch, wenn man die Wohnung betritt.",
-      },
-      {
-        "@type": "Review",
-        itemReviewed: { "@id": "https://www.raumideenwerk.com/" },
-        author: { "@type": "Person", name: "Nadia P." },
-        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-        reviewBody:
-          "Ich bin sehr glücklich mit der neuen Lösung — zusätzlicher Stauraum und eine durchdachte Erhöhung für Bildschirm und Lautsprecher.",
-      },
-      {
-        "@type": "Review",
-        itemReviewed: { "@id": "https://www.raumideenwerk.com/" },
-        author: { "@type": "Person", name: "Christina K." },
-        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-        reviewBody:
-          "Daniel hat viele sowohl optisch ansprechende als auch technisch ausgeklügelte Ideen gefunden. Ich kann die Beratung nur empfehlen.",
+        name: "Innenarchitektur und Raumplanung",
+
+        itemListElement: [
+          {
+            "@type": "Offer",
+
+            price: "590",
+            priceCurrency: "EUR",
+
+            itemOffered: {
+              "@type": "Service",
+              "@id": "https://www.raumideenwerk.com/#service-raum-impulse",
+
+              name: "Raum Impulse",
+
+              serviceType: "Online-Raumberatung und Einrichtungsberatung",
+
+              description:
+                "Online-Beratung für Räume bis 20 m² mit Designberatung, Stilberatung, Materialvorschlägen und Grundrissoptimierung.",
+
+              provider: {
+                "@id": "https://www.raumideenwerk.com/#business",
+              },
+
+              areaServed: {
+                "@type": "Country",
+                name: "Deutschland",
+              },
+            },
+          },
+
+          {
+            "@type": "Offer",
+
+            price: "890",
+            priceCurrency: "EUR",
+
+            itemOffered: {
+              "@type": "Service",
+              "@id": "https://www.raumideenwerk.com/#service-raum-konzepte",
+
+              name: "Raum Konzepte",
+
+              serviceType: "Innenarchitektur und Raumplanung",
+
+              description:
+                "Raumkonzept mit Stilkonzept, Moodboard, Grundrissplanung, Einrichtungsvorschlägen und Beratung vor Ort in Berlin.",
+
+              provider: {
+                "@id": "https://www.raumideenwerk.com/#business",
+              },
+
+              areaServed: {
+                "@type": "City",
+                name: "Berlin",
+              },
+            },
+          },
+
+          {
+            "@type": "Offer",
+
+            price: "1490",
+            priceCurrency: "EUR",
+
+            itemOffered: {
+              "@type": "Service",
+              "@id":
+                "https://www.raumideenwerk.com/#service-raum-transformation",
+
+              name: "Raum Transformation",
+
+              serviceType: "Innenarchitektur, Raumplanung und Möbelplanung",
+
+              description:
+                "Umfassendes Raumkonzept mit individueller Möbelplanung, fotorealistischer 3D-Visualisierung, technischen Zeichnungen und Unterstützung bei der Umsetzung.",
+
+              provider: {
+                "@id": "https://www.raumideenwerk.com/#business",
+              },
+
+              areaServed: {
+                "@type": "City",
+                name: "Berlin",
+              },
+            },
+          },
+        ],
       },
     ],
   };
@@ -137,7 +212,9 @@ export default function StructuredData() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema),
+      }}
     />
   );
 }

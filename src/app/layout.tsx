@@ -15,10 +15,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title:
-    "raumideenwerk – Innenarchitektur & Raumkonzepte in Berlin | Smart Space Design",
+  title: {
+    default: "Innenarchitektur Berlin für kleine Wohnungen | raumideenwerk",
+    template: "%s | raumideenwerk",
+  },
+
   description:
-    "Innenarchitektur & Interior Design aus Berlin – spezialisiert auf Raumkonzepte, Raumaufteilung, Möbel nach Maß und die Gestaltung kleiner Stadtwohnungen. Individuelle Designlösungen, Beratung und maßgefertigte Möbel.",
+    "Innenarchitektur und Raumplanung für kleine Wohnungen in Berlin. Clevere Raumkonzepte, Stauraumlösungen und individuelle Möbelplanung – für mehr Platz ohne Umzug.",
+
   keywords: [
     "interior design",
     "room concepts",
@@ -97,64 +101,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta
-          name="ai-content-type"
-          content="interior-design, innenarchitektur"
-        />
-        <meta
-          name="ai-topic"
-          content="space-optimization, room-concepts, zoning, möbelplanung, wohnungsoptimierung, raumkonzepte, raumaufteilung"
-        />
-        <meta name="ai-category" content="home, design, architecture, wohnen" />
-        <meta
-          name="x-ai-label"
-          content="professional-interior-design-service, innenarchitektur-dienstleistung"
-        />
-
-        <meta name="ai-generated" content="false" />
-        <meta name="ai-review" content="human-curated" />
-        <meta name="ai-moderation" content="safe" />
-        <meta name="ai-robots" content="allow" />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: "Interior Design & Space Optimization Studio / Innenarchitektur Berlin",
-              url: "https://raumideenwerk.com",
-              images: [
-                {
-                  url: "https://raumideenwerk.com/website.webp",
-                  width: 1200,
-                  height: 630,
-                },
-              ],
-              description:
-                "Interior design studio specializing in room concepts, zoning, furniture layout and space optimization. Innenarchitektur für Raumkonzepte, Möbelplanung und die Gestaltung kleiner Wohnungen in Berlin.",
-
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Berlin",
-                addressCountry: "DE",
-              },
-              areaServed: ["Berlin", "Deutschland", "Germany"],
-              serviceType: [
-                "Room Concept Design",
-                "Interior Zoning",
-                "Furniture Layout Planning",
-                "Space Optimization",
-                "Custom Furniture Design",
-                "Online Interior Consulting",
-                "Raumkonzepte",
-                "Raumaufteilung",
-                "Möbelplanung",
-                "Wohnungsoptimierung",
-              ],
-            }),
-          }}
-        />
         <StructuredData />
       </head>
       <body

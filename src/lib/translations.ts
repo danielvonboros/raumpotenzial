@@ -67,7 +67,7 @@ export const translations = {
     },
     projects: {
       title: "Featured Projects",
-      subtitle: "A selection of my finest furniture designs",
+      subtitle: "Selected room concepts and custom built-in solutions",
       viewDetails: "View Details",
       modal: {
         projectGoal: "Project Goal",
@@ -373,13 +373,13 @@ export const translations = {
         introduction: {
       title: "Smart Space. Better Living.",
       sentence1: "Ich habe mich darauf spezialisiert, bestehende Räume in funktionale, ästhetische und personalisierte Lebensräume zu verwandeln.",
-      sentence2: "Anstatt umzuziehen, helfe ich Menschen, das Beste aus ihrem aktuellen Zuhause herauszuholen – durch clevere Umorganisation, durchdachte Zonierung und maßgeschneiderte Möbel-Lösungen.",
+      sentence2: "Anstatt umzuziehen, helfe ich Menschen, das Beste aus dem aktuellen Zuhause herauszuholen – durch clevere Umorganisation, durchdachte Zonierung und maßgeschneiderte Möbel-Lösungen.",
       sentence3: "Jedes Konzept wird auf den Lebensstil der Kunden zugeschnitten und verbindet Praktikabilität mit zeitlosem Design.",
       sentence4: "Das Ergebnis: Wohnräume, die größer wirken, besser funktionieren und die Menschen, die in ihnen leben, wirklich widerspiegeln.",
     },
     projects: {
       title: "Ausgewählte Projekte",
-      subtitle: "Eine Auswahl meiner schönsten Möbeldesigns",
+      subtitle: "Ausgewählte Raumkonzepte und individuelle Einbaulösungen",
       viewDetails: "Details ansehen",
       modal: {
         projectGoal: "Projektziel",
@@ -454,7 +454,7 @@ export const translations = {
       content:
         "Ich bin Architekt mit über fünf Jahren Erfahrung im Aus- und Umbau von Häusern, Wohnungen sowie in der Gestaltung von Innen- und Außenräumen. Mein Fokus liegt darauf, Funktionalität und ästhetische Schönheit zu verbinden – denn Räume sollten nicht nur gut aussehen, sondern auch den Alltag ihrer Bewohner bereichern. Mein Weg begann mit dem Architekturstudium, in dem ich ein tiefes Verständnis für räumliche Zusammenhänge, strukturelle Integrität und den Einfluss von Umgebungen auf unser Wohlbefinden entwickelte.",
       content2: "In meiner beruflichen Laufbahn habe ich an zahlreichen Projekten mitgewirkt – von Wohnhäusern bis hin zu Gewerbeflächen –, stets mit dem Blick auf die Bedürfnisse der Nutzer. Besonders in der Instandhaltung, Sanierung und zeitgemäßen Neugestaltung von Wohnungen konnte ich wertvolle Erfahrung sammeln.",
-      content3: "Mit der Zeit verlagerte sich mein Schwerpunkt zunehmend auf die Gestaltung individueller Möbelstücke. Hier entdeckte ich meine Leidenschaft für maßgeschneiderte Lösungen, die nicht nur funktional sind, sondern auch eine Geschichte erzählen. Diese Leidenschaft führte mich zu meiner Spezialisierung auf Innenraumkonzepte und Interior Design – denn viele Räume bergen ungenutztes Potenzial, das durch intelligente Planung sichtbar und erlebbar wird.Veränderte Lebensumstände stellen uns oft vor neue Herausforderungen. Doch gerade im urbanen Raum, wo Wohnfläche knapp ist, kann durch durchdachte Konzepte und gezielte Umgestaltung enorm viel gewonnen werden. Mein Ansatz ist dabei immer persönlich und kollaborativ: Jeder Raum sollte den Charakter und Lebensstil seiner Bewohner widerspiegeln, ohne dabei seine zeitlose Eleganz zu verlieren.Ob es um die Transformation eines kompletten Raumes oder um ein einzelnes, prägnantes Statement-Möbel geht – ich verbinde traditionelle Handwerkstechniken mit modernen Designprinzipien, um langlebige, hochwertige Ergebnisse zu schaffen. Gemeinsam entwickeln wir eine Lösung, die perfekt zu Ihrer individuellen Wohnsituation passt.",
+      content3: "Mit der Zeit verlagerte sich mein Schwerpunkt zunehmend auf die Gestaltung individueller Möbelstücke. Hier entdeckte ich meine Leidenschaft für maßgeschneiderte Lösungen, die nicht nur funktional sind, sondern auch eine Geschichte erzählen. Diese Leidenschaft führte mich zu meiner Spezialisierung auf Innenraumkonzepte und Interior Design – denn viele Räume bergen ungenutztes Potenzial, das durch intelligente Planung sichtbar und erlebbar wird.Veränderte Lebensumstände stellen uns oft vor neue Herausforderungen. Doch gerade im urbanen Raum, wo Wohnfläche knapp ist, kann durch durchdachte Konzepte und gezielte Umgestaltung enorm viel gewonnen werden. Mein Ansatz ist dabei immer persönlich und kollaborativ: Jeder Raum sollte den Charakter und Lebensstil seiner Bewohner widerspiegeln, ohne dabei seine zeitlose Eleganz zu verlieren.Ob es um die Transformation eines kompletten Raumes oder um ein einzelnes, prägnantes Statement-Möbel geht – ich verbinde traditionelle Handwerkstechniken mit modernen Designprinzipien, um langlebige, hochwertige Ergebnisse zu schaffen. Gemeinsam entwickeln wir eine Lösung, die perfekt zu deiner individuellen Wohnsituation passt.",
       webDesign: "Web-Design Portfolio ansehen",
       architecture: "Architektur Portfolio ansehen",
     },
@@ -565,7 +565,7 @@ description: "Du kannst mich weiterhin direkt über die in unserem Kontaktbereic
       baseRatesNote:
         "Alle Preise sind Grundpreise und können je nach Projektkomplexität und spezifischen Anforderungen variieren.",
       consultationNote:
-        "Buche eine Beratung, um Ihr Projekt im Detail zu besprechen und ein personalisiertes Angebot zu erhalten.",
+        "Buche eine Beratung, um dein Projekt im Detail zu besprechen und ein personalisiertes Angebot zu erhalten.",
       mostPopular: "Am beliebtesten",
         spaceImpulses: {
         title: "Raum Impulse",
