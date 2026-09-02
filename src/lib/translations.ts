@@ -38,8 +38,8 @@ export const translations = {
         cta: "All Projects",
       },
       slide5: {
-        title: "Child-friendly small flat conversion",
-        subtitle: "Additional level creates space for the whole family",
+        title: "New usage for 10sqm room",
+        subtitle: "A room conversion to a workspace, guest room and storage area",
         cta: "All Projects",
       },
       slide6: {
@@ -115,13 +115,13 @@ export const translations = {
         year: "2025",
       },
       project5: {
-        title: "Loft bed for a small family",
-        description: "A new level lifts the bed and makes space for a small family",
-        extendedDescription: "This piece of furniture was designed for a compact apartment in which the living and sleeping areas needed to be clearly separated. The room divider not only provides privacy, but also additional storage space. The integrated loft for the bed creates a cozy sleeping niche and makes optimal use of the vertical space. The design combines functionality with a modern look that zones the room and creates a clear structure at the same time. In addition, the newly created level has created a space below that can be used as a home office or a cozy reading corner",
-                 goal: "To separate the living and sleeping areas from each other and integrate them elegantly into the room.",
-        materials: "Spruce wood, white",
-        dimensions: "Gallery: 300x200cm",
-        year: "2025",
+        title: "New usage for 10sqm room",
+        description: "A room conversion to a workspace, guest room and storage area.",
+        extendedDescription: "Although the room is only 10sqm in size, it has been redesigned to be used as a workspace, guest room and storage area. Through the clever arrangement of furniture and the use of vertical space above the door, a functional solution can be created that meets the needs of the residents while still providing space for work, guests, reading or storage, thus relieving the other rooms in the apartment.",
+                 goal: "To create storage space, establish zones, and make the room usable for multiple purposes.",
+        materials: "Wood panel individually as desk, shelf and storage from furniture store",
+        dimensions: "Desk: approx. 170x65cm",
+        year: "2026",
       },
       project6: {
         title: "Platform bed and wardrobe",
@@ -349,8 +349,8 @@ export const translations = {
       },
 
       slide5: {
-        title: "Kindgerechter Umbau durch Empore",
-        subtitle: "Zusätzliche Ebene schafft Platz für die ganze Familie",
+        title: "Neue Nutzung für 10qm Zimmer",
+        subtitle: "Eine Raumumgestaltung zu Arbeitszimmer, Gästezimmer und Stauraum",
         cta: "Projekte ansehen",
       },
 
@@ -429,13 +429,13 @@ export const translations = {
         year: "2025",
       },
       project5: {
-        title: "Empore für Bett",
-        description: "Einbaulösung für den kindgerechten Umbau eines Mikroapartments.",
-        extendedDescription:"Durch die Verlagerung des Bettes auf eine Hochebene wurde dieses kleine Apartment zu einem kindgerechten Zuhause.Oben schlafen, unten spielen – ein Raum, zwei Welten, perfekt auf die Bedürfnisse der Familie abgestimmt.Durch die zusätzliche Nutzung der Vertikalen entsteht mehr Platz, mehr Ordnung und spürbare Alltagserleichterung für kleine Entdecker.So wird ein winziger Grundriss zu einem funktionalen, klar strukturierten Lebensraum.",
-        goal: "Wohn- und Schlafbereich voneinander trennen und Platz für Kind schaffen. ",
-        materials: "Fichtenholz, weiß lackiert",
-        dimensions: "Hochebene: ca: 300x200cm",
-        year: "2025",
+        title: "Umnutzung eines 10qm Zimmers als Arbeitszimmer, Gästezimmer und Stauraum",
+        description: "Raumkonzept für eine flexible Nutzung des Raumes.",
+        extendedDescription:"Obwohl der Raum nur 10qm groß ist, wurde er so umgestaltet, dass er als Arbeitszimmer, Gästezimmer und Stauraum genutzt werden kann. Durch die clevere Anordnung der Möbel und die Nutzung von vertikalem Raum oberhalb der Türe eine funktionale Lösung geschaffen werden, die den Bedürfnissen der Bewohner gerecht wird und dennoch Platz für Arbeiten, Gäste, zum lesen oder für die Aufbewahrung schafft und somit die anderen Zimmer der Wohnung zusätzlich entlastet.",
+        goal: "Stauraum schaffen, Zonen erstellen und den Raum für mehrere Zwecke nutzbar machen.",
+        materials: "Holzplatte individuell als Schreibtisch, Regal und Stauraum aus Möbelhaus",
+        dimensions: "Schreibtisch: ca: 170x65cm",
+        year: "2026",
       },
       project6: {
         title: "Plattformbett und Kleiderschrank",
