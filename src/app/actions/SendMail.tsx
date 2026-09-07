@@ -10,10 +10,7 @@ interface ContactFormData {
   message: string;
 }
 
-const smtpPass = Buffer.from(
-  process.env.GMAIL_APP_PASSWORD!,
-  "base64"
-).toString("utf-8");
+const smtpPass = Buffer.from(process.env.GMAIL_APP_PASSWORD!).toString("utf-8");
 
 // Create SMTP transporter for Gmail
 const createTransporter = () => {
@@ -247,7 +244,7 @@ export async function submitBookingForm(formData: FormData) {
         year: "numeric",
         month: "long",
         day: "numeric",
-      }
+      },
     );
 
     // Prepare booking email content
