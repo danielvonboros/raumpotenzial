@@ -119,15 +119,15 @@ export default function Hero() {
 
       {/* Hero Content - Dynamic based on current slide */}
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-        <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        <h2 className="text-4xl md:text-6xl font-default mb-6 leading-tight">
           {t(`hero.${currentSlideData.slideKey}.title`)}
         </h2>
-        <p className="text-xl md:text-2xl mb-8 opacity-90">
+        <p className="text-xl font-light md:text-2xl mb-8 opacity-90">
           {t(`hero.${currentSlideData.slideKey}.subtitle`)}
         </p>
         <Button
           size="lg"
-          className="bg-white text-gray-900 hover:bg-gray-100 text-lg px-8 py-3"
+          className="border-1 border-white bg-transparent text-white hover:bg-gray-100 hover:text-gray-900 text-lg px-8 py-3"
           onClick={() => {
             const element = document.getElementById("projects");
             if (element) {

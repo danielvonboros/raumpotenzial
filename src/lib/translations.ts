@@ -60,9 +60,13 @@ export const translations = {
     },
     introduction: {
       title: "Smart Space. Better Living.",
+      heading1:"Interior Design & Space Planning",
       sentence1: "I specialize in transforming existing spaces into functional, aesthetic, and personalized interiors.",
+      heading2: "Lack of space & no storage",
       sentence2: "Instead of moving, I help people make the most of their current home through clever reorganization, thoughtful zoning, and custom furniture solutions.",
+      heading3: "Space Concepts & Built-in Solutions",
       sentence3: "Every concept is tailored to the client’s lifestyle and blends practicality with timeless design.",
+      heading4: "Optimized Use & Improved Spatial Experience",
       sentence4: "The result: living spaces that feel bigger, work better, and truly reflect the people who live in them.",
     },
     projects: {
@@ -362,7 +366,7 @@ export const translations = {
     },
     painpoints:{
       heading1: "Kleine Wohnung in Berlin",
-      text1: "Du hast wenig Quadratmeter, aber zu viele Bedürfnisse? Ich zeige dir, wie du ohne Umzug mehr aus deiner Wohnung holst.",
+      text1: "Du hast wenig Quadratmeter, aber viele Bedürfnisse? Ich zeige dir, wie du ohne Umzug mehr aus deiner Wohnung holst.",
       heading2: "Platzmangel & kein Stauraum",
       text2: "Kein Platz für alles? Clevere Einbaulösungen schaffen Stauraum, wo du ihn nicht erwartest.",
       heading3: "Kinderzimmer zu klein",
@@ -372,9 +376,13 @@ export const translations = {
     },
         introduction: {
       title: "Smart Space. Better Living.",
+      heading1: "Raumgestaltung & Innenarchitektur",
       sentence1: "Ich habe mich darauf spezialisiert, bestehende Räume in funktionale, ästhetische und personalisierte Lebensräume zu verwandeln.",
+      heading2: "Raumoptimierung ohne Umzug",
       sentence2: "Anstatt umzuziehen, helfe ich Menschen, das Beste aus dem aktuellen Zuhause herauszuholen – durch clevere Umorganisation, durchdachte Zonierung und maßgeschneiderte Möbel-Lösungen.",
+      heading3: "Raumkonzepte und Einbaulösungen",
       sentence3: "Jedes Konzept wird auf den Lebensstil der Kunden zugeschnitten und verbindet Praktikabilität mit zeitlosem Design.",
+      heading4: "Optimierte Nutzung und verbessertes Raumgefühl",
       sentence4: "Das Ergebnis: Wohnräume, die größer wirken, besser funktionieren und die Menschen, die in ihnen leben, wirklich widerspiegeln.",
     },
     projects: {

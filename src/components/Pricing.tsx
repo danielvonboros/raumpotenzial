@@ -85,10 +85,10 @@ export default function Pricing() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl text-gray-900 dark:text-white mb-4">
             {t("pricing.title")}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl font-light text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             {t("pricing.subtitle")}
           </p>
         </div>
@@ -110,7 +110,7 @@ export default function Pricing() {
 
               <div className={`p-8 ${plan.popular ? "pt-16" : ""}`}>
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  <h3 className="text-2xl text-gray-900 dark:text-white mb-4">
                     {t(plan.titleKey)}
                   </h3>
                   <div className="mb-2">
@@ -118,14 +118,14 @@ export default function Pricing() {
                       {t(plan.oldPriceKey)}
                     </span> */}
                     {/*removed because of pricing update */}
-                    <span className="text-4xl font-bold text-gray-900 dark:text-white">
+                    <span className="text-4xl text-gray-900 dark:text-white">
                       {t(plan.priceKey)}
                     </span>
-                    <span className="text-gray-600 dark:text-gray-300 ml-2 block text-sm">
+                    <span className="text-gray-600 font-light dark:text-gray-300 ml-2 block text-sm">
                       {t(plan.durationKey)}
                     </span>
                     <div className="text-gray-600 dark:text-gray-300 pt-8">
-                      <span className="text-gray-600 dark:text-gray-300 ml-2 block text-sm">
+                      <span className="text-gray-600 font-light dark:text-gray-300 ml-2 block text-sm">
                         {t(plan.descriptionKey)}
                       </span>
                     </div>
@@ -136,7 +136,7 @@ export default function Pricing() {
                   {getFeatures(plan.id).map((feature, index) => (
                     <li key={index} className="flex items-start">
                       <Check className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 dark:text-gray-300">
+                      <span className="text-gray-700 font-light dark:text-gray-300">
                         {feature}
                       </span>
                     </li>
@@ -156,7 +156,7 @@ export default function Pricing() {
                           key={index}
                           className="flex justify-between items-center text-sm"
                         >
-                          <span className="text-gray-700 dark:text-gray-300">
+                          <span className="text-gray-700 font-light dark:text-gray-300">
                             {addOn.name}
                           </span>
                           <span className="font-semibold text-gray-900 dark:text-white min-w-fit">
@@ -172,7 +172,7 @@ export default function Pricing() {
                 <div className="space-y-3">
                   <Button
                     onClick={() => handleBookingClick(t(plan.titleKey))}
-                    className={`w-full py-3 text-lg font-semibold flex items-center justify-center gap-2 ${
+                    className={`w-full py-3 text-lg flex items-center justify-center gap-2 ${
                       plan.popular
                         ? "bg-blue-500 hover:bg-blue-600 text-white"
                         : "bg-gray-900 hover:bg-gray-800 text-white"

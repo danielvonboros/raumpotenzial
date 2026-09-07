@@ -95,7 +95,7 @@ export default function Contact() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({
       ...formData,
@@ -115,7 +115,7 @@ export default function Contact() {
   const generateMailtoLink = () => {
     const subject = encodeURIComponent(formData.subject || "Contact Request");
     const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
     );
     return `mailto:hallo@raumideenwerk.com?subject=${subject}&body=${body}`;
   };
@@ -124,10 +124,10 @@ export default function Contact() {
     <section className="py-20 px-4 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl text-gray-900 dark:text-white mb-4">
             {t("contact.title")}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 font-light dark:text-gray-300 max-w-2xl mx-auto">
             {t("contact.subtitle")}
           </p>
         </div>

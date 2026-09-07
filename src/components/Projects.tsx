@@ -73,10 +73,10 @@ export default function Projects() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl text-gray-900 dark:text-white mb-4">
             {t("projects.title")}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl font-light text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             {t("projects.subtitle")}
           </p>
         </div>
@@ -97,16 +97,16 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                <h3 className="text-xl text-gray-900 dark:text-white mb-3">
                   {t(project.titleKey)}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                <p className="text-gray-600 font-light dark:text-gray-300 leading-relaxed mb-4">
                   {t(project.descriptionKey)}
                 </p>
                 <Button
                   onClick={() => handleProjectClick(project.id)}
                   variant="outline"
-                  className="w-full bg-transparent border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                  className="w-full bg-transparent border-gray-300 border-1 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   {t("projects.viewDetails")}
                 </Button>
