@@ -10,20 +10,13 @@ interface ContactFormData {
   message: string;
 }
 
-const smtpPass = Buffer.from(
-  process.env.GMAIL_APP_PASSWORD!,
-  "base64",
-).toString("utf-8");
-
-// const smtpPass = process.env.GMAIL_APP_PASSWORD;
-
 // Create SMTP transporter for Gmail
 const createTransporter = () => {
   return nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: process.env.GMAIL_USER,
-      pass: smtpPass,
+      pass: process.env.GMAIL_APP_PASSWORD,
     },
   });
 };
