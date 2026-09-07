@@ -10,7 +10,12 @@ interface ContactFormData {
   message: string;
 }
 
-const smtpPass = Buffer.from(process.env.GMAIL_APP_PASSWORD!).toString("utf-8");
+const smtpPass = Buffer.from(
+  process.env.GMAIL_APP_PASSWORD!,
+  "base64",
+).toString("utf-8");
+
+// const smtpPass = process.env.GMAIL_APP_PASSWORD;
 
 // Create SMTP transporter for Gmail
 const createTransporter = () => {
