@@ -1,142 +1,70 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import Link from "next/link";
+import type { SiteContent } from "@/content/types";
 
-const slides = [
-  {
-    image: "/room/room1/nische_berliner-zimmer_hochbett_stauraum.webp",
-    alt: "Niche in Berlin Apartment with Loft Bed",
-    slideKey: "slide1",
-  },
-  {
-    image: "/furniture/quadra/moebeldesign_akazienholz_sideboard_wide.webp",
-    alt: "Custom Furniture Design Sideboard made of Acacia Wood",
-    slideKey: "slide2",
-  },
-  {
-    image:
-      "/room/room2/raumteiler_homeoffice_studio_kleine_wohnung_raumkonzept.webp",
-    alt: "Room Divider for Home Office in a Studio Apartment with Space Concept",
-    slideKey: "slide3",
-  },
-  {
-    image:
-      "/room/room4/einbauschrank_stauraum_bettschrank_kleine_wohnung_berlin.webp",
-    alt: "Built-in Wardrobe with Storage and Bed Cabinet in a Small Apartment in Berlin",
-    slideKey: "slide4",
-  },
-  {
-    image: "/room/room13/kleines_arbeitszimmer_nachher_1.webp",
-    alt: "Small Home Office in an Apartment with Storage and Desk",
-    slideKey: "slide5",
-  },
-  {
-    image:
-      "/room/room11/podestbett_stauraum_homeoffice_raumkonzept_farbkonzept.webp",
-    alt: "Podium Bed with Workspace in a Studio Apartment with Storage and Color Concept",
-    slideKey: "slide6",
-  },
-];
-
-export default function Hero() {
-  const { t } = useLanguage();
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const currentSlideData = slides[currentSlide];
-
+export function Hero({ c }: { c: SiteContent["hero"] }) {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <h1 className="sr-only">{t("hero.globalTitle")}</h1>
-      {/* Slideshow Background */}
-      <div className="absolute inset-0">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
+    <section
+      id="start"
+      className="grid grid-cols-[64px_minmax(0,1fr)] grid-rows-[minmax(220px,34svh)_auto_minmax(150px,22svh)] bg-gelb text-tinte md:grid-cols-[200px_minmax(0,1fr)] md:grid-rows-[320px_auto_200px]"
+    >
+      {/* Buchrücken über die volle Höhe */}
+      <div className="row-span-3 flex items-end gap-1 pb-6 pl-3 md:pb-10 md:pl-10">
+        <span className="spine text-[34px] leading-none font-bold tracking-[-0.035em] md:text-[56px]">
+          {c.spine[0]}
+        </span>
+        <span className="spine text-[34px] leading-none tracking-[-0.02em] italic md:text-[56px]">
+          {c.spine[1]}
+        </span>
+      </div>
+
+      <div className="relative overflow-hidden">
+        <Image
+          src={c.imageTop.src}
+          alt={c.imageTop.alt}
+          fill
+          priority
+          sizes="(min-width: 768px) calc(100vw - 200px), calc(100vw - 64px)"
+          className="object-cover"
+          style={{ objectPosition: c.imageTop.position }}
+        />
+      </div>
+
+      <div className="flex flex-col justify-center gap-6 px-5 py-10 md:gap-7 md:py-14 md:pr-14 md:pl-11">
+        {/* h1 trägt Claim und Suchbegriffe zugleich */}
+        <h1 className="flex flex-col gap-3 font-normal">
+          <span className="text-[44px] leading-[0.92] font-bold tracking-[-0.045em] sm:text-[64px] lg:text-[96px]">
+            {c.claim}
+          </span>
+          <span className="text-xl leading-tight tracking-[-0.015em] italic md:text-[30px]">
+            {c.keywords}
+          </span>
+        </h1>
+        <div className="flex flex-wrap items-center gap-x-7 gap-y-4">
+          <Link
+            href={c.primaryCta.href}
+            className="bg-tinte px-6 py-4 text-lg font-semibold text-leinen hover:bg-petrol"
           >
-            <Image
-              src={slide.image || "/placeholder.svg"}
-              alt={slide.alt}
-              fill
-              className="object-cover"
-              priority={index === 0}
-            />
-            <div className="absolute inset-0 bg-black/40" />
-          </div>
-        ))}
+            {c.primaryCta.label}
+          </Link>
+          <Link
+            href={c.secondaryCta.href}
+            className="text-lg font-semibold underline decoration-2 underline-offset-[5px] hover:text-petrol"
+          >
+            {c.secondaryCta.label}
+          </Link>
+        </div>
       </div>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors z-50"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="h-6 w-6 text-white" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors z-50"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="h-6 w-6 text-white" />
-      </button>
-
-      {/* Slide Indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              index === currentSlide ? "bg-white" : "bg-white/50"
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
-
-      {/* Hero Content - Dynamic based on current slide */}
-      <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-        <h2 className="text-4xl md:text-6xl font-default mb-6 leading-tight">
-          {t(`hero.${currentSlideData.slideKey}.title`)}
-        </h2>
-        <p className="text-xl font-light md:text-2xl mb-8 opacity-90">
-          {t(`hero.${currentSlideData.slideKey}.subtitle`)}
-        </p>
-        <Button
-          size="lg"
-          className="border-1 border-white bg-transparent text-white hover:bg-gray-100 hover:text-gray-900 text-lg px-8 py-3"
-          onClick={() => {
-            const element = document.getElementById("projects");
-            if (element) {
-              element.scrollIntoView({ behavior: "smooth" });
-            }
-          }}
-        >
-          {t(`hero.${currentSlideData.slideKey}.cta`)}
-        </Button>
+      <div className="relative overflow-hidden">
+        <Image
+          src={c.imageBottom.src}
+          alt={c.imageBottom.alt}
+          fill
+          sizes="(min-width: 768px) calc(100vw - 200px), calc(100vw - 64px)"
+          className="object-cover"
+          style={{ objectPosition: c.imageBottom.position }}
+        />
       </div>
     </section>
   );

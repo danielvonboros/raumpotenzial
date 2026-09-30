@@ -1,112 +1,69 @@
-"use client";
+import type { Metadata } from "next";
+import { de } from "@/content/de";
+import { About } from "@/components/About";
+import { ContactSection } from "@/components/ContactSection";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { Packages } from "@/components/Packages";
+import { PainPoints } from "@/components/PainPoints";
+import { Process } from "@/components/Process";
+import { ProjectCatalog } from "@/components/ProjectCatalog";
+import { ProjectCover, ProjectCtaCard } from "@/components/ProjectCover";
+import { SeoServices } from "@/components/SeoServices";
+import { Services } from "@/components/Services";
+import { Testimonials } from "@/components/Testimonials";
 
-import { useEffect, useState } from "react";
-import { LanguageProvider } from "@/contexts/LanguageContext";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { ThemeProvider } from "@/contexts/ThemeContext";
-import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
-import PainPoints from "@/components/PainPoints";
-import Projects from "@/components/Projects";
-import Pricing from "@/components/Pricing";
-import About from "@/components/About";
-import Testimonials from "@/components/Testimonials";
-import Contact from "@/components/Contact";
-import Imprint from "@/components/Imprint";
-import Introduction from "@/components/Introduction";
-import { CookieConsentProvider } from "@/contexts/CookieConsentContext";
-import CookieConsentModal from "@/components/CookieConsentModal";
-import PromotionalBadge from "@/components/PromotionalBadge";
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
-function PortfolioContent() {
-  const [currentSection, setCurrentSection] = useState("home");
-  const { t } = useLanguage();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = [
-        "home",
-        "projects",
-        "pricing",
-        "about",
-        "testimonials",
-        "contact",
-        "imprint",
-      ];
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setCurrentSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+/**
+ * Startseite, serverseitig gerendert: Alle Texte stehen im ausgelieferten HTML.
+ * Nur Kopfzeile (Handy-Menü), Katalog-Pfeile und Kontaktformular laufen im Browser.
+ */
+export default function Home() {
+  const c = de;
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-      <Navigation
-        currentSection={currentSection}
-        setCurrentSection={setCurrentSection}
-      />
-      <main>
-        <section id="home">
-          <Hero />
-        </section>
-        <section id="introduction">
-          <Introduction />
-        </section>
-        <section id="painpoints">
-          <PainPoints />
-        </section>
-        <section id="projects">
-          <Projects />
-        </section>
-        <section id="pricing">
-          <Pricing />
-        </section>
-        <section id="about">
-          <About />
-        </section>
-        <section id="testimonials">
-          <Testimonials />
-        </section>
-        <section id="contact">
-          <Contact />
-        </section>
-        <section id="imprint">
-          <Imprint />
-        </section>
-        <CookieConsentModal />
-        <PromotionalBadge
-          shape="christmas-bulb"
-          targetSection="pricing"
-          endDate={t("promotional.endDate")}
-        />
+    <>
+      <a
+        href="#inhalt"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-tinte focus:px-4 focus:py-3 focus:text-leinen"
+      >
+        {c.skipLink}
+      </a>
+      <Header nav={c.nav} cta={c.headerCta} menu={c.menu} />
+
+      <main id="inhalt">
+        <Hero c={c.hero} />
+
+        <ProjectCatalog
+          title={c.projects.title}
+          subtitle={c.projects.subtitle}
+          prevLabel={c.projects.prevLabel}
+          nextLabel={c.projects.nextLabel}
+        >
+          {c.projects.items.map((project) => (
+            <ProjectCover key={project.slug} project={project} />
+          ))}
+          <ProjectCtaCard {...c.projects.ctaCard} />
+        </ProjectCatalog>
+
+        <Services c={c.services} />
+        <PainPoints c={c.painPoints} />
+        <Process c={c.process} />
+        <Packages c={c.packages} />
+        <About c={c.about} />
+        <Testimonials c={c.testimonials} />
+
+        {/* Deine SEO-Komponente: zwischen Projekten und Kontakt, hier direkt davor */}
+        <SeoServices />
+
+        <ContactSection c={c.contact} />
       </main>
-    </div>
-  );
-}
 
-export default function Portfolio() {
-  return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <CookieConsentProvider>
-          <PortfolioContent />
-        </CookieConsentProvider>
-      </LanguageProvider>
-    </ThemeProvider>
+      <Footer c={c.footer} />
+    </>
   );
 }

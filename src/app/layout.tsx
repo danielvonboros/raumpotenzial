@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import StructuredData from "@/components/StructuredData";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Variable Font (100–900) in normal und kursiv; wird beim Build selbst gehostet,
+// im Browser gibt es also keine Anfrage an Google.
+const hanken = Hanken_Grotesk({
+  variable: "--font-hanken",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.raumideenwerk.com"),
   title: {
     default: "Innenarchitektur Berlin für kleine Wohnungen | raumideenwerk",
     template: "%s | raumideenwerk",
@@ -77,7 +77,9 @@ export const metadata: Metadata = {
       "raumideenwerk - Smart Space - Better Living | Interior Design & Space Optimization | Innenarchitektur Berlin",
     description:
       "Specialized in room concepts, apartment zoning, and smart space solutions. Spezialisiert auf Raumkonzepte, kreative Zonierung und maßgeschneiderte Einrichtungslösungen für Berliner Wohnungen.",
-    url: "https://raumideenwerk.com",
+    url: "https://www.raumideenwerk.com",
+    siteName: "raumideenwerk",
+    locale: "de_DE",
     type: "website",
   },
   twitter: {
@@ -99,13 +101,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="de" className={hanken.variable}>
       <head>
         <StructuredData />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="bg-leinen font-sans text-tinte antialiased">
         {children}
         <SpeedInsights />
       </body>

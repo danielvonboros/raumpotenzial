@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, type ReactNode } from "react";
-import { translations } from "@/lib/translations";
+import { translations } from "@/content/legal";
 
 type Language = "en" | "de";
 

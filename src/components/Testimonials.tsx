@@ -1,66 +1,27 @@
-"use client";
+import type { SiteContent } from "@/content/types";
 
-import { useLanguage } from "@/contexts/LanguageContext";
-import { Star } from "lucide-react";
-
-const testimonials = [
-  {
-    id: 1,
-    textKey: "testimonials.testimonial1.text",
-    authorKey: "testimonials.testimonial1.author",
-  },
-  {
-    id: 2,
-    textKey: "testimonials.testimonial2.text",
-    authorKey: "testimonials.testimonial2.author",
-  },
-  {
-    id: 3,
-    textKey: "testimonials.testimonial3.text",
-    authorKey: "testimonials.testimonial3.author",
-  },
-];
-
-export default function Testimonials() {
-  const { t } = useLanguage();
-
+export function Testimonials({ c }: { c: SiteContent["testimonials"] }) {
   return (
-    <section className="py-20 px-4 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl text-gray-900 dark:text-white mb-4">
-            {t("testimonials.title")}
-          </h2>
-          <p className="text-xl text-gray-600 font-light dark:text-gray-300 max-w-2xl mx-auto">
-            {t("testimonials.subtitle")}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
-            <div
-              key={testimonial.id}
-              className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
-            >
-              <div className="flex mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-5 w-5 text-yellow-400 fill-current"
-                  />
-                ))}
-              </div>
-              <p className="text-gray-700 font-light dark:text-gray-300 mb-6 leading-relaxed">
-                {"'" + t(testimonial.textKey) + "'"}
-              </p>
-              <div className="border-t border-gray-200 dark:border-gray-600 pt-4">
-                <p className=" text-gray-900 dark:text-white">
-                  {t(testimonial.authorKey)}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+    <section
+      aria-labelledby="stimmen-titel"
+      className="bg-petrol px-5 py-16 text-leinen md:px-14 md:py-[72px]"
+    >
+      <h2
+        id="stimmen-titel"
+        className="text-[40px] leading-none font-bold tracking-[-0.04em] md:text-[64px]"
+      >
+        {c.title}
+      </h2>
+      <div className="mt-10 grid items-start gap-10 md:mt-11 md:grid-cols-3">
+        {c.items.map((item) => (
+          <figure key={item.author} className="flex flex-col gap-[18px]">
+            <span aria-hidden="true" className="text-[72px] leading-[0.6] font-bold text-gelb">
+              „
+            </span>
+            <blockquote className="text-lg leading-[1.5]">{item.text}</blockquote>
+            <figcaption className="text-lg font-bold">{item.author}</figcaption>
+          </figure>
+        ))}
       </div>
     </section>
   );
